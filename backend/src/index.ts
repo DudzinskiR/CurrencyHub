@@ -31,9 +31,3 @@ const PORT: Number = Number(process.env.PORT) || 3000
 const server: Server = app.listen(PORT, () => {
     console.log(`Express started on port ${PORT} :)`)
 });
-
-export function sum(a: number, b: number): number {
-    return a + b;
-}
-
-module.exports = sum;

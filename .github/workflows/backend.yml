@@ -1,0 +1,31 @@
+name: Backend build
+
+on:
+  pull_request:
+    branches: ["main", "release", "develop"]
+    paths: ["backend/**"]
+
+jobs:
+  frontend-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+
+      - name: Install all dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Run tests
+        run: npm run test

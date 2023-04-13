@@ -1,3 +1,7 @@
 .currency-picker-box{
-    
+    display: flex;
+    align-items: center;
+    height: 60px;
+    min-width: 200px;
+    user-select: none;
 }

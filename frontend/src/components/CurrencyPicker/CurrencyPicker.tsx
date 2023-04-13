@@ -1,5 +1,5 @@
 import React from 'react'
-import "./CurrencyPicker"
+import "./CurrencyPicker.scss"
 import CountryFlag from '../CountryFlag/CountryFlag'
 
 const CurrencyPicker = () => {

@@ -1,14 +1,14 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Header  from './Header'
+import HeaderLine  from './HeaderLine'
 
 test('render header with text', () => {
-  render(<Header text='test'/>);
+  render(<HeaderLine text='test'/>);
   const lineElement = screen.getByText(/test/i);
   expect(lineElement).toBeInTheDocument();
 });
 
 test('render header without text', () => {
-  const { container } = render(<Header/>);
+  const { container } = render(<HeaderLine/>);
   expect(container.childNodes[0].childNodes[0]).toHaveClass('single-line')
 });

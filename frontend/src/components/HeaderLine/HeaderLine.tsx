@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Header.scss"
+import "./HeaderLine.scss"
 
 interface props {
   text?: string

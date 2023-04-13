@@ -8,6 +8,8 @@ const Header = ({text}: props) => {
   return (
     <div className="header-component">
       <div className="left-line"></div>
+      <div className="header-text">{text}</div>
+      <div className="right-line"></div>
     </div>
   )
 }

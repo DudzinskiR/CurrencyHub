@@ -3,7 +3,11 @@ import "./CurrencyPicker"
 
 const CurrencyPicker = () => {
   return (
-    <div>CurrencyPicker</div>
+    <div className='currency-picker-box'>
+        <button>
+            
+        </button>
+    </div>
   )
 }
 

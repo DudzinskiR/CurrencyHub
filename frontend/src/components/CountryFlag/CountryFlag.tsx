@@ -1,5 +1,6 @@
 import React from 'react'
-import "./CountryFlag"
+import "./CountryFlag.scss"
+import ReactCountryFlag from "react-country-flag"
 
 interface props {
     countryCode?: string,
@@ -8,7 +9,17 @@ interface props {
 
 const CountryFlag = ({countryCode = "US", size = 40}: props) => {
   return (
-    <div>CountryFlag</div>
+    <div className='country-flag-component' style={{width: `${size}px`}}>
+            <ReactCountryFlag 
+                countryCode={countryCode} 
+                svg
+                style={{
+                    width: `${size}px`,
+                    height: `${size}px`,
+                    transform: 'scale(1.4)'
+                }}
+            />
+    </div>
   )
 }
 

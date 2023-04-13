@@ -1,19 +1,32 @@
 .currency-picker-box{
-  display: flex;
-  align-items: center;
-  height: 60px;
-  min-width: 200px;
-  user-select: none;
 
-  .currency-code{
-    font-weight: 500;
-    font-size: 1rem;
+  .currency-picker{
+    display: flex;
+    align-items: center;
+    border-style: solid;
+    border-color: #999999;
+    border-radius: 8px;
+    border-width: 2px;
+    height: 60px;
+    min-width: 200px;
+    user-select: none;
+    background-color: #ffffff;
+
+    .currency-info{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 10px;
+
+      .currency-code{
+        font-weight: 500;
+        font-size: 1rem;
+      }
+    
+      .currency-name{
+        color: rgb(50, 50, 50);
+        font-size: 0.75rem;
+      }
+    }
   }
-
-  .currency-name{
-    color: rgb(50, 50, 50);
-    font-size: 0.75rem;
-  }
-
-
 }

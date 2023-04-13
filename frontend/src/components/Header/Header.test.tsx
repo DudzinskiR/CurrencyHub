@@ -4,6 +4,11 @@ import Header  from './Header'
 
 test('render header with text', () => {
   render(<Header text='test'/>);
-  const linkElement = screen.getByText(/test/i);
-  expect(linkElement).toBeInTheDocument();
+  const lineElement = screen.getByText(/test/i);
+  expect(lineElement).toBeInTheDocument();
+});
+
+test('render header without text', () => {
+  const { container } = render(<Header/>);
+  expect(container.childNodes[0].childNodes[0]).toHaveClass('single-line')
 });

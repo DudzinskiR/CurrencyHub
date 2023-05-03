@@ -21,8 +21,8 @@ const CurrencyPicker = (props: props) => {
       <button className='currency-picker'>
         <div className="flag"><CountryFlag countryCode='GB' size={40}/></div>
         <div className="currency-info">
-          <div className="currency-code">PLN</div>
-          <div className="currency-name">Złoty</div>
+          <div className="currency-code">EUR</div>
+          <div className="currency-name">euro</div>
         </div>
       </button>
     </div>

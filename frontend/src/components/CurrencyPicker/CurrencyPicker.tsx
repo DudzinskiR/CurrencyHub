@@ -10,11 +10,18 @@ interface props{
 }
 
 const CurrencyPicker = (props: props) => {
+
   const [selectedCurrency, setCurrency] = useState<Currency>();
+  const [isOpen, setOpen] = useState<boolean>(false);
+
   const defaultCurrency = currencyData.find(item => item.CurrencyCode === "EUR");
 
   const findCurrencyDataByCode = (countryCode?: string): Currency | undefined => {
     return currencyData.find(item => item.CurrencyCode === countryCode);
+  }
+
+  const toggleList = () => {
+    setOpen(!isOpen);
   }
 
 
@@ -26,13 +33,28 @@ const CurrencyPicker = (props: props) => {
 
   return (
     <div className='currency-picker-box'>
-      <button className='currency-picker'>
+      <button className='currency-picker' onClick={toggleList}>
         <div className="flag"><CountryFlag countryCode={selectedCurrency?.Country} size={40}/></div>
         <div className="currency-info">
           <div className="currency-code">{selectedCurrency?.CurrencyCode}</div>
           <div className="currency-name">{selectedCurrency?.CurrencyName}</div>
         </div>
       </button>
+
+      {isOpen && 
+        <div className='list-box'>
+          <label>
+            <input 
+                placeholder="Wpisz walute..." 
+                className='currency-input'
+                type="text" 
+                name="search"
+                autoFocus
+                autoComplete='off'
+            />
+          </label>
+        </div>
+      }
     </div>
   )
 }

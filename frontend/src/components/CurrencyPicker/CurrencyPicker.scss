@@ -29,4 +29,28 @@
       }
     }
   }
+
+  .list-box{
+    position: absolute; 
+    background-color: #ffffff; 
+    border-radius: 0.375rem; 
+    width: 250px;
+    
+
+    .currency-input{
+      display: block; 
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem; 
+      padding-right: 0.75rem; 
+      padding-left: 2.25rem; 
+      width: 100%; 
+      outline: 0px solid transparent;
+
+
+      @media (min-width: 640px) { 
+        font-size: 0.875rem;
+        line-height: 1.25rem; 
+      }
+    }
+  }
 }

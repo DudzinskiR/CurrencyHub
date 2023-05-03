@@ -39,19 +39,12 @@
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
     .currency-input{
       display: block; 
-      // width: 100%; 
-
       padding-top: 0.5rem;
       padding-bottom: 0.5rem; 
       padding-right: 0.75rem; 
       padding-left: 2.25rem; 
       outline: 0px solid transparent;
       border: 2px solid transparent;
-
-      // @media (min-width: 640px) { 
-      //   font-size: 0.875rem;
-      //   line-height: 1.25rem; 
-      // }
     }
 
     .currency-list{

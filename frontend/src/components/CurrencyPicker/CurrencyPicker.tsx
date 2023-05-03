@@ -13,13 +13,13 @@ const CurrencyPicker = (props: props) => {
   const [selectedCurrency, setCurrency] = useState<Currency>();
   const defaultCurrency = currencyData.find(item => item.CurrencyCode === "EUR");
 
-  const FindCurrencyDataByCode = (countryCode?: string): Currency | undefined => {
+  const findCurrencyDataByCode = (countryCode?: string): Currency | undefined => {
     return currencyData.find(item => item.CurrencyCode === countryCode);
   }
 
 
   useEffect(() => {
-    const newCurrency = FindCurrencyDataByCode(props.countryCode);
+    const newCurrency = findCurrencyDataByCode(props.countryCode);
 
     setCurrency(newCurrency || defaultCurrency)
   }, [defaultCurrency, props.countryCode]);

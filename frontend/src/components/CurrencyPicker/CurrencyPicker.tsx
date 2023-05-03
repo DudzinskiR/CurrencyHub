@@ -30,10 +30,17 @@ const CurrencyPicker = (props: props) => {
       filteredCurrency.map((item, index) => {
         return (
           <button
+            className='currency-button'
             key={index}
 
           >
-            {item.CurrencyName}
+            <div className="country-flag">
+              <CountryFlag countryCode={item.Country} size={40}/>
+            </div>
+            <div className="currency-info">
+              <div className="currency-code">{item.CurrencyCode}</div>
+              <div className="currency-name">{item.CurrencyName}</div>
+            </div>
           </button>
         )
       })

@@ -11,6 +11,7 @@ interface props{
 
 const CurrencyPicker = (props: props) => {
 
+  const [inputText, setInputText] = useState<string>("");
   const [selectedCurrency, setCurrency] = useState<Currency>();
   const [filteredCurrency, setFilteredCurrency] = useState<Currency[]>([]);
   const [isOpen, setOpen] = useState<boolean>(false);
@@ -23,6 +24,12 @@ const CurrencyPicker = (props: props) => {
 
   const toggleList = () => {
     setOpen(!isOpen);
+  }
+
+  const checkCurrency = (text: string, currency: Currency) => {
+    return currency.Country.toUpperCase().startsWith(text.toUpperCase())
+        || currency.CurrencyCode.toUpperCase().startsWith(text.toUpperCase())
+        || currency.CurrencyName.toUpperCase().includes(text.toUpperCase())
   }
 
   const renderFillteredCurrency = () => {
@@ -49,11 +56,16 @@ const CurrencyPicker = (props: props) => {
 
   useEffect(() => {
     setFilteredCurrency(currencyData);
-
     const newCurrency = findCurrencyDataByCode(props.countryCode);
 
     setCurrency(newCurrency || defaultCurrency)
   }, [defaultCurrency, props.countryCode]);
+
+  useEffect(() => {
+    const newCurrencyList = currencyData.filter(item => checkCurrency(inputText, item));
+
+    setFilteredCurrency(newCurrencyList);
+  }, [inputText])
 
   return (
     <div className='currency-picker-box'>
@@ -75,6 +87,8 @@ const CurrencyPicker = (props: props) => {
                 name="search"
                 autoFocus
                 autoComplete='off'
+                value={inputText}
+                onChange={(e) => setInputText(e.currentTarget.value)}
             />
           </label>
           <div className='currency-list'>

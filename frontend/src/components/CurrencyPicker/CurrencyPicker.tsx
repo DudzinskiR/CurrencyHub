@@ -39,7 +39,6 @@ const CurrencyPicker = (props: props) => {
           <button
             className='currency-button'
             key={index}
-
           >
             <div className="country-flag">
               <CountryFlag countryCode={item.Country} size={40}/>
@@ -88,6 +87,7 @@ const CurrencyPicker = (props: props) => {
                 autoFocus
                 autoComplete='off'
                 value={inputText}
+                onBlur={() => toggleList()}
                 onChange={(e) => setInputText(e.currentTarget.value)}
             />
           </label>

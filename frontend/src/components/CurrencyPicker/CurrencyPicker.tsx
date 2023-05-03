@@ -12,6 +12,7 @@ interface props{
 const CurrencyPicker = (props: props) => {
 
   const [selectedCurrency, setCurrency] = useState<Currency>();
+  const [filteredCurrency, setFilteredCurrency] = useState<Currency[]>([]);
   const [isOpen, setOpen] = useState<boolean>(false);
 
   const defaultCurrency = currencyData.find(item => item.CurrencyCode === "EUR");
@@ -24,8 +25,24 @@ const CurrencyPicker = (props: props) => {
     setOpen(!isOpen);
   }
 
+  const renderFillteredCurrency = () => {
+    return (
+      filteredCurrency.map((item, index) => {
+        return (
+          <button
+            key={index}
+
+          >
+            {item.CurrencyName}
+          </button>
+        )
+      })
+    )
+  }
 
   useEffect(() => {
+    setFilteredCurrency(currencyData);
+
     const newCurrency = findCurrencyDataByCode(props.countryCode);
 
     setCurrency(newCurrency || defaultCurrency)
@@ -53,6 +70,9 @@ const CurrencyPicker = (props: props) => {
                 autoComplete='off'
             />
           </label>
+          <div className='currency-list'>
+            {renderFillteredCurrency()}
+          </div>
         </div>
       }
     </div>

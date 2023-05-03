@@ -52,5 +52,12 @@
         line-height: 1.25rem; 
       }
     }
+
+    .currency-list{
+      overflow-x: hidden; 
+      overflow: scroll; 
+      width: 250px;
+      height: 100px;
+    }
   }
 }

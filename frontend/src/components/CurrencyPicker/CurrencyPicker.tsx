@@ -1,8 +1,21 @@
 import React from 'react'
 import "./CurrencyPicker.scss"
 import CountryFlag from '../CountryFlag/CountryFlag'
+import { Currency } from '../../util/CurrencyData'
+import { currencyData } from '../../util/CurrencyData'
 
-const CurrencyPicker = () => {
+interface props{
+  countryCode?: string,
+  onChange?: (currency: string) => void
+}
+
+const CurrencyPicker = (props: props) => {
+
+
+  const FindCurrencyDataByCode = (countryCode: string): Currency | undefined => {
+    return currencyData.find(item => item.CurrencyCode === countryCode);
+  }
+
   return (
     <div className='currency-picker-box'>
       <button className='currency-picker'>

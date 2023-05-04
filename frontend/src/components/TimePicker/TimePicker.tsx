@@ -3,6 +3,8 @@ import "./TimePicker.scss"
 
 interface props {
   labels: string[];
+  value: number;
+  onChange: (value: number) => void;
 }
 
 const TimePicker = (props: props) => {

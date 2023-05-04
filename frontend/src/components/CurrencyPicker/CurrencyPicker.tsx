@@ -16,7 +16,7 @@ const CurrencyPicker = (props: props) => {
   const [filteredCurrency, setFilteredCurrency] = useState<Currency[]>([]);
   const [isOpen, setOpen] = useState<boolean>(false);
 
-  const defaultCurrency = currencyData.find(item => item.CurrencyCode === "EUR");
+  const defaultCurrency = currencyData.find(item => item.CurrencyCode === "USD");
 
   const findCurrencyDataByCode = (countryCode?: string): Currency | undefined => {
     return currencyData.find(item => item.CurrencyCode === countryCode);

@@ -32,6 +32,11 @@ const CurrencyPicker = (props: props) => {
         || currency.CurrencyName.toUpperCase().includes(text.toUpperCase())
   }
 
+  const selectCurrency = (item: Currency) => {
+    setCurrency(item);
+    toggleList();
+  }
+
   const renderFillteredCurrency = () => {
     return (
       filteredCurrency.map((item, index) => {
@@ -39,6 +44,7 @@ const CurrencyPicker = (props: props) => {
           <button
             className='currency-button'
             key={index}
+            onMouseDown={() => selectCurrency(item)}
           >
             <div className="country-flag">
               <CountryFlag countryCode={item.Country} size={40}/>

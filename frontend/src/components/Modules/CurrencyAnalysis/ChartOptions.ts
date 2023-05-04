@@ -25,6 +25,8 @@ export const options = {
 
 export const labels = ['Spadek', 'Bez zmian', 'Wzrost'];
 
+export const timePeriodName = ['Tydzień', '2 Tygodnie', 'Miesiąc', 'Kwartał', '6 Miesięcy', 'Rok'];
+
 export const getData = (data: Number[]) => {
   return {
     labels,

@@ -5,11 +5,12 @@ import CurrencyPicker from '../../CurrencyPicker/CurrencyPicker'
 import Button from '../../Button/Button'
 import { Bar } from 'react-chartjs-2';
 import "chart.js/auto";
-import { getData, options } from './ChartOptions'
+import { getData, options, timePeriodName } from './ChartOptions'
+import TimePicker from '../../TimePicker/TimePicker'
 
 const CurrencyAnalysis = () => {
   const [currencyCode, setCurrencyCode] = useState<string>("USD");
-
+  const [selectedTime, setSelectedTime] = useState<number>(0);
 
   return (
     <div className="currency-analysis-box">
@@ -17,6 +18,11 @@ const CurrencyAnalysis = () => {
       <div className="currency-analysis-content">
 
         <div className="currency-analysis-chart-box">
+          <TimePicker
+            labels={timePeriodName}
+            value={selectedTime}
+            onChange={(value) => setSelectedTime(value)}
+          />
           <Bar options={options} data={getData([5, 25, 15])} />
         </div>
 

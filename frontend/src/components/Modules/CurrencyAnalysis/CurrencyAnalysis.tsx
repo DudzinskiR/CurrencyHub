@@ -2,6 +2,7 @@ import React from 'react'
 import "./CurrencyAnalysis.scss"
 import Header from '../../HeaderLine/HeaderLine'
 import CurrencyPicker from '../../CurrencyPicker/CurrencyPicker'
+import Button from '../../Button/Button'
 
 const CurrencyAnalysis = () => {
   return (
@@ -14,6 +15,7 @@ const CurrencyAnalysis = () => {
         <div className="currency-analysis-picker-box">
           <div className="currency-analysis-picker-title">Wybierz walute</div>
           <CurrencyPicker />
+          <Button text='Wybierz' />
         </div>
       </div>
     </div>

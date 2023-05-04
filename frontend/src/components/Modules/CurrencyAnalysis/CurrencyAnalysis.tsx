@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./CurrencyAnalysis.scss"
 import Header from '../../HeaderLine/HeaderLine'
 import CurrencyPicker from '../../CurrencyPicker/CurrencyPicker'
 import Button from '../../Button/Button'
 
 const CurrencyAnalysis = () => {
+  const [currencyCode, setCurrencyCode] = useState<string>("USD");
+
   return (
     <div className="currency-analysis-box">
       <Header text='Analiza waluty' />
@@ -14,7 +16,10 @@ const CurrencyAnalysis = () => {
         </div>
         <div className="currency-analysis-picker-box">
           <div className="currency-analysis-picker-title">Wybierz walute</div>
-          <CurrencyPicker />
+          <CurrencyPicker
+            countryCode={currencyCode}
+            onChange={(currency) => setCurrencyCode(currency)}
+          />
           <Button text='Wybierz' />
         </div>
       </div>

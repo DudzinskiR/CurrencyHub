@@ -97,7 +97,7 @@ const CurrencyPicker = (props: props) => {
                 onChange={(e) => setInputText(e.currentTarget.value)}
             />
           </label>
-          <div className='currency-list'>
+          <div className='currency-list' style={{height: `${Math.min(5, filteredCurrency.length) * 60}px`}}>
             {renderFillteredCurrency()}
           </div>
         </div>

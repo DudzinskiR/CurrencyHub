@@ -17,8 +17,9 @@
       border-radius: 10px; 
       grid-column: span 1 / span 1; 
       box-shadow: -2px 2px 8px -4px rgba(66, 68, 90, 1);
-      padding: 20px;  
-
+      padding: 20px;
+      padding-bottom: 50px;  
+      height: 350px;
       @media (min-width: 1024px) { 
         grid-column: span 2 / span 2; 
         grid-row-start: 1; 

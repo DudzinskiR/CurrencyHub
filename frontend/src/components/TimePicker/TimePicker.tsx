@@ -13,7 +13,7 @@ const TimePicker = (props: props) => {
       {props.labels.map((item, index) => {
         return (
           <button
-            className={`time-picker-button ${index === 3 ? 'selected' : ''}`}
+            className={`time-picker-button ${index === props.value ? 'selected' : ''}`}
             key={index}
           >
             <div className={`time-picker-button-name`}>{item}</div>

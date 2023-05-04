@@ -1,4 +1,3 @@
-import React from 'react'
 import "./TimePicker.scss"
 
 interface props {
@@ -15,6 +14,7 @@ const TimePicker = (props: props) => {
           <button
             className={`time-picker-button ${index === props.value ? 'selected' : ''}`}
             key={index}
+            onClick={() => props.onChange(index)}
           >
             <div className={`time-picker-button-name`}>{item}</div>
           </button>

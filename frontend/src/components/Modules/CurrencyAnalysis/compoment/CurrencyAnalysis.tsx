@@ -82,7 +82,7 @@ const CurrencyAnalysis = () => {
         </div>
       </div>
 
-      <CurrencyStatistics />
+      <CurrencyStatistics currencyCode={selectedCurrencyCode} selectedTime={selectedTime} />
     </div>
   )
 }

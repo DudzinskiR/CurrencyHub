@@ -1,7 +1,12 @@
 import React from 'react'
 import "./CurrencyStatistics.scss"
 
-const CurrencyStatistics = () => {
+interface props {
+  currencyCode: string,
+  selectedTime: number
+}
+
+const CurrencyStatistics = ({ currencyCode, selectedTime }: props) => {
   return (
     <div className='currency-statistics-box'>
       <div className="currency-statistics-content">

@@ -1,11 +1,11 @@
 import React from 'react'
 import "./Home.scss"
 
-import CurrencyPicker from '../../components/CurrencyPicker/CurrencyPicker'
+import CurrencyAnalysis from '../../components/Modules/CurrencyAnalysis/compoment/CurrencyAnalysis'
 
 const Home = () => {
   return (
-    <CurrencyPicker/>
+    <CurrencyAnalysis />
   )
 }
 

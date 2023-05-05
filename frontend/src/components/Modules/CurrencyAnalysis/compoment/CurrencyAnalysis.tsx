@@ -17,16 +17,10 @@ const CurrencyAnalysis = () => {
   const [selectedCurrencyAnalysisData, setSelectedCurrencyAnalysisData] = useState<number[]>([])
 
   const [currencyCode, setCurrencyCode] = useState<string>("USD");
+  const [selectedCurrencyCode, setSelectedCurrencyCode] = useState<string>("USD");
   const [selectedTime, setSelectedTime] = useState<number>(0);
 
   const [isLoading, setLoading] = useState<boolean>(false);
-
-  const fetchData = async () => {
-    setLoading(true);
-    const data = await apiService.currencyAnalysis()
-    setCurrencyAnalysis(data);
-    setLoading(false)
-  }
 
   useEffect(() => {
     const newData = [];
@@ -38,8 +32,15 @@ const CurrencyAnalysis = () => {
   }, [currencyAnalysisData, selectedTime]);
 
   useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      const data = await apiService.currencyAnalysis(selectedCurrencyCode)
+      setCurrencyAnalysis(data);
+      setLoading(false)
+    }
+
     fetchData();
-  }, [])
+  }, [selectedCurrencyCode])
 
   return (
     <div className="currency-analysis-box">
@@ -65,7 +66,7 @@ const CurrencyAnalysis = () => {
             countryCode={currencyCode}
             onChange={(currency) => setCurrencyCode(currency)}
           />
-          <Button text='Wybierz' onClick={fetchData} />
+          <Button text='Wybierz' onClick={() => setSelectedCurrencyCode(currencyCode)} />
         </div>
       </div>
     </div>

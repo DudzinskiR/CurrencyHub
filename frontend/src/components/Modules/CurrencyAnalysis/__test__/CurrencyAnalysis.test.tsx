@@ -1,4 +1,4 @@
-import { act, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import CurrencyAnalysis from "../compoment/CurrencyAnalysis";
 import apiService from '../../../../services/ApiService';
 
@@ -32,6 +32,14 @@ describe('Currency Analysis', () => {
     render(<CurrencyAnalysis />);
     await waitFor(() => {
       expect(screen.queryByText('Ładowanie')).toBeNull();
+    })
+  })
+
+  it('should show error information on failed API call', async () => {
+    apiService.currencyAnalysis = jest.fn(() => Promise.reject());
+    render(<CurrencyAnalysis />);
+    await waitFor(() => {
+      expect(screen.getByText('Błąd')).toBeInTheDocument();
     })
   })
 })

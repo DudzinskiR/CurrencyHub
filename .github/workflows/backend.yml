@@ -6,7 +6,7 @@ on:
     paths: ["backend/**"]
 
 jobs:
-  frontend-build:
+  backend-build:
     runs-on: ubuntu-latest
     defaults:
       run:

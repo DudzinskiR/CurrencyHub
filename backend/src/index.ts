@@ -23,6 +23,7 @@ const errorHandler: ErrorRequestHandler = (err, req: Request, res: Response, nex
     })
 }
 
+  
 app.use(errorHandler)
 
 const PORT: Number = Number(process.env.PORT) || 3000

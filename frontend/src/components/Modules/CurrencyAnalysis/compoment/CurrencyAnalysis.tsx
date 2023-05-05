@@ -21,6 +21,7 @@ const CurrencyAnalysis = () => {
   const [selectedTime, setSelectedTime] = useState<number>(0);
 
   const [isLoading, setLoading] = useState<boolean>(false);
+  const [isError, setError] = useState<boolean>(false);
 
   useEffect(() => {
     const newData = [];
@@ -34,9 +35,14 @@ const CurrencyAnalysis = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const data = await apiService.currencyAnalysis(selectedCurrencyCode)
-      setCurrencyAnalysis(data);
-      setLoading(false)
+      setError(false);
+      try {
+        const data = await apiService.currencyAnalysis(selectedCurrencyCode);
+        setCurrencyAnalysis(data);
+      } catch (err) {
+        setError(true);
+      }
+      setLoading(false);
     }
 
     fetchData();
@@ -49,13 +55,14 @@ const CurrencyAnalysis = () => {
       <div className="currency-analysis-content">
 
         <div className="currency-analysis-chart-box">
-          <Loader isLoading={isLoading}>
+          <Loader isLoading={isLoading} isError={isError}>
             <TimePicker
               labels={timePeriodName}
               value={selectedTime}
               onChange={(value) => setSelectedTime(value)}
             />
             <Bar options={options} data={getData(selectedCurrencyAnalysisData)} />
+
           </Loader>
         </div>
 

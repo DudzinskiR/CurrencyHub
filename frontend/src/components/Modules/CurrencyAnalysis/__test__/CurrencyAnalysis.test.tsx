@@ -20,4 +20,11 @@ describe('Currency Analysis', () => {
     const title = await screen.findByText('Analiza waluty')
     expect(title).toBeInTheDocument();
   });
+
+  it('should call fetchData on render', async () => {
+    const spy = jest.spyOn(apiService, 'currencyAnalysis');
+    render(<CurrencyAnalysis />);
+    const title = await screen.findByText('Analiza waluty')
+    expect(spy).toHaveBeenCalled();
+  });
 })

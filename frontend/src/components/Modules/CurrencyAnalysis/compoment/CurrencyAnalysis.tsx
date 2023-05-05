@@ -10,6 +10,7 @@ import TimePicker from '../../../TimePicker/TimePicker'
 import apiService from '../../../../services/ApiService'
 import Loader from '../../../Loader/Loader'
 import { CurrencyAnalysisData } from '../../../models/CurrencyAnalysisData'
+import CurrencyStatistics from './CurrencyStatistics'
 
 const CurrencyAnalysis = () => {
 
@@ -80,6 +81,8 @@ const CurrencyAnalysis = () => {
           <Button text='Wybierz' onClick={() => setSelectedCurrencyCode(currencyCode)} />
         </div>
       </div>
+
+      <CurrencyStatistics />
     </div>
   )
 }

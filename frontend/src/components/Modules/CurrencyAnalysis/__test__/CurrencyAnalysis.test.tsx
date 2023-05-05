@@ -29,6 +29,12 @@ describe('Currency Analysis', () => {
   });
 
   it('should hide load information on successful API call', async () => {
+    apiService.currencyAnalysis = jest.fn(() => Promise.resolve([{
+      time: 7,
+      countUp: 1,
+      countDown: 2,
+      countConst: 3
+    }]));
     render(<CurrencyAnalysis />);
     await waitFor(() => {
       expect(screen.queryByText('Ładowanie')).toBeNull();

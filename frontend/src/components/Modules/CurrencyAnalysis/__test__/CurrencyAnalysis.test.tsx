@@ -11,6 +11,10 @@ jest.mock('../../../../services/ApiService', () => ({
 }));
 
 describe('Currency Analysis', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('renders header with correct text', async () => {
     render(<CurrencyAnalysis />);
     const title = await screen.findByText('Analiza waluty')

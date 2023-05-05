@@ -32,6 +32,15 @@
         user-select: none;
       }
 
+      .loader-error-text{
+        color: #000000;
+        display: inline-block;
+        position: relative;
+        font-size: 1.5rem;
+        box-sizing: border-box;
+        user-select: none;
+      }
+
       .loader-text::after {
         content: '';  
         width: 3px;

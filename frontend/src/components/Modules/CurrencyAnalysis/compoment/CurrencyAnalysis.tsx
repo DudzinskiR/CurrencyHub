@@ -24,12 +24,16 @@ const CurrencyAnalysis = () => {
   const [isError, setError] = useState<boolean>(false);
 
   useEffect(() => {
-    const newData = [];
-    newData.push(currencyAnalysisData[selectedTime]?.countDown)
-    newData.push(currencyAnalysisData[selectedTime]?.countConst)
-    newData.push(currencyAnalysisData[selectedTime]?.countUp)
+    if (selectedTime <= currencyAnalysisData?.length - 1) {
+      const newData = [];
 
-    setSelectedCurrencyAnalysisData(newData)
+      newData.push(currencyAnalysisData[selectedTime]?.countDown)
+      newData.push(currencyAnalysisData[selectedTime]?.countConst)
+      newData.push(currencyAnalysisData[selectedTime]?.countUp)
+
+      setSelectedCurrencyAnalysisData(newData)
+    }
+
   }, [currencyAnalysisData, selectedTime]);
 
   useEffect(() => {

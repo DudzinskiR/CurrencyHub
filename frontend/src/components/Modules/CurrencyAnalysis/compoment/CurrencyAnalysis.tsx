@@ -9,18 +9,37 @@ import { getData, options, timePeriodName } from '../ChartOptions'
 import TimePicker from '../../../TimePicker/TimePicker'
 import apiService from '../../../../services/ApiService'
 import Loader from '../../../Loader/Loader'
+import { CurrencyAnalysisData } from '../../../models/CurrencyAnalysisData'
 
 const CurrencyAnalysis = () => {
+
+  const [currencyAnalysisData, setCurrencyAnalysis] = useState<CurrencyAnalysisData[]>([]);
+  const [selectedCurrencyAnalysisData, setSelectedCurrencyAnalysisData] = useState<number[]>([])
+
   const [currencyCode, setCurrencyCode] = useState<string>("USD");
   const [selectedTime, setSelectedTime] = useState<number>(0);
+
   const [isLoading, setLoading] = useState<boolean>(false);
 
   const fetchData = async () => {
-    console.log('test 1');
     setLoading(true);
     const data = await apiService.currencyAnalysis()
+    setCurrencyAnalysis(data);
     setLoading(false)
   }
+
+  useEffect(() => {
+    const newData = [];
+    newData.push(currencyAnalysisData[selectedTime]?.countDown)
+    newData.push(currencyAnalysisData[selectedTime]?.countConst)
+    newData.push(currencyAnalysisData[selectedTime]?.countUp)
+
+    setSelectedCurrencyAnalysisData(newData)
+  }, [currencyAnalysisData, selectedTime]);
+
+  useEffect(() => {
+    fetchData();
+  }, [])
 
   return (
     <div className="currency-analysis-box">
@@ -35,7 +54,7 @@ const CurrencyAnalysis = () => {
               value={selectedTime}
               onChange={(value) => setSelectedTime(value)}
             />
-            <Bar options={options} data={getData([5, 25, 15])} />
+            <Bar options={options} data={getData(selectedCurrencyAnalysisData)} />
           </Loader>
         </div>
 

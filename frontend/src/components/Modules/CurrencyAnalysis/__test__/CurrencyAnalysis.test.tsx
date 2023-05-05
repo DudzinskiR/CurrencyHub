@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import CurrencyAnalysis from "../compoment/CurrencyAnalysis";
 import apiService from '../../../../services/ApiService';
 
@@ -27,4 +27,11 @@ describe('Currency Analysis', () => {
     const title = await screen.findByText('Analiza waluty')
     expect(spy).toHaveBeenCalled();
   });
+
+  it('should hide load information on successful API call', async () => {
+    render(<CurrencyAnalysis />);
+    await waitFor(() => {
+      expect(screen.queryByText('Ładowanie')).toBeNull();
+    })
+  })
 })

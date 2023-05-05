@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import CurrencyStatistics from '../compoment/CurrencyStatistics';
-import { async } from 'q';
 import apiService from '../../../../services/ApiService';
 
 jest.mock('../../../../services/ApiService', () => ({

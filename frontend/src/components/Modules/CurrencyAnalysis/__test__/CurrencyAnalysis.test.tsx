@@ -1,7 +1,8 @@
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import CurrencyAnalysis from "../compoment/CurrencyAnalysis";
 import apiService from '../../../../services/ApiService';
-
+import { timePeriodName } from '../ChartOptions';
+import React from 'react';
 jest.mock('react-chartjs-2', () => ({
   Bar: () => null
 }));
@@ -10,7 +11,7 @@ jest.mock('../../../../services/ApiService', () => ({
   currencyAnalysis: jest.fn(() => Promise.resolve([])),
 }));
 
-describe('Currency Analysis', () => {
+describe('Currency Analysis - chart box', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
@@ -24,8 +25,9 @@ describe('Currency Analysis', () => {
   it('should call fetchData on render', async () => {
     const spy = jest.spyOn(apiService, 'currencyAnalysis');
     render(<CurrencyAnalysis />);
-    const title = await screen.findByText('Analiza waluty')
-    expect(spy).toHaveBeenCalled();
+    await waitFor(() => {
+      expect(spy).toHaveBeenCalled();
+    })
   });
 
   it('should hide load information on successful API call', async () => {
@@ -46,6 +48,36 @@ describe('Currency Analysis', () => {
     render(<CurrencyAnalysis />);
     await waitFor(() => {
       expect(screen.getByText('Błąd')).toBeInTheDocument();
+    })
+  })
+
+  it('should call onChange when a time option is clicked', async () => {
+    render(<CurrencyAnalysis />);
+    const button = await screen.findByText(timePeriodName[0]);
+    fireEvent.click(button);
+    const selectedButton = screen.getAllByRole('button').find(div => div.innerHTML.includes(timePeriodName[0]));
+    expect(selectedButton).toHaveClass('selected');
+  })
+})
+
+describe('Currency Analysis - picker box', () => {
+  it('should show loading information after selecting currency and clicking button', async () => {
+    render(<CurrencyAnalysis />);
+
+    const currencyPicker = await screen.findByText('USD');
+    fireEvent(currencyPicker, new MouseEvent('click', { bubbles: true }));
+
+
+    const selectedCurrency = await screen.findByText('CHF');
+    fireEvent.mouseDown(selectedCurrency);
+    fireEvent(selectedCurrency, new MouseEvent('click', { bubbles: true }));
+
+
+    const button = await screen.findByText('Wybierz');
+    fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(screen.getByText('Ładowanie')).toBeInTheDocument();
     })
   })
 })

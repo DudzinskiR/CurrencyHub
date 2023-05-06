@@ -40,7 +40,7 @@ const CurrencyPicker = (props: props) => {
       props.onChange(item.CurrencyCode);
   }
 
-  const renderFillteredCurrency = () => {
+  const renderFilteredCurrency = () => {
     return (
       filteredCurrency.map((item, index) => {
         return (
@@ -101,7 +101,7 @@ const CurrencyPicker = (props: props) => {
             />
           </label>
           <div className='currency-list' style={{ height: `${Math.min(5, filteredCurrency.length) * 60}px` }}>
-            {renderFillteredCurrency()}
+            {renderFilteredCurrency()}
           </div>
         </div>
       }

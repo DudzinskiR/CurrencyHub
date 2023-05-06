@@ -9,8 +9,15 @@ import CurrencyPicker from '../../CurrencyPicker/CurrencyPicker';
 import Button from '../../Button/Button';
 
 const CurrencyPair = () => {
+  const [currencyPair, setCurrencyPair] = useState<string[]>(['USD', 'GBP']);
   const [isLoading, setLoading] = useState<boolean>(false);
   const [isError, setError] = useState<boolean>(false);
+
+  const updateCurrencyPair = (currencyCode: string, index: number) => {
+    const newCurrencyPair = [...currencyPair];
+    newCurrencyPair[index] = currencyCode;
+    setCurrencyPair(newCurrencyPair);
+  }
 
   return (
     <div className='currency-pair-box'>
@@ -24,9 +31,9 @@ const CurrencyPair = () => {
 
         <div className="currency-pair-picker-box">
           <div className="currency-pair-picker-title">Wybierz waluty</div>
-          <CurrencyPicker />
+          <CurrencyPicker countryCode={currencyPair[0]} onChange={(c) => updateCurrencyPair(c, 0)} />
           <div className='currency-pair-picker-and'>-oraz-</div>
-          <CurrencyPicker />
+          <CurrencyPicker countryCode={currencyPair[1]} onChange={(c) => updateCurrencyPair(c, 1)} />
           <Button text='Wybierz' />
         </div>
 

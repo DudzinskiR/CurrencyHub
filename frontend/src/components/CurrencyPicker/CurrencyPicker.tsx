@@ -4,7 +4,7 @@ import CountryFlag from '../CountryFlag/CountryFlag'
 import { Currency } from '../../util/CurrencyData'
 import { currencyData } from '../../util/CurrencyData'
 
-interface props{
+interface props {
   countryCode?: string,
   onChange?: (currency: string) => void
 }
@@ -28,15 +28,15 @@ const CurrencyPicker = (props: props) => {
 
   const checkCurrency = (text: string, currency: Currency) => {
     return currency.Country.toUpperCase().startsWith(text.toUpperCase())
-        || currency.CurrencyCode.toUpperCase().startsWith(text.toUpperCase())
-        || currency.CurrencyName.toUpperCase().includes(text.toUpperCase())
+      || currency.CurrencyCode.toUpperCase().startsWith(text.toUpperCase())
+      || currency.CurrencyName.toUpperCase().includes(text.toUpperCase())
   }
 
   const selectCurrency = (item: Currency) => {
     setCurrency(item);
     toggleList();
 
-    if(props.onChange)
+    if (props.onChange)
       props.onChange(item.CurrencyCode);
   }
 
@@ -50,7 +50,7 @@ const CurrencyPicker = (props: props) => {
             onMouseDown={() => selectCurrency(item)}
           >
             <div className="country-flag">
-              <CountryFlag countryCode={item.Country} size={40}/>
+              <CountryFlag countryCode={item.Country} size={40} />
             </div>
             <div className="currency-info">
               <div className="currency-code">{item.CurrencyCode}</div>
@@ -78,29 +78,29 @@ const CurrencyPicker = (props: props) => {
   return (
     <div className='currency-picker-box'>
       <button className='currency-picker' onClick={toggleList}>
-        <div className="flag"><CountryFlag countryCode={selectedCurrency?.Country} size={40}/></div>
+        <div className="flag"><CountryFlag countryCode={selectedCurrency?.Country} size={40} /></div>
         <div className="currency-info">
           <div className="currency-code">{selectedCurrency?.CurrencyCode}</div>
           <div className="currency-name">{selectedCurrency?.CurrencyName}</div>
         </div>
       </button>
 
-      {isOpen && 
+      {isOpen &&
         <div className='list-box'>
           <label>
-            <input 
-                placeholder="Wpisz walute..." 
-                className='currency-input'
-                type="text" 
-                name="search"
-                autoFocus
-                autoComplete='off'
-                value={inputText}
-                onBlur={() => toggleList()}
-                onChange={(e) => setInputText(e.currentTarget.value)}
+            <input
+              placeholder="Wpisz walute..."
+              className='currency-input'
+              type="text"
+              name="search"
+              autoFocus
+              autoComplete='off'
+              value={inputText}
+              onBlur={() => toggleList()}
+              onChange={(e) => setInputText(e.currentTarget.value)}
             />
           </label>
-          <div className='currency-list' style={{height: `${Math.min(5, filteredCurrency.length) * 60}px`}}>
+          <div className='currency-list' style={{ height: `${Math.min(5, filteredCurrency.length) * 60}px` }}>
             {renderFillteredCurrency()}
           </div>
         </div>

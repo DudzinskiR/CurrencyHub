@@ -43,6 +43,15 @@
     border: 1px solid #dadada;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     z-index: 1; 
+
+    .icon{
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 8px;
+      left: 12px;
+    }   
+
     .currency-input{
       display: block; 
       padding-top: 0.5rem;

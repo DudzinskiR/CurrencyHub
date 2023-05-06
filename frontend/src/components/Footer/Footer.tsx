@@ -1,17 +1,17 @@
 import React from 'react'
 import "./Footer.scss"
-import gitHubLogo from './github.png'
-import reactLogo from './react.png'
-import typeScriptLogo from './typescript.png'
-import postgresLogo from './postgreSQL.png'
-import nodeLogo from './node.png'
+import gitHubLogo from './icon/github.png'
+import reactLogo from './icon/react.png'
+import typeScriptLogo from './icon/typescript.png'
+import postgresLogo from './icon/postgreSQL.png'
+import nodeLogo from './icon/node.png'
 
 const Footer = () => {
   return (
     <div className='footer-box'>
       <div className="footer-content">
         <div className="footer-github">
-          <a href="https://github.com/DudzinskiR/finance"><img className='footer-github-icon' src={gitHubLogo} alt="github icon" /></a>
+          <a href="https://github.com/DudzinskiR/finance" ><img className='footer-github-icon' src={gitHubLogo} alt="github icon" /></a>
           <div className="footer-github-text">GitHub.com</div>
         </div>
 

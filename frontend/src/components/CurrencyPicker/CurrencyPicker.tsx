@@ -4,7 +4,7 @@ import CountryFlag from '../CountryFlag/CountryFlag'
 import { Currency } from '../../util/CurrencyData'
 import { currencyData } from '../../util/CurrencyData'
 
-interface props{
+interface props {
   countryCode?: string,
   onChange?: (currency: string) => void
 }
@@ -28,19 +28,27 @@ const CurrencyPicker = (props: props) => {
 
   const checkCurrency = (text: string, currency: Currency) => {
     return currency.Country.toUpperCase().startsWith(text.toUpperCase())
-        || currency.CurrencyCode.toUpperCase().startsWith(text.toUpperCase())
-        || currency.CurrencyName.toUpperCase().includes(text.toUpperCase())
+      || currency.CurrencyCode.toUpperCase().startsWith(text.toUpperCase())
+      || currency.CurrencyName.toUpperCase().includes(text.toUpperCase())
   }
 
   const selectCurrency = (item: Currency) => {
     setCurrency(item);
     toggleList();
 
-    if(props.onChange)
+    if (props.onChange)
       props.onChange(item.CurrencyCode);
   }
 
-  const renderFillteredCurrency = () => {
+  const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      if (filteredCurrency.length > 0) {
+        selectCurrency(filteredCurrency[0]);
+      }
+    }
+  }
+
+  const renderFilteredCurrency = () => {
     return (
       filteredCurrency.map((item, index) => {
         return (
@@ -50,7 +58,7 @@ const CurrencyPicker = (props: props) => {
             onMouseDown={() => selectCurrency(item)}
           >
             <div className="country-flag">
-              <CountryFlag countryCode={item.Country} size={40}/>
+              <CountryFlag countryCode={item.Country} size={40} />
             </div>
             <div className="currency-info">
               <div className="currency-code">{item.CurrencyCode}</div>
@@ -78,30 +86,40 @@ const CurrencyPicker = (props: props) => {
   return (
     <div className='currency-picker-box'>
       <button className='currency-picker' onClick={toggleList}>
-        <div className="flag"><CountryFlag countryCode={selectedCurrency?.Country} size={40}/></div>
+        <div className="flag"><CountryFlag countryCode={selectedCurrency?.Country} size={40} /></div>
         <div className="currency-info">
           <div className="currency-code">{selectedCurrency?.CurrencyCode}</div>
           <div className="currency-name">{selectedCurrency?.CurrencyName}</div>
         </div>
       </button>
 
-      {isOpen && 
+      {isOpen &&
         <div className='list-box'>
           <label>
-            <input 
-                placeholder="Wpisz walute..." 
-                className='currency-input'
-                type="text" 
-                name="search"
-                autoFocus
-                autoComplete='off'
-                value={inputText}
-                onBlur={() => toggleList()}
-                onChange={(e) => setInputText(e.currentTarget.value)}
+
+            <div className="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                <g fill="rgb(100, 100, 100)">
+                  <path d="M 21 3 C 11.6 3 4 10.6 4 20 C 4 29.4 11.6 37 21 37 C 24.354553 37 27.47104 36.01984 30.103516 34.347656 L 42.378906 46.621094 L 46.621094 42.378906 L 34.523438 30.279297 C 36.695733 27.423994 38 23.870646 38 20 C 38 10.6 30.4 3 21 3 z M 21 7 C 28.2 7 34 12.8 34 20 C 34 27.2 28.2 33 21 33 C 13.8 33 8 27.2 8 20 C 8 12.8 13.8 7 21 7 z" />
+                </g>
+              </svg>
+            </div>
+
+            <input
+              placeholder="Wpisz walute..."
+              className='currency-input'
+              type="text"
+              name="search"
+              autoFocus
+              autoComplete='off'
+              value={inputText}
+              onKeyDown={onKeyDown}
+              onBlur={() => toggleList()}
+              onChange={(e) => setInputText(e.currentTarget.value)}
             />
           </label>
-          <div className='currency-list' style={{height: `${Math.min(5, filteredCurrency.length) * 60}px`}}>
-            {renderFillteredCurrency()}
+          <div className='currency-list' style={{ height: `${Math.min(5, filteredCurrency.length) * 60}px` }}>
+            {renderFilteredCurrency()}
           </div>
         </div>
       }

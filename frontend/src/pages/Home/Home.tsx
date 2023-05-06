@@ -8,12 +8,15 @@ import Footer from '../../components/Footer/Footer'
 
 const Home = () => {
   return (
-    <>
-      <HeaderBar />
-      <CurrencyPair />
-      <CurrencyAnalysis />
+    <div className='home-page'>
+      <div className="home-page-content">
+        <HeaderBar />
+        <CurrencyPair />
+        <CurrencyAnalysis />
+      </div>
+
       <Footer />
-    </>
+    </div>
   )
 }
 

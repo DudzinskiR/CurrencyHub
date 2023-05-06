@@ -12,6 +12,11 @@
     user-select: none;
     background-color: #ffffff;
     cursor: pointer;
+
+    &:hover{
+      background-color: #fafafa;
+    }
+
     .currency-info{
       display: flex;
       flex-direction: column;

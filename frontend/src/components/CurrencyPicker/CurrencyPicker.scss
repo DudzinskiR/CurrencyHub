@@ -12,6 +12,11 @@
     user-select: none;
     background-color: #ffffff;
     cursor: pointer;
+
+    &:hover{
+      background-color: #fafafa;
+    }
+
     .currency-info{
       display: flex;
       flex-direction: column;
@@ -20,11 +25,11 @@
 
       .currency-code{
         font-weight: 500;
-        font-size: 1rem;
+        font-size: 1.1rem;
       }
     
       .currency-name{
-        color: rgb(50, 50, 50);
+        color: rgb(100, 100, 100);
         font-size: 0.75rem;
       }
     }
@@ -38,6 +43,15 @@
     border: 1px solid #dadada;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     z-index: 1; 
+
+    .icon{
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 8px;
+      left: 12px;
+    }   
+
     .currency-input{
       display: block; 
       padding-top: 0.5rem;
@@ -73,6 +87,16 @@
         .currency-info{
           text-align: left; 
           margin-left: 10px;
+
+          .currency-code{
+            font-weight: 500;
+            font-size: 1.05rem;
+          }
+        
+          .currency-name{
+            color: rgb(100, 100, 100);
+            font-size: 0.75rem;
+          }
         }
       }
     }

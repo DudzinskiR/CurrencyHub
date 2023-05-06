@@ -12,13 +12,13 @@ describe("CurrencyPicker", () => {
 
 
   test("Should render currency picker with default value", () => {
-    render(<CurrencyPicker/>);
+    render(<CurrencyPicker />);
     expect(screen.getByText('USD')).toBeInTheDocument();
     expect(screen.getByText('dolar amerykański')).toBeInTheDocument();
   });
 
   test('opens and closes currency list when the button is clicked', () => {
-    render(<CurrencyPicker/>);
+    render(<CurrencyPicker />);
     const button = screen.getByRole('button');
 
     fireEvent.click(button);
@@ -29,7 +29,7 @@ describe("CurrencyPicker", () => {
   });
 
   test('opens and closes currency list when clicked outsite', () => {
-    render(<CurrencyPicker/>);
+    render(<CurrencyPicker />);
     const button = screen.getByRole('button');
 
     fireEvent.click(button);
@@ -40,14 +40,14 @@ describe("CurrencyPicker", () => {
   });
 
   test('displays the correct currency when a country code is passed as a prop', () => {
-    render(<CurrencyPicker {...props}/>);
+    render(<CurrencyPicker {...props} />);
     expect(screen.getByText('CHF')).toBeInTheDocument();
     expect(screen.getByText('frank szwajcarski')).toBeInTheDocument();
   });
 
   test('filters currencies when text is entered in the search input', () => {
     render(<CurrencyPicker {...props} />);
-    
+
     const button = screen.getByRole('button');
     fireEvent.click(button);
 
@@ -63,7 +63,7 @@ describe("CurrencyPicker", () => {
     expect(screen.queryByText('EUR')).not.toBeInTheDocument();
   });
 
-  test('calls the onChange prop when a currency is selected', () => {
+  test('calls the onChange prop when a currency is selected by click', () => {
     const mockOnChange = jest.fn();
     render(<CurrencyPicker onChange={mockOnChange} />);
 
@@ -77,9 +77,53 @@ describe("CurrencyPicker", () => {
     expect(mockOnChange).toHaveBeenCalledWith('CZK');
   });
 
+  test('calls the onChange prop when a currency is selected by pressing enter', () => {
+    render(<CurrencyPicker {...props} />);
+
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
+
+    const input = screen.getByPlaceholderText('Wpisz walute...');
+
+    fireEvent.change(input, { target: { value: 'frank' } });
+    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
+
+    expect(screen.getByText('CHF')).toBeInTheDocument();
+  });
+
+  test('Should be no reaction when filtered list is empty', () => {
+    render(<CurrencyPicker {...props} />);
+
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
+
+    const input = screen.getByPlaceholderText('Wpisz walute...');
+
+    fireEvent.change(input, { target: { value: 'Lorem Ipsum' } });
+    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
+
+    const checkInput = screen.getByPlaceholderText('Wpisz walute...');
+    expect(checkInput).toBeInTheDocument();
+  });
+
+  test('Should be no reaction to pressing a key other than enter', () => {
+    render(<CurrencyPicker {...props} />);
+
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
+
+    const input = screen.getByPlaceholderText('Wpisz walute...');
+    fireEvent.keyDown(input, { key: 'Alt', code: 'Alt' });
+
+    const checkInput = screen.getByPlaceholderText('Wpisz walute...');
+    expect(checkInput).toBeInTheDocument();
+  })
+
+
+
   test('calls the empty onChange prop when a currency is selected', () => {
     const mockOnChange = jest.fn();
-    render(<CurrencyPicker/>);
+    render(<CurrencyPicker />);
 
     const button = screen.getByRole('button');
     fireEvent.click(button);

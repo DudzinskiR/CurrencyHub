@@ -49,8 +49,10 @@ const CurrencyPair = () => {
   }, [selectedCurrencyPair]);
 
   useEffect(() => {
-    setLabels(currencyPairData[selectedTime].scopes.map(scope => `${scope.startScope.toFixed(4)}...${scope.endScope.toFixed(4)}`));
-    setDataSet(currencyPairData[selectedTime].values);
+    if (selectedTime <= currencyPairData?.length - 1) {
+      setLabels(currencyPairData[selectedTime]?.scopes.map(scope => `${scope.startScope.toFixed(4)}...${scope.endScope.toFixed(4)}`));
+      setDataSet(currencyPairData[selectedTime]?.values);
+    }
   }, [currencyPairData, selectedTime]);
 
   return (

@@ -78,6 +78,16 @@
         .currency-info{
           text-align: left; 
           margin-left: 10px;
+
+          .currency-code{
+            font-weight: 500;
+            font-size: 1.05rem;
+          }
+        
+          .currency-name{
+            color: rgb(100, 100, 100);
+            font-size: 0.75rem;
+          }
         }
       }
     }

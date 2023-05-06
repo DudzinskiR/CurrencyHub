@@ -40,6 +40,14 @@ const CurrencyPicker = (props: props) => {
       props.onChange(item.CurrencyCode);
   }
 
+  const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      if (filteredCurrency.length > 0) {
+        selectCurrency(filteredCurrency[0]);
+      }
+    }
+  }
+
   const renderFilteredCurrency = () => {
     return (
       filteredCurrency.map((item, index) => {
@@ -105,6 +113,7 @@ const CurrencyPicker = (props: props) => {
               autoFocus
               autoComplete='off'
               value={inputText}
+              onKeyDown={onKeyDown}
               onBlur={() => toggleList()}
               onChange={(e) => setInputText(e.currentTarget.value)}
             />

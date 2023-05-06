@@ -1,0 +1,82 @@
+import React, { useEffect, useState } from 'react'
+import "./CurrencyPair.scss"
+import { Bar } from 'react-chartjs-2';
+import "chart.js/auto";
+import Header from '../../HeaderLine/HeaderLine'
+import { getData, options, timePeriodName } from './ChartOptions';
+import Loader from '../../Loader/Loader';
+import CurrencyPicker from '../../CurrencyPicker/CurrencyPicker';
+import Button from '../../Button/Button';
+import TimePicker from '../../TimePicker/TimePicker';
+import apiService from '../../../services/ApiService';
+import { CurrencyPairData } from '../../models/CurrencyPairData';
+
+const CurrencyPair = () => {
+  const [currencyPair, setCurrencyPair] = useState<string[]>(['USD', 'GBP']);
+  const [selectedCurrencyPair, setSelectedCurrencyPair] = useState<string[]>(["USD", "GBP"]);
+
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const [isError, setError] = useState<boolean>(false);
+
+  const [selectedTime, setSelectedTime] = useState<number>(0);
+
+  const [currencyPairData, setCurrencyPairData] = useState<CurrencyPairData[]>([]);
+  const [labels, setLabels] = useState<string[]>([]);
+  const [dataSet, setDataSet] = useState<number[]>([]);
+
+  const updateCurrencyPair = (currencyCode: string, index: number) => {
+    const newCurrencyPair = [...currencyPair];
+    newCurrencyPair[index] = currencyCode;
+    setCurrencyPair(newCurrencyPair);
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      setError(false);
+
+      try {
+        const data = await apiService.currencyPair(selectedCurrencyPair[0], selectedCurrencyPair[1]);
+        setCurrencyPairData(data)
+      } catch (e) {
+        setError(true);
+      }
+
+      setLoading(false);
+    }
+
+    fetchData()
+  }, [selectedCurrencyPair]);
+
+  useEffect(() => {
+    if (selectedTime <= currencyPairData?.length - 1) {
+      setLabels(currencyPairData[selectedTime]?.scopes.map(scope => `${scope.startScope.toFixed(4)}...${scope.endScope.toFixed(4)}`));
+      setDataSet(currencyPairData[selectedTime]?.values);
+    }
+  }, [currencyPairData, selectedTime]);
+
+  return (
+    <div className='currency-pair-box'>
+      <Header text='Analiza par walut' />
+      <div className="currency-pair-content">
+        <div className="currency-pair-chart-box">
+          <Loader isLoading={isLoading} isError={isError}>
+            <TimePicker value={selectedTime} labels={timePeriodName} onChange={(value) => setSelectedTime(value)} />
+            <Bar options={options} data={getData(dataSet, labels)} />
+          </Loader>
+        </div>
+
+        <div className="currency-pair-picker-box">
+          <div className="currency-pair-picker-title">Wybierz waluty</div>
+          <CurrencyPicker countryCode={currencyPair[0]} onChange={(c) => updateCurrencyPair(c, 0)} />
+          <div className='currency-pair-picker-and'>-oraz-</div>
+          <CurrencyPicker countryCode={currencyPair[1]} onChange={(c) => updateCurrencyPair(c, 1)} />
+          <Button text='Wybierz' onClick={() => setSelectedCurrencyPair(currencyPair)} />
+        </div>
+
+      </div>
+    </div>
+  )
+}
+
+export default CurrencyPair

@@ -3,7 +3,6 @@ import CurrencyPair from "../CurrencyPair";
 import apiService from "../../../../services/ApiService";
 import { CurrencyPairData } from "../../../models/CurrencyPairData";
 import { timePeriodName } from "../ChartOptions";
-import { debug } from "console";
 
 jest.mock('react-chartjs-2', () => ({
   Bar: () => null

@@ -1,10 +1,12 @@
 import express, { Application } from "express";
 import { Server } from "http";
 
-import { config } from 'dotenv'
 import router from "./routes";
 import createHttpError from "http-errors";
+import { config } from 'dotenv'
 config();
+
+console.log(process.env);
 
 const app: Application = express();
 

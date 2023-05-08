@@ -7,7 +7,7 @@ import { CurrencyRate } from '../../interfaces/currency-rate'
 import axios from 'axios';
 
 class CurrencyRefreshModel{
-  static async getLastCurrencyRefresh(currencyCode: string): Promise<CurrencyRefreshData> {
+  static async getLastCurrencyRefresh(currencyCode: string): Promise<CurrencyRefreshData | undefined> {
     const res = await db(TABLE_NAME.CURRENCY_REFRESH).select('time').where('code', currencyCode);
     return res[0];
   }

@@ -23,10 +23,9 @@ class CurrencyRefreshService {
 
     let rates: CurrencyRate[] = [];
     for(const item of dates){
-      const newRates = await CurrencyRefreshModel.getCurrencyRates('USD', dates[0].start, dates[0].end);
+      const newRates = await CurrencyRefreshModel.getCurrencyRates('USD', item.start, item.end);
       rates = [...rates, ...newRates];
     }
-    console.log(rates.length)
     await CurrencyRefreshModel.createNewRates(rates);
 
     if(!res) {

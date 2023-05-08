@@ -1,10 +1,22 @@
 import Knex from 'knex';
 import { config } from 'dotenv'
+import path from 'path';
 config({path: `${__dirname}/../../.env`});
 
-type DbEnvironments = 'development' | 'production';
+type DbEnvironments = 'development' | 'production' | 'test';
 
 const knexfile: Record<DbEnvironments, any> = {
+  test: {
+    client: "better-sqlite3",
+    connection: ":memory:",
+    useNullAsDefault: true,
+    migrations: {
+      directory: path.join(__dirname, "migrations")
+    },
+    seeds: {
+      directory: path.join(__dirname, "seeds")
+    }
+  },
   development: {
     client: 'postgresql',
     connection: {

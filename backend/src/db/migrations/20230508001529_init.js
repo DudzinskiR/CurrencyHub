@@ -6,14 +6,15 @@
 exports.up = function(knex) {
   return knex.schema.createTable('currency_refresh', table => {
     table.increments('id').primary();
-    table.string('code').notNullable();
+    table.string('code', 3).notNullable();
     table.date('time').notNullable();
     table.timestamps(true, true);
   }).createTable('currency_rates', table => {
     table.increments('id').primary();
-    table.string('code').notNullable();
+    table.string('code', 3).notNullable();
     table.date('time').notNullable();
-    table.float('value').notNullable()
+    table.float('value').notNullable();
+    table.timestamps(true, true);
   });
 };
 

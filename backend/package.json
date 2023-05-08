@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test:coverage": "jest --detectOpenHandles --coverage --forceExit",
+    "test": "jest --detectOpenHandles --forceExit",
     "dev": "nodemon ./src/index.ts",
     "start": "npm run build && node ./dist/index.js",
     "build": "tsc",

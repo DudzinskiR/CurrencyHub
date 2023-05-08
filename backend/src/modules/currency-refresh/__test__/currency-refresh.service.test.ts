@@ -13,14 +13,14 @@ describe('CurrencyRefreshService', () => {
       const lastRefreshDate = new Date(currentDate.getFullYear() - 1, currentDate.getMonth(), currentDate.getDate() - 1);
 
       jest.spyOn(CurrencyRefreshModel, 'getLastCurrencyRefresh').mockResolvedValue({time: lastRefreshDate, code: currencyCode});
-      jest.spyOn(CurrencyRefreshModel, 'getCurrencyRates').mockResolvedValue([{code: currencyCode, time: currentDate, value: 1}]);
+      jest.spyOn(CurrencyRefreshModel, 'fetchCurrencyRates').mockResolvedValue([{code: currencyCode, time: currentDate, value: 1}]);
       jest.spyOn(CurrencyRefreshModel, 'createNewRates').mockResolvedValue();
       jest.spyOn(CurrencyRefreshModel, 'updateRefresh').mockResolvedValue();
       
       await CurrencyRefreshService.refreshCurrencyData(currencyCode);
 
       expect(CurrencyRefreshModel.getLastCurrencyRefresh).toHaveBeenCalledWith(currencyCode);
-      expect(CurrencyRefreshModel.getCurrencyRates).toHaveBeenCalled();
+      expect(CurrencyRefreshModel.fetchCurrencyRates).toHaveBeenCalled();
       expect(CurrencyRefreshModel.createNewRates).toHaveBeenCalled();
       expect(CurrencyRefreshModel.updateRefresh).toHaveBeenCalled();
 
@@ -31,14 +31,14 @@ describe('CurrencyRefreshService', () => {
       const currentDate = new Date();
 
       jest.spyOn(CurrencyRefreshModel, 'getLastCurrencyRefresh').mockResolvedValue(undefined);
-      jest.spyOn(CurrencyRefreshModel, 'getCurrencyRates').mockResolvedValue([{code: currencyCode, time: currentDate, value: 1}]);
+      jest.spyOn(CurrencyRefreshModel, 'fetchCurrencyRates').mockResolvedValue([{code: currencyCode, time: currentDate, value: 1}]);
       jest.spyOn(CurrencyRefreshModel, 'createNewRates').mockResolvedValue();
       jest.spyOn(CurrencyRefreshModel, 'createNewRefresh').mockResolvedValue();
       
       await CurrencyRefreshService.refreshCurrencyData(currencyCode);
 
       expect(CurrencyRefreshModel.getLastCurrencyRefresh).toHaveBeenCalledWith(currencyCode);
-      expect(CurrencyRefreshModel.getCurrencyRates).toHaveBeenCalled();
+      expect(CurrencyRefreshModel.fetchCurrencyRates).toHaveBeenCalled();
       expect(CurrencyRefreshModel.createNewRates).toHaveBeenCalled();
       expect(CurrencyRefreshModel.createNewRates).toHaveBeenCalled();
     });
@@ -48,14 +48,14 @@ describe('CurrencyRefreshService', () => {
       const currentDate = new Date();
 
       jest.spyOn(CurrencyRefreshModel, 'getLastCurrencyRefresh').mockResolvedValue({time: currentDate, code: currencyCode});
-      jest.spyOn(CurrencyRefreshModel, 'getCurrencyRates').mockResolvedValue([{code: currencyCode, time: currentDate, value: 1}]);
+      jest.spyOn(CurrencyRefreshModel, 'fetchCurrencyRates').mockResolvedValue([{code: currencyCode, time: currentDate, value: 1}]);
       jest.spyOn(CurrencyRefreshModel, 'createNewRates').mockResolvedValue();
       jest.spyOn(CurrencyRefreshModel, 'createNewRefresh').mockResolvedValue();
       
       await CurrencyRefreshService.refreshCurrencyData(currencyCode);
 
       expect(CurrencyRefreshModel.getLastCurrencyRefresh).toHaveBeenCalledWith(currencyCode);
-      expect(CurrencyRefreshModel.getCurrencyRates).not.toHaveBeenCalled();
+      expect(CurrencyRefreshModel.fetchCurrencyRates).not.toHaveBeenCalled();
       expect(CurrencyRefreshModel.createNewRates).not.toHaveBeenCalled();
       expect(CurrencyRefreshModel.createNewRates).not.toHaveBeenCalled();
     });

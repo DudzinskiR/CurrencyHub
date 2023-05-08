@@ -18,7 +18,7 @@ class CurrencyRefreshModel{
     }
   }
 
-  static async getCurrencyRates(currencyCode: string, table: 'A' | 'B', startDate: Date, endDate: Date): Promise<CurrencyRate[]> {
+  static async fetchCurrencyRates(currencyCode: string, table: 'A' | 'B', startDate: Date, endDate: Date): Promise<CurrencyRate[]> {
     const rates: CurrencyRate[] = []
 
     try {

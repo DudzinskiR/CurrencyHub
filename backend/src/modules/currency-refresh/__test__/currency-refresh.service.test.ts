@@ -83,4 +83,45 @@ describe('CurrencyRefreshService', () => {
       expect(result).toBe(false);
     });
   });
+  
+
+  describe('divideTime', () => { 
+    it('should divide time range into a single pair when the range is within the maximum number of days', () => {
+      const startDate = new Date(2022, 0, 1);
+      const endDate = new Date(2022, 0, 3);
+      const result = CurrencyRefreshService.divideTime(startDate, endDate);
+      expect(result).toEqual([{ start: startDate, end: endDate }]);
+    });
+  
+    it('should divide time range into multiple pairs when the range exceeds the maximum number of days', () => {
+      const startDate = new Date(2022, 0, 1);
+      const endDate = new Date(2022, 0, 10);
+      const result = CurrencyRefreshService.divideTime(startDate, endDate, 5);
+      expect(result).toEqual([
+        { start: new Date(2022, 0, 1), end: new Date(2022, 0, 5) },
+        { start: new Date(2022, 0, 6), end: new Date(2022, 0, 10) },
+      ]);
+    });
+  
+    it('should divide time range into a single pair when the range is equal to the maximum number of days', () => {
+      const startDate = new Date(2022, 0, 1);
+      const endDate = new Date(2022, 0, 10);
+      const result = CurrencyRefreshService.divideTime(startDate, endDate, 10);
+      expect(result).toEqual([{ start: startDate, end: endDate }]);
+    });
+  
+    it('should handle cases when the start date is greater than the end date', () => {
+      const startDate = new Date(2022, 0, 10);
+      const endDate = new Date(2022, 0, 1);
+      const result = CurrencyRefreshService.divideTime(startDate, endDate);
+      expect(result).toEqual([]);
+    });
+  
+    it('should handle cases when the start date and end date are the same', () => {
+      const startDate = new Date(2022, 0, 1);
+      const endDate = new Date(2022, 0, 1);
+      const result = CurrencyRefreshService.divideTime(startDate, endDate);
+      expect(result).toEqual([{ start: startDate, end: endDate }]);
+    });
+  })
 });

@@ -11,5 +11,5 @@ app.use('/api', router);
 
 const PORT: Number = Number(process.env.PORT) || 3000
 const server: Server = app.listen(PORT, () => {
-    console.log(`Express started on port ${PORT} :)`)
+    console.log(`Express started on port ${PORT} :)`);
 });

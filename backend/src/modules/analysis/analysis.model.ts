@@ -1,8 +1,9 @@
-import { Request, Response } from 'express';
+import db from '../../db/db'
 
 class AnalysisModel{
-  static getAnalysis(req: Request, res: Response) {
-    return({a: 1})
+  static async getAnalysis(currencyCode: string) {
+
+    // return()
   }
 }
 

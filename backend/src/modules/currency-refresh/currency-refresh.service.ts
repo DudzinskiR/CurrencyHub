@@ -50,7 +50,7 @@ class CurrencyRefreshService {
 
       while(currentDate < endDate) {
         const nextDate = new Date(currentDate.getTime());
-        nextDate.setDate(nextDate.getDate() + maxDay);
+        nextDate.setDate(nextDate.getDate() + maxDay - 1);
 
         if(nextDate > endDate){
           dates.push({start: currentDate, end: endDate});

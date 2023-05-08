@@ -6,11 +6,16 @@ import { TABLE_NAME } from '../common/common.enum';
 import { CurrencyRate } from '../../interfaces/currency-rate'
 import axios from 'axios';
 import ExternalError from '../../exceptions/external-error.exception';
+import DatabaseError from '../../exceptions/database-error.exception';
 
 class CurrencyRefreshModel{
   static async getLastCurrencyRefresh(currencyCode: string): Promise<CurrencyRefreshData | undefined> {
-    const res = await db(TABLE_NAME.CURRENCY_REFRESH).select('time').where('code', currencyCode);
-    return res[0];
+    try{
+      const res = await db(TABLE_NAME.CURRENCY_REFRESH).select('time').where('code', currencyCode);
+      return res[0];
+    } catch (e){
+      throw new DatabaseError();
+    }
   }
 
   static async getCurrencyRates(currencyCode: string, table: 'A' | 'B', startDate: Date, endDate: Date): Promise<CurrencyRate[]> {
@@ -33,15 +38,27 @@ class CurrencyRefreshModel{
   }
 
   static async createNewRefresh(data: CurrencyRefreshData) {
-    await db(TABLE_NAME.CURRENCY_REFRESH).insert(data);
+    try{
+      await db(TABLE_NAME.CURRENCY_REFRESH).insert(data);
+    } catch (e){
+      throw new DatabaseError();
+    }
   }
 
   static async updateRefresh(data: CurrencyRefreshData) {
-    await db(TABLE_NAME.CURRENCY_REFRESH).where({code: data.code}).update(data)
+    try{
+      await db(TABLE_NAME.CURRENCY_REFRESH).where({code: data.code}).update(data)
+    } catch (e){
+      throw new DatabaseError();
+    }
   }
 
   static async createNewRates(rates: CurrencyRate[]){
-    await db(TABLE_NAME.CURRENCY_RATES).insert(rates);
+    try{
+      await db(TABLE_NAME.CURRENCY_RATES).insert(rates);
+    } catch (e){
+      throw new DatabaseError();
+    }
   }
 }
 

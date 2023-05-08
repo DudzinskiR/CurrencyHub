@@ -7,6 +7,6 @@ export const getTableByCode = (currencyCode: string): 'A' | 'B' => {
   } else if (table.B.includes(currencyCode)) {
     return 'B';
   } else {
-    throw new InvalidCurrencyError(currencyCode, 404);
+    throw new InvalidCurrencyError(currencyCode);
   }
 }

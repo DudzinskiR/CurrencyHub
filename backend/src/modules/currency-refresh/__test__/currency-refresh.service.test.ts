@@ -1,4 +1,3 @@
-import { unwatchFile } from "fs";
 import CurrencyRefreshModel from "../currency-refresh.model"
 import CurrencyRefreshService from "../currency-refresh.service"
 
@@ -64,9 +63,24 @@ describe('CurrencyRefreshService', () => {
 
   describe('isOutdated', () => {
     it('should return true if time in the past', () => {
-      const time = new Date(2020, 0, 1);
-      const result = CurrencyRefreshService.isOutdated(time);
+      const currentDate = new Date();
+      const date = new Date(currentDate.getFullYear() - 1, currentDate.getMonth(), currentDate.getDate() - 1);
+
+      const result = CurrencyRefreshService.isOutdated(date);
       expect(result).toBe(true);
-    })
-  })
+    });
+
+    it('should return false if time is in the future', () => {
+      const currentDate = new Date();
+      const date = new Date(currentDate.getFullYear() + 1, currentDate.getMonth(), currentDate.getDate() + 1);
+      const result = CurrencyRefreshService.isOutdated(date);
+      expect(result).toBe(false);
+    });
+
+    it('should return false if time is the same as current time', () => {
+      const time = new Date();
+      const result = CurrencyRefreshService.isOutdated(time);
+      expect(result).toBe(false);
+    });
+  });
 });

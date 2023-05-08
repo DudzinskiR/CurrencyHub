@@ -41,6 +41,11 @@ class CurrencyRefreshService {
 
   static divideTime(startDate: Date, endDate: Date, maxDay: number = 92): DatePair[] {
     const dates: DatePair[] = [];
+
+    if(endDate.getTime() < startDate.getTime()){
+      return dates;
+    }
+
     const diffInDays = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
 
     if(diffInDays <= maxDay){

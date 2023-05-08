@@ -5,6 +5,7 @@ import { CurrencyRefreshData } from '../../interfaces/currency-refresh';
 import { TABLE_NAME } from '../common/common.enum';
 import { CurrencyRate } from '../../interfaces/currency-rate'
 import axios from 'axios';
+import ExternalError from '../../exceptions/external-error.exception';
 
 class CurrencyRefreshModel{
   static async getLastCurrencyRefresh(currencyCode: string): Promise<CurrencyRefreshData | undefined> {
@@ -12,11 +13,11 @@ class CurrencyRefreshModel{
     return res[0];
   }
 
-  static async getCurrencyRates(currencyCode: string, startDate: Date, endDate: Date): Promise<CurrencyRate[]> {
+  static async getCurrencyRates(currencyCode: string, table: 'A' | 'B', startDate: Date, endDate: Date): Promise<CurrencyRate[]> {
     const rates: CurrencyRate[] = []
 
     try {
-      const url = `http://api.nbp.pl/api/exchangerates/rates/A/${currencyCode}/${startDate.toISOString().split('T')[0]}/${endDate.toISOString().split('T')[0]}?format=json`;
+      const url = `http://api.nbp.pl/api/exchangerates/rates/${table}/${currencyCode}/${startDate.toISOString().split('T')[0]}/${endDate.toISOString().split('T')[0]}?format=json`;
       const response = await axios.get(url);
       for(const item of response.data.rates){
         rates.push({
@@ -25,9 +26,8 @@ class CurrencyRefreshModel{
           value: item.mid
         })
       }
-      
     } catch (err){
-
+      throw new ExternalError();
     }
     return rates;
   }

@@ -1,6 +1,6 @@
 export default class Exception extends Error {
   public name: string = "";
-  private code: number = 0;
+  public code: number = 0;
   constructor(name: string, message: string, code: number){
     super(message);
     this.name = name;

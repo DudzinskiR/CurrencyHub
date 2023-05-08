@@ -1,9 +1,6 @@
+import { Knex } from 'knex'
 
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
-exports.up = function(knex) {
+exports.up = function(knex: Knex) {
   return knex.schema.createTable('currency_refresh', table => {
     table.increments('id').primary();
     table.string('code', 3).notNullable();
@@ -22,6 +19,6 @@ exports.up = function(knex) {
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.down = function(knex) {
+exports.down = function(knex: Knex) {
   return knex.schema.dropTable('currency_refresh').dropTable('currency_rates');
 };

@@ -7,7 +7,7 @@ class AnalysisController {
   {
     try {
       const data = await AnalysisService.getAnalysis(`${req.query.code}`);
-      res.status(200).json({ss: 1});
+      res.status(200).json(data);
 
     } catch(e) {
       if(e instanceof Exception){

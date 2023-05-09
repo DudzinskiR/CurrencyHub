@@ -10,3 +10,7 @@ export const getTableByCode = (currencyCode: string): 'A' | 'B' => {
     throw new InvalidCurrencyError(currencyCode);
   }
 }
+
+export const validateCode = (currencyCode: string): boolean => {
+  return table.A.includes(currencyCode) || table.B.includes(currencyCode);
+}

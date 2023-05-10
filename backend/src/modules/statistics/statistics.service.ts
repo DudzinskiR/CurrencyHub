@@ -3,9 +3,9 @@ import { validateCode } from "../../common/currency-validator/currency-validator
 import DateProcessor, { DateInfo } from "../../common/date-processor/date-processor";
 import InvalidCurrencyError from "../../exceptions/invalid-currency.exception";
 import { CurrencyStatistic } from "../../interfaces/currency-statistics";
-import AnalysisModel from "../analysis/analysis.model";
 import CurrencyRefreshService from "../currency-refresh/currency-refresh.service";
 import {calcStandardDeviation, calcDominant, calcMedian, calcCoefficientOfVariation} from './helper'
+import StatisticsModel from "./statistics.model";
 class StatisticsService {
   static async getStatistics(currencyCode: string): Promise<CurrencyStatistic[]>{
     await CurrencyRefreshService.refreshCurrencyData(currencyCode);
@@ -14,7 +14,7 @@ class StatisticsService {
       throw new InvalidCurrencyError(currencyCode);
     }
 
-    const data = await AnalysisModel.getAnalysisDesc(currencyCode);
+    const data = await StatisticsModel.getStatisticsDesc(currencyCode);
     
     const dates: DateInfo[] = [];
     data.forEach(item => {

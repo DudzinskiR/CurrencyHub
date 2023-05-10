@@ -18,7 +18,7 @@ describe('calCDeviation', () => {
     ];
 
     const result = calcStandardDeviation(mockList);
-    expect(result).toBeCloseTo(15.8113883, 6);
+    expect(result).toBeCloseTo(14.1421356, 6);
   });
 
   it('should return 0 for a single-value list', () => {

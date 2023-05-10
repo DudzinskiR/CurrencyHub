@@ -11,7 +11,7 @@ const calcStandardDeviation = (list: DateInfo[]): number => {
 
   const sumOfSquaredDifferences = squaredDifferences.reduce((sum, value) => sum + value, 0);
 
-  const variance = sumOfSquaredDifferences / 2
+  const variance = sumOfSquaredDifferences / list.length;
 
   const standardDeviation = Math.sqrt(variance);
 

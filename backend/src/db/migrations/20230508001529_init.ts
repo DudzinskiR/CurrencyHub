@@ -10,7 +10,7 @@ exports.up = function(knex: Knex) {
     table.increments('id').primary();
     table.string('code', 3).notNullable();
     table.date('time').notNullable();
-    table.float('value').notNullable();
+    table.double('value').notNullable();
     table.timestamps(true, true);
   });
 };

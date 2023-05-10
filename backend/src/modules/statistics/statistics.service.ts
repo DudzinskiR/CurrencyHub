@@ -7,7 +7,7 @@ import AnalysisModel from "../analysis/analysis.model";
 import CurrencyRefreshService from "../currency-refresh/currency-refresh.service";
 import {calcStandardDeviation, calcDominant, calcMedian, calcCoefficientOfVariation} from './helper'
 class StatisticsService {
-  static async getStatistics(currencyCode: string){
+  static async getStatistics(currencyCode: string): Promise<CurrencyStatistic[]>{
     await CurrencyRefreshService.refreshCurrencyData(currencyCode);
     
     if(!validateCode(currencyCode)){
@@ -36,6 +36,7 @@ class StatisticsService {
 
     const output = dateProcessor.execute();
 
+    return output;
   }
 }
 

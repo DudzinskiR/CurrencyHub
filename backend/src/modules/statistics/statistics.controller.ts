@@ -6,7 +6,7 @@ class StatisticsController {
   static async getStatistics(req: Request, res: Response){
     try {
       const data = await StatisticsService.getStatistics(`${req.query.code}`);
-      res.status(200).json({ok: "ok"});
+      res.status(200).json(data);
     } catch (e) {
       if(e instanceof Exception){
         res.status(e.code).json({status: "error", message: e.message});

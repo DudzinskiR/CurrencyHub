@@ -8,12 +8,13 @@ import {calcStandardDeviation, calcDominant, calcMedian, calcCoefficientOfVariat
 import StatisticsModel from "./statistics.model";
 class StatisticsService {
   static async getStatistics(currencyCode: string): Promise<CurrencyStatistic[]>{
-    await CurrencyRefreshService.refreshCurrencyData(currencyCode);
     
     if(!validateCode(currencyCode)){
       throw new InvalidCurrencyError(currencyCode);
     }
 
+    await CurrencyRefreshService.refreshCurrencyData(currencyCode);
+  
     const data = await StatisticsModel.getStatisticsDesc(currencyCode);
     
     const dates: DateInfo[] = [];

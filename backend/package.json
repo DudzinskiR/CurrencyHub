@@ -9,7 +9,8 @@
     "dev": "nodemon ./src/index.ts",
     "start": "npm run build && node ./dist/index.js",
     "build": "tsc",
-    "migrate": "npx knex migrate:latest --knexfile src/db/knexfile.ts"
+    "migrate": "npx knex migrate:latest --knexfile src/db/knexfile.ts",
+    "down": "npx knex migrate:down --knexfile src/db/knexfile.ts"
   },
   "keywords": [],
   "author": "",

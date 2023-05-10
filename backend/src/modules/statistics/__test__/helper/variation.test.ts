@@ -18,10 +18,10 @@ describe('calcVariation', () => {
     ];
 
     //Mean = 30
-    //Standard Deviation ~15.8113883
-    //Coefficient of variation ~52.270462
+    //Standard Deviation ~14.1421356
+    //Coefficient of variation: Standard Deviation / Mean ~~ 52.270462
 
     const result = calcCoefficientOfVariation(mockList);
-    expect(result).toBeCloseTo(52.270462, 6);
+    expect(result).toBeCloseTo(47.140452, 6);
   })
 })

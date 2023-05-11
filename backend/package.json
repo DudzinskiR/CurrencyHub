@@ -10,7 +10,8 @@
     "start": "npm run build && node ./dist/index.js",
     "build": "tsc",
     "migrate": "npx knex migrate:latest --knexfile src/db/knexfile.ts",
-    "migrate:down": "npx knex migrate:down --knexfile src/db/knexfile.ts"
+    "migrate:down": "npx knex migrate:down --knexfile src/db/knexfile.ts",
+    "migrate:reset": "npm run migrate:down && npm run migrate"
   },
   "keywords": [],
   "author": "",

@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
-import AnalysisService from './analysis.service';
+import AnalysisService from './session-analysis.service';
 import Exception from '../../exceptions/exception';
 
-class AnalysisController {
-  static async getAnalysis(req: Request, res: Response) 
+class SessionAnalysisController {
+  static async getSessionAnalysis(req: Request, res: Response) 
   {
     try {
-      const data = await AnalysisService.getAnalysis(`${req.query.code}`);
+      const data = await AnalysisService.getSessionAnalysis(`${req.query.code}`);
       res.status(200).json(data);
 
     } catch(e) {
@@ -17,4 +17,4 @@ class AnalysisController {
   }
 }
 
-export default AnalysisController
+export default SessionAnalysisController

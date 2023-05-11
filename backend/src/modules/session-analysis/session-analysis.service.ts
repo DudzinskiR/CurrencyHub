@@ -1,28 +1,28 @@
-import AnalysisModel from './analysis.model';
+import SessionAnalysisModel from './session-analysis.model';
 import CurrencyRefreshService from '../currency-refresh/currency-refresh.service';
 import { getTableByCode, validateCode } from '../../common/currency-validator/currency-validator';
 import InvalidCurrencyException from '../../exceptions/invalid-currency.exception';
-import { currencyAnalysis } from '../../interfaces/currency-analysis';
+import { SessionAnalysis } from './session-analysis.interface';
 import DateProcessor, { DateInfo } from '../../common/date-processor/date-processor';
 import { timeBreakpoints } from '../../common/const';
 
-class AnalysisService {
-  static async getAnalysis(currencyCode: string) {
+class SessionAnalysisService {
+  static async getSessionAnalysis(currencyCode: string): Promise<SessionAnalysis[]> {
     await CurrencyRefreshService.refreshCurrencyData(currencyCode);
 
     if(!validateCode(currencyCode)){
       throw new InvalidCurrencyException(currencyCode);
     }
 
-    const data = await AnalysisModel.getAnalysisDesc(currencyCode)
+    const data = await SessionAnalysisModel.getSessionAnalysisDesc(currencyCode)
     
     const dates: DateInfo[] = [];
     data.forEach(item => {
       dates.push({date: item.time, value:item.value});
     })
 
-    const dateProcessor = new DateProcessor<currencyAnalysis>().setDates(dates).setTimeBreakpoints(timeBreakpoints);
-    dateProcessor.setCallback((tab: DateInfo[]): currencyAnalysis => {
+    const dateProcessor = new DateProcessor<SessionAnalysis>().setDates(dates).setTimeBreakpoints(timeBreakpoints);
+    dateProcessor.setCallback((tab: DateInfo[]): SessionAnalysis => {
       const result = { up: 0, const: 0, down: 0 };
 
       for(let i = 1; i < tab.length; i++){
@@ -42,4 +42,4 @@ class AnalysisService {
   }
 }
 
-export default AnalysisService;
+export default SessionAnalysisService;

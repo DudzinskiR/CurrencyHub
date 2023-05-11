@@ -3,8 +3,8 @@ import DatabaseError from '../../exceptions/database-error.exception';
 import { CurrencyAnalysisData } from '../../interfaces/currency-analysis-data';
 import { TABLE_NAME } from '../common/common.enum';
 
-class AnalysisModel{
-  static async getAnalysisDesc(currencyCode: string): Promise<CurrencyAnalysisData[]> {
+class SessionAnalysisModel{
+  static async getSessionAnalysisDesc(currencyCode: string): Promise<CurrencyAnalysisData[]> {
     try{
       const today = new Date();
       const res: CurrencyAnalysisData[] = await db(TABLE_NAME.CURRENCY_RATES)
@@ -19,4 +19,4 @@ class AnalysisModel{
 }
 
 
-export default AnalysisModel;
+export default SessionAnalysisModel;

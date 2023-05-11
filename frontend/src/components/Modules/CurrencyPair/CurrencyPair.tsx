@@ -6,7 +6,7 @@ import Header from '../../HeaderLine/HeaderLine'
 import { getData, options, timePeriodName } from './ChartOptions';
 import Loader from '../../Loader/Loader';
 import CurrencyPicker from '../../CurrencyPicker/CurrencyPicker';
-import Button from '../../Button/Button';
+import Button from '../../button/button';
 import TimePicker from '../../TimePicker/TimePicker';
 import apiService from '../../../services/ApiService';
 import { CurrencyPairData } from '../../../models/CurrencyPairData';

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./CurrencyAnalysis.scss"
 import Header from '../../../HeaderLine/HeaderLine'
 import CurrencyPicker from '../../../CurrencyPicker/CurrencyPicker'
-import Button from '../../../Button/Button'
+import Button from '../../../button/button'
 import { Bar } from 'react-chartjs-2';
 import "chart.js/auto";
 import { getData, options, timePeriodName } from '../ChartOptions'

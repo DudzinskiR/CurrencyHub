@@ -1,13 +1,13 @@
-import { CurrencyPair } from '../../interfaces/currency-pair';
+import { ChangeDistribution } from './change-distribution.interface';
 import { validateCode } from '../../common/currency-validator/currency-validator';
 import InvalidCurrencyException from '../../exceptions/invalid-currency.exception';
 import CurrencyRefreshService from '../currency-refresh/currency-refresh.service';
-import PairModel from './pair.model';
+import PairModel from './change-distribution.model';
 import DateProcessor, { DateInfo } from '../../common/date-processor/date-processor';
-import { pairTimeBreakpoints, timeBreakpoints } from '../../common/const';
+import { pairTimeBreakpoints } from '../../common/const';
 
-class PairService {
-  static async getPairDate(codeOne: string, codeTwo: string, numBins: number): Promise<CurrencyPair[]> {
+class ChangeDistributionService {
+  static async getChangeDistribution(codeOne: string, codeTwo: string, numBins: number): Promise<ChangeDistribution[]> {
     if(!validateCode(codeOne)){
       throw new InvalidCurrencyException(codeOne);
     }
@@ -38,11 +38,11 @@ class PairService {
         value: item.value / currencyFound.value
       })
     };
-    const dateProcessor = new DateProcessor<CurrencyPair>()
+    const dateProcessor = new DateProcessor<ChangeDistribution>()
       .setDates(data)
       .setTimeBreakpoints(pairTimeBreakpoints)
-      .setCallback((tab: DateInfo[]): CurrencyPair => {
-        const output: CurrencyPair = { scopes: [], values: [] }
+      .setCallback((tab: DateInfo[]): ChangeDistribution => {
+        const output: ChangeDistribution = { scopes: [], values: [] }
         
         const currencyRatio: DateInfo[] = [];        
         for(let i = 1; i < tab.length; i++){
@@ -84,4 +84,4 @@ class PairService {
   }
 }
 
-export default PairService;
+export default ChangeDistributionService;

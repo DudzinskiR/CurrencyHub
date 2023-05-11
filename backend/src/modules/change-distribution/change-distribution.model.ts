@@ -4,7 +4,7 @@ import { CurrencyAnalysisData } from "../../interfaces/currency-analysis-data";
 import { CurrencyPairData } from "../../interfaces/currency-pair-data";
 import { TABLE_NAME } from "../common/common.enum";
 
-class PairModel {
+class ChangeDistributionModel {
   static async getCurrencyDataDesc(code: string): Promise<CurrencyPairData[]>{
     try {  
       const today = new Date();
@@ -19,4 +19,4 @@ class PairModel {
   }
 }
 
-export default PairModel
+export default ChangeDistributionModel

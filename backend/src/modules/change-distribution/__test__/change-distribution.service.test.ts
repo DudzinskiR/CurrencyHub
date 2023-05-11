@@ -1,11 +1,11 @@
 import { pairTimeBreakpoints } from "../../../common/const";
 import * as validator from "../../../common/currency-validator/currency-validator";
 import InvalidCurrencyException from "../../../exceptions/invalid-currency.exception";
-import { CurrencyPair } from "../../../interfaces/currency-pair";
+import { ChangeDistribution } from "../change-distribution.interface";
 import { CurrencyPairData } from "../../../interfaces/currency-pair-data";
 import CurrencyRefreshService from "../../currency-refresh/currency-refresh.service";
-import PairModel from "../pair.model";
-import PairService from "../pair.service";
+import ChangeDistributionModel from "../change-distribution.model";
+import ChangeDistributionService from "../change-distribution.service";
 
 jest.mock("../../../common/const", () => ({
   __esModule: true,
@@ -24,11 +24,11 @@ describe('Pair Service', () => {
 
     jest.spyOn(validator, "validateCode").mockReturnValue(false);
     jest.spyOn(CurrencyRefreshService, 'refreshCurrencyData').mockResolvedValue();
-    jest.spyOn(PairModel, 'getCurrencyDataDesc').mockResolvedValue([]);
+    jest.spyOn(ChangeDistributionModel, 'getCurrencyDataDesc').mockResolvedValue([]);
 
-    await expect(PairService.getPairDate(mockCodeOne, mockCodeTwo, mockNumBins)).rejects.toThrow(InvalidCurrencyException);
+    await expect(ChangeDistributionService.getChangeDistribution(mockCodeOne, mockCodeTwo, mockNumBins)).rejects.toThrow(InvalidCurrencyException);
     expect(CurrencyRefreshService.refreshCurrencyData).not.toHaveBeenCalled();
-    expect(PairModel.getCurrencyDataDesc).not.toHaveBeenCalled();
+    expect(ChangeDistributionModel.getCurrencyDataDesc).not.toHaveBeenCalled();
   });
 
   it('should throw InvalidCurrencyException if codeTwo is invalid', async () => {
@@ -38,11 +38,11 @@ describe('Pair Service', () => {
 
     jest.spyOn(validator, "validateCode").mockReturnValueOnce(true).mockReturnValueOnce(false);
     jest.spyOn(CurrencyRefreshService, 'refreshCurrencyData').mockResolvedValue();
-    jest.spyOn(PairModel, 'getCurrencyDataDesc').mockResolvedValue([]);
+    jest.spyOn(ChangeDistributionModel, 'getCurrencyDataDesc').mockResolvedValue([]);
 
-    await expect(PairService.getPairDate(mockCodeOne, mockCodeTwo, mockNumBins)).rejects.toThrow(InvalidCurrencyException);
+    await expect(ChangeDistributionService.getChangeDistribution(mockCodeOne, mockCodeTwo, mockNumBins)).rejects.toThrow(InvalidCurrencyException);
     expect(CurrencyRefreshService.refreshCurrencyData).not.toHaveBeenCalled();
-    expect(PairModel.getCurrencyDataDesc).not.toHaveBeenCalled();
+    expect(ChangeDistributionModel.getCurrencyDataDesc).not.toHaveBeenCalled();
   });
 
   it('should refresh currency data, validate code, and return pair statistics',async () => {
@@ -71,7 +71,7 @@ describe('Pair Service', () => {
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 19), value: 25},
     ]
 
-    const expectedResult: CurrencyPair[] = [
+    const expectedResult: ChangeDistribution[] = [
       {
         scopes: [{ start: -0.045455, end: -0.042569 }, { start: -0.042569, end: -0.039683 }],
         values: [1, 1]
@@ -84,10 +84,10 @@ describe('Pair Service', () => {
 
     jest.spyOn(validator, "validateCode").mockReturnValue(true);
     jest.spyOn(CurrencyRefreshService, 'refreshCurrencyData').mockResolvedValue();
-    jest.spyOn(PairModel, 'getCurrencyDataDesc').mockResolvedValueOnce(currencyDataOne).mockResolvedValueOnce(currencyDataTwo);
+    jest.spyOn(ChangeDistributionModel, 'getCurrencyDataDesc').mockResolvedValueOnce(currencyDataOne).mockResolvedValueOnce(currencyDataTwo);
 
 
-    const result = await PairService.getPairDate(mockCodeOne, mockCodeTwo, mockNumBins);
+    const result = await ChangeDistributionService.getChangeDistribution(mockCodeOne, mockCodeTwo, mockNumBins);
 
     expect(CurrencyRefreshService.refreshCurrencyData).toHaveBeenCalledWith(mockCodeOne);
     expect(CurrencyRefreshService.refreshCurrencyData).toHaveBeenCalledWith(mockCodeTwo);
@@ -121,7 +121,7 @@ describe('Pair Service', () => {
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 19), value: 25},
     ]
 
-    const expectedResult: CurrencyPair[] = [
+    const expectedResult: ChangeDistribution[] = [
       {
         scopes: [{ start: -0.045455, end: -0.039683 }],
         values: [2]
@@ -134,10 +134,10 @@ describe('Pair Service', () => {
 
     jest.spyOn(validator, "validateCode").mockReturnValue(true);
     jest.spyOn(CurrencyRefreshService, 'refreshCurrencyData').mockResolvedValue();
-    jest.spyOn(PairModel, 'getCurrencyDataDesc').mockResolvedValueOnce(currencyDataOne).mockResolvedValueOnce(currencyDataTwo);
+    jest.spyOn(ChangeDistributionModel, 'getCurrencyDataDesc').mockResolvedValueOnce(currencyDataOne).mockResolvedValueOnce(currencyDataTwo);
 
 
-    const result = await PairService.getPairDate(mockCodeOne, mockCodeTwo, mockNumBins);
+    const result = await ChangeDistributionService.getChangeDistribution(mockCodeOne, mockCodeTwo, mockNumBins);
 
     expect(CurrencyRefreshService.refreshCurrencyData).toHaveBeenCalledWith(mockCodeOne);
     expect(CurrencyRefreshService.refreshCurrencyData).toHaveBeenCalledWith(mockCodeTwo);
@@ -172,7 +172,7 @@ describe('Pair Service', () => {
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 16), value: 25},
     ]
 
-    const expectedResult: CurrencyPair[] = [
+    const expectedResult: ChangeDistribution[] = [
       {
         scopes: [{start: 0, end: 0}, {start: 0, end: 0}, {start: 0, end: 0}],
         values: [0, 0, 0]
@@ -185,10 +185,10 @@ describe('Pair Service', () => {
 
     jest.spyOn(validator, "validateCode").mockReturnValue(true);
     jest.spyOn(CurrencyRefreshService, 'refreshCurrencyData').mockResolvedValue();
-    jest.spyOn(PairModel, 'getCurrencyDataDesc').mockResolvedValueOnce(currencyDataOne).mockResolvedValueOnce(currencyDataTwo);
+    jest.spyOn(ChangeDistributionModel, 'getCurrencyDataDesc').mockResolvedValueOnce(currencyDataOne).mockResolvedValueOnce(currencyDataTwo);
 
 
-    const result = await PairService.getPairDate(mockCodeOne, mockCodeTwo, mockNumBins);
+    const result = await ChangeDistributionService.getChangeDistribution(mockCodeOne, mockCodeTwo, mockNumBins);
 
     expect(CurrencyRefreshService.refreshCurrencyData).toHaveBeenCalledWith(mockCodeOne);
     expect(CurrencyRefreshService.refreshCurrencyData).toHaveBeenCalledWith(mockCodeTwo);

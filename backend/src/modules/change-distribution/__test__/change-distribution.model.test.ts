@@ -3,7 +3,7 @@ import DatabaseError from "../../../exceptions/database-error.exception";
 import { CurrencyRate } from "../../../interfaces/currency-rate";
 import { CurrencyStatisticsData } from "../../../interfaces/currency-statistics-data";
 import CurrencyRefreshModel from "../../currency-refresh/currency-refresh.model";
-import PairModel from "../pair.model";
+import PairModel from "../change-distribution.model";
 
 describe("PairModel", () => {
   beforeEach(async () => {

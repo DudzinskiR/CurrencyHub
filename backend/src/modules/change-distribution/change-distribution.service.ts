@@ -28,7 +28,7 @@ class ChangeDistributionService {
     const data: DateInfo[] = [];
     
     for(const item of currencyOne){
-      const currencyFound = currencyTwo.find(curr => curr.time.toLocaleDateString("en-US") === item.time.toLocaleDateString("en-US"));
+      const currencyFound = currencyTwo.find(curr => curr.time.getTime() === item.time.getTime());
       
       if(!currencyFound)
         continue;

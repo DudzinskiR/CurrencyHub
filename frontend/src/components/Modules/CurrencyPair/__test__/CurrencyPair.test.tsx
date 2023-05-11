@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import CurrencyPair from "../CurrencyPair";
 import apiService from "../../../../services/ApiService";
-import { CurrencyPairData } from "../../../models/CurrencyPairData";
+import { CurrencyPairData } from "../../../../models/CurrencyPairData";
 import { timePeriodName } from "../ChartOptions";
 
 jest.mock('react-chartjs-2', () => ({

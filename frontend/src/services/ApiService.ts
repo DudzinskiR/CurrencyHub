@@ -1,6 +1,6 @@
-import { CurrencyAnalysisData } from '../components/models/CurrencyAnalysisData';
-import { CurrencyPairData } from '../components/models/CurrencyPairData';
-import { CurrencyStatisticData } from '../components/models/CurrencyStatisticsData';
+import { CurrencyAnalysisData } from '../models/CurrencyAnalysisData';
+import { CurrencyPairData } from '../models/CurrencyPairData';
+import { CurrencyStatisticData } from '../models/CurrencyStatisticsData';
 
 class ApiService {
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./CurrencyStatistics.scss"
 import Loader from '../../../Loader/Loader'
 import apiService from '../../../../services/ApiService'
-import { CurrencyStatisticData } from '../../../models/CurrencyStatisticsData'
+import { CurrencyStatisticData } from '../../../../models/CurrencyStatisticsData'
 interface props {
   currencyCode: string,
   selectedTime: number

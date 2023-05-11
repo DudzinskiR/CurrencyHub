@@ -9,7 +9,7 @@ import { getData, options, timePeriodName } from '../ChartOptions'
 import TimePicker from '../../../TimePicker/TimePicker'
 import apiService from '../../../../services/ApiService'
 import Loader from '../../../Loader/Loader'
-import { CurrencyAnalysisData } from '../../../models/CurrencyAnalysisData'
+import { CurrencyAnalysisData } from '../../../../models/CurrencyAnalysisData'
 import CurrencyStatistics from './CurrencyStatistics'
 
 const CurrencyAnalysis = () => {

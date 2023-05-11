@@ -9,7 +9,7 @@ import CurrencyPicker from '../../CurrencyPicker/CurrencyPicker';
 import Button from '../../Button/Button';
 import TimePicker from '../../TimePicker/TimePicker';
 import apiService from '../../../services/ApiService';
-import { CurrencyPairData } from '../../models/CurrencyPairData';
+import { CurrencyPairData } from '../../../models/CurrencyPairData';
 
 const CurrencyPair = () => {
   const [currencyPair, setCurrencyPair] = useState<string[]>(['USD', 'GBP']);

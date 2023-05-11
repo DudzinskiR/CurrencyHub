@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import "./CurrencyAnalysis.scss"
-import Header from '../../../header-line/header-line'
-import CurrencyPicker from '../../../currency-picker/currency-picker'
-import Button from '../../../button/button'
+import "./session-analysis.scss"
+import Header from '../../header-line/header-line'
+import CurrencyPicker from '../../currency-picker/currency-picker'
+import Button from '../../button/button'
 import { Bar } from 'react-chartjs-2';
 import "chart.js/auto";
-import { getData, options, timePeriodName } from '../ChartOptions'
-import TimePicker from '../../../TimePicker/TimePicker'
-import apiService from '../../../../services/ApiService'
-import Loader from '../../../loader/loader'
-import { CurrencyAnalysisData } from '../../../../models/CurrencyAnalysisData'
-import CurrencyStatistics from './CurrencyStatistics'
+import { getData, options, timePeriodName } from './chart-options'
+import TimePicker from '../../TimePicker/TimePicker'
+import apiService from '../../../services/ApiService'
+import Loader from '../../loader/loader'
+import { CurrencyAnalysisData } from '../../../models/CurrencyAnalysisData'
+import CurrencyStatistics from '../statistics/statistics'
 
-const CurrencyAnalysis = () => {
+const SessionAnalysis = () => {
 
   const [currencyAnalysisData, setCurrencyAnalysis] = useState<CurrencyAnalysisData[]>([]);
   const [selectedCurrencyAnalysisData, setSelectedCurrencyAnalysisData] = useState<number[]>([])
@@ -87,4 +87,4 @@ const CurrencyAnalysis = () => {
   )
 }
 
-export default CurrencyAnalysis
+export default SessionAnalysis

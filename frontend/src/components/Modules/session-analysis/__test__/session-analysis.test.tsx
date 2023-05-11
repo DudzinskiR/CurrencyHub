@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import CurrencyAnalysis from "../compoment/CurrencyAnalysis";
+import SessionAnalysis from "../session-analysis";
 import apiService from '../../../../services/ApiService';
-import { timePeriodName } from '../ChartOptions';
+import { timePeriodName } from '../chart-options';
 import React from 'react';
 jest.mock('react-chartjs-2', () => ({
   Bar: () => null
@@ -11,20 +11,20 @@ jest.mock('../../../../services/ApiService', () => ({
   currencyAnalysis: jest.fn(() => Promise.resolve([])),
 }));
 
-describe('Currency Analysis - chart box', () => {
+describe('Session analysis - chart box', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
 
   it('renders header with correct text', async () => {
-    render(<CurrencyAnalysis />);
+    render(<SessionAnalysis />);
     const title = await screen.findByText('Analiza waluty')
     expect(title).toBeInTheDocument();
   });
 
   it('should call fetchData on render', async () => {
     const spy = jest.spyOn(apiService, 'currencyAnalysis');
-    render(<CurrencyAnalysis />);
+    render(<SessionAnalysis />);
     await waitFor(() => {
       expect(spy).toHaveBeenCalled();
     })
@@ -37,7 +37,7 @@ describe('Currency Analysis - chart box', () => {
       countDown: 2,
       countConst: 3
     }]));
-    render(<CurrencyAnalysis />);
+    render(<SessionAnalysis />);
     await waitFor(() => {
       expect(screen.queryByText('Ładowanie')).toBeNull();
     })
@@ -45,14 +45,14 @@ describe('Currency Analysis - chart box', () => {
 
   it('should show error information on failed API call', async () => {
     apiService.currencyAnalysis = jest.fn(() => Promise.reject());
-    render(<CurrencyAnalysis />);
+    render(<SessionAnalysis />);
     await waitFor(() => {
       expect(screen.getByText('Błąd')).toBeInTheDocument();
     })
   })
 
   it('should call onChange when a time option is clicked', async () => {
-    render(<CurrencyAnalysis />);
+    render(<SessionAnalysis />);
     const button = await screen.findByText(timePeriodName[0]);
     fireEvent.click(button);
     const selectedButton = screen.getAllByRole('button').find(div => div.innerHTML.includes(timePeriodName[0]));
@@ -60,9 +60,9 @@ describe('Currency Analysis - chart box', () => {
   })
 })
 
-describe('Currency Analysis - picker box', () => {
+describe('Session analysis - picker box', () => {
   it('should show loading information after selecting currency and clicking button', async () => {
-    render(<CurrencyAnalysis />);
+    render(<SessionAnalysis />);
 
     const currencyPicker = await screen.findByText('USD');
     fireEvent(currencyPicker, new MouseEvent('click', { bubbles: true }));

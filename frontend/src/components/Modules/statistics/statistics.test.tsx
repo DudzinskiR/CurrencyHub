@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import CurrencyStatistics from '../compoment/CurrencyStatistics';
-import apiService from '../../../../services/ApiService';
+import Statistics from './statistics';
+import apiService from '../../../services/ApiService';
 
-jest.mock('../../../../services/ApiService', () => ({
+jest.mock('../../../services/ApiService', () => ({
   currencyStatistics: jest.fn(),
 }));
 
-describe('CurrencyStatistics', () => {
+describe('Statistics', () => {
 
   const mockCurrencyCode = 'USD';
   const mockSelectedTime = 0;
@@ -27,7 +27,7 @@ describe('CurrencyStatistics', () => {
   ];
 
   it('should renders loading state', async () => {
-    render(<CurrencyStatistics currencyCode={mockCurrencyCode} selectedTime={mockSelectedTime} />);
+    render(<Statistics currencyCode={mockCurrencyCode} selectedTime={mockSelectedTime} />);
     await waitFor(() => {
       expect(screen.getByText('Ładowanie')).toBeInTheDocument();
     })
@@ -35,7 +35,7 @@ describe('CurrencyStatistics', () => {
 
   it('should renders error state if API call fails', async () => {
     apiService.currencyStatistics = jest.fn(() => Promise.reject());
-    render(<CurrencyStatistics currencyCode={mockCurrencyCode} selectedTime={mockSelectedTime} />);
+    render(<Statistics currencyCode={mockCurrencyCode} selectedTime={mockSelectedTime} />);
     await waitFor(() => {
       expect(screen.getByText('Błąd')).toBeInTheDocument();
     });
@@ -43,7 +43,7 @@ describe('CurrencyStatistics', () => {
 
   it('should redners currency statistics when API call is successful', async () => {
     apiService.currencyStatistics = jest.fn(() => Promise.resolve(mockCurrencyStatistics));
-    render(<CurrencyStatistics currencyCode={mockCurrencyCode} selectedTime={mockSelectedTime} />);
+    render(<Statistics currencyCode={mockCurrencyCode} selectedTime={mockSelectedTime} />);
 
     await waitFor(() => {
       expect(screen.getByText('Mediana')).toBeInTheDocument();

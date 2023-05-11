@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import "./CurrencyStatistics.scss"
-import Loader from '../../../loader/loader'
-import apiService from '../../../../services/ApiService'
-import { CurrencyStatisticData } from '../../../../models/CurrencyStatisticsData'
+import "./statistics.scss"
+import Loader from '../../loader/loader'
+import apiService from '../../../services/ApiService'
+import { CurrencyStatisticData } from '../../../models/CurrencyStatisticsData'
 interface props {
   currencyCode: string,
   selectedTime: number
 }
 
-const CurrencyStatistics = ({ currencyCode, selectedTime }: props) => {
+const Statistics = ({ currencyCode, selectedTime }: props) => {
   const [isLoading, setLoading] = useState<boolean>(false);
   const [isError, setError] = useState<boolean>(false);
 
@@ -60,4 +60,4 @@ const CurrencyStatistics = ({ currencyCode, selectedTime }: props) => {
   )
 }
 
-export default CurrencyStatistics
+export default Statistics

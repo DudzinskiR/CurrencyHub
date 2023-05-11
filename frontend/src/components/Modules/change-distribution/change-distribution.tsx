@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import "./CurrencyPair.scss"
+import "./change-distribution.scss"
 import { Bar } from 'react-chartjs-2';
 import "chart.js/auto";
 import Header from '../../header-line/header-line'
@@ -11,7 +11,7 @@ import TimePicker from '../../TimePicker/TimePicker';
 import apiService from '../../../services/ApiService';
 import { CurrencyPairData } from '../../../models/CurrencyPairData';
 
-const CurrencyPair = () => {
+const ChangeDistribution = () => {
   const [currencyPair, setCurrencyPair] = useState<string[]>(['USD', 'GBP']);
   const [selectedCurrencyPair, setSelectedCurrencyPair] = useState<string[]>(["USD", "GBP"]);
 
@@ -79,4 +79,4 @@ const CurrencyPair = () => {
   )
 }
 
-export default CurrencyPair
+export default ChangeDistribution

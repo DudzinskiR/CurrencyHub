@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import CurrencyPair from "../CurrencyPair";
+import ChangeDistribution from "../change-distribution";
 import apiService from "../../../../services/ApiService";
 import { CurrencyPairData } from "../../../../models/CurrencyPairData";
 import { timePeriodName } from "../ChartOptions";
@@ -37,14 +37,14 @@ jest.mock('../../../../services/ApiService', () => ({
 
 describe('Currency Pair', () => {
   it('renders header with correct text', async () => {
-    render(<CurrencyPair />);
+    render(<ChangeDistribution />);
     const title = await screen.findByText('Analiza par walut')
     expect(title).toBeInTheDocument();
   });
 
   it('should show load information during API call', async () => {
     apiService.currencyPair = jest.fn(() => Promise.resolve(mockCurrencyPairData));
-    render(<CurrencyPair />);
+    render(<ChangeDistribution />);
     await waitFor(() => {
       expect(screen.getByText('Ładowanie')).toBeInTheDocument();
     })
@@ -52,7 +52,7 @@ describe('Currency Pair', () => {
 
   it('should hide load information on successful API call', async () => {
     apiService.currencyPair = jest.fn(() => Promise.resolve(mockCurrencyPairData));
-    render(<CurrencyPair />);
+    render(<ChangeDistribution />);
     await waitFor(() => {
       expect(screen.queryByText('Ładowanie')).toBeNull();
     })
@@ -60,14 +60,14 @@ describe('Currency Pair', () => {
 
   it('should show error information on failed API call', async () => {
     apiService.currencyPair = jest.fn(() => Promise.reject());
-    render(<CurrencyPair />);
+    render(<ChangeDistribution />);
     await waitFor(() => {
       expect(screen.getByText('Błąd')).toBeInTheDocument();
     })
   });
 
   it('should call onChange when a time option is clicked', async () => {
-    render(<CurrencyPair />);
+    render(<ChangeDistribution />);
     const button = await screen.findByText(timePeriodName[0]);
     fireEvent.click(button);
     const selectedButton = screen.getAllByRole('button').find(div => div.innerHTML.includes(timePeriodName[0]));
@@ -75,7 +75,7 @@ describe('Currency Pair', () => {
   });
 
   it('should show loading information after selecting currency and clicking button', async () => {
-    render(<CurrencyPair />);
+    render(<ChangeDistribution />);
 
     const currencyPicker1 = await screen.findByText('USD');
     fireEvent(currencyPicker1, new MouseEvent('click', { bubbles: true }));

@@ -69,7 +69,7 @@ class ChangeDistributionService {
         }
 
         const sum = histogram.reduce((acc, value) => acc += value);
-        output.values = histogram.map(item => Math.round((item / sum) * 100));
+        output.values = histogram.map(item => Math.round((item / sum) * 100) | 0);
         for(let i = 0; i < numBins; i++){
           output.scopes.push({
             start: Number((minValue + (binWidth * i)).toFixed(6)) || 0,

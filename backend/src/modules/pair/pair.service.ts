@@ -1,6 +1,6 @@
 import { CurrencyPair } from '../../interfaces/currency-pair';
 import { validateCode } from '../../common/currency-validator/currency-validator';
-import InvalidCurrencyError from '../../exceptions/invalid-currency.exception';
+import InvalidCurrencyException from '../../exceptions/invalid-currency.exception';
 import CurrencyRefreshService from '../currency-refresh/currency-refresh.service';
 import PairModel from './pair.model';
 import DateProcessor, { DateInfo } from '../../common/date-processor/date-processor';
@@ -9,11 +9,11 @@ import { pairTimeBreakpoints, timeBreakpoints } from '../../common/const';
 class PairService {
   static async getPairDate(codeOne: string, codeTwo: string, numBins: number): Promise<CurrencyPair[]> {
     if(!validateCode(codeOne)){
-      throw new InvalidCurrencyError(codeOne);
+      throw new InvalidCurrencyException(codeOne);
     }
 
     if(!validateCode(codeTwo)){
-      throw new InvalidCurrencyError(codeTwo);
+      throw new InvalidCurrencyException(codeTwo);
     }
     
     if(numBins < 1)

@@ -1,5 +1,5 @@
 import * as validator from "../../../common/currency-validator/currency-validator";
-import InvalidCurrencyError from "../../../exceptions/invalid-currency.exception";
+import InvalidCurrencyException from "../../../exceptions/invalid-currency.exception";
 import CurrencyRefreshService from "../../currency-refresh/currency-refresh.service";
 import AnalysisModel from "../analysis.model";
 import AnalysisService from "../analysis.service";
@@ -102,13 +102,13 @@ describe('AnalysisService', () => {
     expect(result[5]).toEqual(expectedOutput[5]);
   });
 
-  it('should throw InvalidCurrencyError if currency code is invalid', async () => {
+  it('should throw InvalidCurrencyException if currency code is invalid', async () => {
     const currencyCode = 'XYZ';
     jest.spyOn(CurrencyRefreshService, 'refreshCurrencyData').mockResolvedValue();
 
     jest.spyOn(validator, "validateCode").mockReturnValue(false);
 
-    await expect(AnalysisService.getAnalysis(currencyCode)).rejects.toThrow(InvalidCurrencyError);
+    await expect(AnalysisService.getAnalysis(currencyCode)).rejects.toThrow(InvalidCurrencyException);
     expect(CurrencyRefreshService.refreshCurrencyData).toHaveBeenCalled();
     expect(validator.validateCode).toHaveBeenCalledWith(currencyCode);
     expect(AnalysisModel.getAnalysisDesc).not.toHaveBeenCalled();

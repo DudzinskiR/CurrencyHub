@@ -1,4 +1,4 @@
-import InvalidCurrencyError from "../../exceptions/invalid-currency.exception";
+import InvalidCurrencyException from "../../exceptions/invalid-currency.exception";
 import table from "./currency-in-table";
 
 export const getTableByCode = (currencyCode: string): 'A' | 'B' => {
@@ -7,7 +7,7 @@ export const getTableByCode = (currencyCode: string): 'A' | 'B' => {
   } else if (table.B.includes(currencyCode)) {
     return 'B';
   } else {
-    throw new InvalidCurrencyError(currencyCode);
+    throw new InvalidCurrencyException(currencyCode);
   }
 }
 

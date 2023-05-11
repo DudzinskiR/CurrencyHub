@@ -1,4 +1,4 @@
-import InvalidCurrencyError from '../../exceptions/invalid-currency.exception';
+import InvalidCurrencyException from '../../exceptions/invalid-currency.exception';
 import { getTableByCode, validateCode } from './currency-validator';
 
 describe('CurrencyValidator', () => { 
@@ -12,8 +12,8 @@ describe('CurrencyValidator', () => {
     expect(getTableByCode('TOP')).toEqual('B');
   });
 
-  it('should throw InvalidCurrencyError when code is not found in any table', () => {
-    expect(() => getTableByCode('XYZ')).toThrow(InvalidCurrencyError);
+  it('should throw InvalidCurrencyException when code is not found in any table', () => {
+    expect(() => getTableByCode('XYZ')).toThrow(InvalidCurrencyException);
   });
 
   it('should return true if code is found in any table', () => {

@@ -1,7 +1,7 @@
 import AnalysisModel from './analysis.model';
 import CurrencyRefreshService from '../currency-refresh/currency-refresh.service';
 import { getTableByCode, validateCode } from '../../common/currency-validator/currency-validator';
-import InvalidCurrencyError from '../../exceptions/invalid-currency.exception';
+import InvalidCurrencyException from '../../exceptions/invalid-currency.exception';
 import { currencyAnalysis } from '../../interfaces/currency-analysis';
 import DateProcessor, { DateInfo } from '../../common/date-processor/date-processor';
 import { timeBreakpoints } from '../../common/const';
@@ -11,7 +11,7 @@ class AnalysisService {
     await CurrencyRefreshService.refreshCurrencyData(currencyCode);
 
     if(!validateCode(currencyCode)){
-      throw new InvalidCurrencyError(currencyCode);
+      throw new InvalidCurrencyException(currencyCode);
     }
 
     const data = await AnalysisModel.getAnalysisDesc(currencyCode)

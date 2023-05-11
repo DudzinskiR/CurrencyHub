@@ -1,6 +1,6 @@
 import { pairTimeBreakpoints } from "../../../common/const";
 import * as validator from "../../../common/currency-validator/currency-validator";
-import InvalidCurrencyError from "../../../exceptions/invalid-currency.exception";
+import InvalidCurrencyException from "../../../exceptions/invalid-currency.exception";
 import { CurrencyPair } from "../../../interfaces/currency-pair";
 import { CurrencyPairData } from "../../../interfaces/currency-pair-data";
 import CurrencyRefreshService from "../../currency-refresh/currency-refresh.service";
@@ -17,7 +17,7 @@ describe('Pair Service', () => {
     jest.clearAllMocks();
   });
 
-  it('should throw InvalidCurrencyError if codeOne is invalid', async () => {
+  it('should throw InvalidCurrencyException if codeOne is invalid', async () => {
     const mockCodeOne = 'XYZ';
     const mockCodeTwo = 'USD';
     const mockNumBins = 5;
@@ -26,12 +26,12 @@ describe('Pair Service', () => {
     jest.spyOn(CurrencyRefreshService, 'refreshCurrencyData').mockResolvedValue();
     jest.spyOn(PairModel, 'getCurrencyDataDesc').mockResolvedValue([]);
 
-    await expect(PairService.getPairDate(mockCodeOne, mockCodeTwo, mockNumBins)).rejects.toThrow(InvalidCurrencyError);
+    await expect(PairService.getPairDate(mockCodeOne, mockCodeTwo, mockNumBins)).rejects.toThrow(InvalidCurrencyException);
     expect(CurrencyRefreshService.refreshCurrencyData).not.toHaveBeenCalled();
     expect(PairModel.getCurrencyDataDesc).not.toHaveBeenCalled();
   });
 
-  it('should throw InvalidCurrencyError if codeTwo is invalid', async () => {
+  it('should throw InvalidCurrencyException if codeTwo is invalid', async () => {
     const mockCodeOne = 'USD';
     const mockCodeTwo = 'XYZ';
     const mockNumBins = 5;
@@ -40,7 +40,7 @@ describe('Pair Service', () => {
     jest.spyOn(CurrencyRefreshService, 'refreshCurrencyData').mockResolvedValue();
     jest.spyOn(PairModel, 'getCurrencyDataDesc').mockResolvedValue([]);
 
-    await expect(PairService.getPairDate(mockCodeOne, mockCodeTwo, mockNumBins)).rejects.toThrow(InvalidCurrencyError);
+    await expect(PairService.getPairDate(mockCodeOne, mockCodeTwo, mockNumBins)).rejects.toThrow(InvalidCurrencyException);
     expect(CurrencyRefreshService.refreshCurrencyData).not.toHaveBeenCalled();
     expect(PairModel.getCurrencyDataDesc).not.toHaveBeenCalled();
   });

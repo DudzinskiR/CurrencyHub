@@ -1,4 +1,4 @@
-import "./TimePicker.scss"
+import "./time-picker.scss"
 
 interface props {
   labels: string[];

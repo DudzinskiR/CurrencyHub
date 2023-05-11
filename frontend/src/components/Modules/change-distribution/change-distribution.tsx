@@ -7,7 +7,7 @@ import { getData, options, timePeriodName } from './ChartOptions';
 import Loader from '../../loader/loader';
 import CurrencyPicker from '../../currency-picker/currency-picker';
 import Button from '../../button/button';
-import TimePicker from '../../TimePicker/TimePicker';
+import TimePicker from '../../time-picker/time-picker';
 import apiService from '../../../services/ApiService';
 import { CurrencyPairData } from '../../../models/CurrencyPairData';
 

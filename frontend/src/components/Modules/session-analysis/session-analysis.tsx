@@ -6,7 +6,7 @@ import Button from '../../button/button'
 import { Bar } from 'react-chartjs-2';
 import "chart.js/auto";
 import { getData, options, timePeriodName } from './chart-options'
-import TimePicker from '../../TimePicker/TimePicker'
+import TimePicker from '../../time-picker/time-picker'
 import apiService from '../../../services/ApiService'
 import Loader from '../../loader/loader'
 import { CurrencyAnalysisData } from '../../../models/CurrencyAnalysisData'

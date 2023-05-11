@@ -1,5 +1,5 @@
 import { render, fireEvent, screen } from '@testing-library/react';
-import TimePicker from './TimePicker';
+import TimePicker from './time-picker';
 
 const mockLabels = ['Label1', 'Label2', 'Label3'];
 const mockValue = 1;

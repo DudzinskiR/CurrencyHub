@@ -1,5 +1,5 @@
 import express from "express";
-import analysis from "./analysis"
+import analysis from "./session-analysis"
 import StatisticsController from "../modules/statistics/statistics.controller";
 const router = express.Router();
 

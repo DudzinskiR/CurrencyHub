@@ -1,11 +1,10 @@
 import db from "../../../db/db";
 import DatabaseError from "../../../exceptions/database-error.exception";
-import { CurrencyAnalysisData } from "../../../interfaces/currency-analysis-data";
 import { CurrencyRate } from "../../../interfaces/currency-rate";
 import CurrencyRefreshModel from "../../currency-refresh/currency-refresh.model";
-import AnalysisModel from "../analysis.model";
+import SessionAnalysisModel from "../session-analysis.model";
 
-describe('s', () => {
+describe('Session Analysis Model', () => {
 
   beforeEach(async () => {
     await db.migrate.down();
@@ -22,7 +21,7 @@ describe('s', () => {
 
     await CurrencyRefreshModel.createNewRates(rateData);
 
-    const response: CurrencyAnalysisData[] = await AnalysisModel.getAnalysisDesc(currencyCode);
+    const response: CurrencyRate[] = await SessionAnalysisModel.getSessionAnalysisDesc(currencyCode);
     for(const index in response){
       expect({time: response[index].time, value: response[index].value}).toEqual({time: rateData[index].time.getTime(), value: rateData[index].value});
     }
@@ -41,6 +40,6 @@ describe('s', () => {
 
     await db.migrate.down();
 
-    await expect(AnalysisModel.getAnalysisDesc(currencyCode)).rejects.toThrow(DatabaseError);
+    await expect(SessionAnalysisModel.getSessionAnalysisDesc(currencyCode)).rejects.toThrow(DatabaseError);
   });
 })

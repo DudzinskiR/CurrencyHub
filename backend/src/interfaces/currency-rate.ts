@@ -1,5 +1,5 @@
 export interface CurrencyRate {
-  code: string,
+  code?: string,
   time: Date,
   value: number
 }

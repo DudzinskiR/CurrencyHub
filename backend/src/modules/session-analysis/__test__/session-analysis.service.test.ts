@@ -1,12 +1,12 @@
 import * as validator from "../../../common/currency-validator/currency-validator";
-import InvalidCurrencyError from "../../../exceptions/invalid-currency.exception";
+import InvalidCurrencyException from "../../../exceptions/invalid-currency.exception";
 import CurrencyRefreshService from "../../currency-refresh/currency-refresh.service";
-import AnalysisModel from "../analysis.model";
-import AnalysisService from "../analysis.service";
+import SessionAnalysisModel from "../session-analysis.model";
+import SessionAnalysisService from "../session-analysis.service";
 
 jest.mock("../../currency-refresh/currency-refresh.service");
 
-describe('AnalysisService', () => {
+describe('Session Analysis Service', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   })
@@ -34,13 +34,13 @@ describe('AnalysisService', () => {
     ];
 
     jest.spyOn(CurrencyRefreshService, 'refreshCurrencyData').mockResolvedValue();
-    jest.spyOn(AnalysisModel, 'getAnalysisDesc').mockResolvedValue(analysisData);
+    jest.spyOn(SessionAnalysisModel, 'getSessionAnalysisDesc').mockResolvedValue(analysisData);
     jest.spyOn(validator, "validateCode").mockReturnValue(true);
-    const result = await AnalysisService.getAnalysis(currencyCode);
+    const result = await SessionAnalysisService.getSessionAnalysis(currencyCode);
 
     expect(CurrencyRefreshService.refreshCurrencyData).toHaveBeenCalledWith(currencyCode);
     expect(validator.validateCode).toHaveBeenCalledWith(currencyCode);
-    expect(AnalysisModel.getAnalysisDesc).toHaveBeenCalledWith(currencyCode);
+    expect(SessionAnalysisModel.getSessionAnalysisDesc).toHaveBeenCalledWith(currencyCode);
 
     expect(result).toEqual(expectedOutput);
   });
@@ -85,14 +85,14 @@ describe('AnalysisService', () => {
     ];
 
     jest.spyOn(CurrencyRefreshService, 'refreshCurrencyData').mockResolvedValue();
-    jest.spyOn(AnalysisModel, 'getAnalysisDesc').mockResolvedValue(analysisData);
+    jest.spyOn(SessionAnalysisModel, 'getSessionAnalysisDesc').mockResolvedValue(analysisData);
     jest.spyOn(validator, "validateCode").mockReturnValue(true);
 
-    const result = await AnalysisService.getAnalysis(currencyCode);
+    const result = await SessionAnalysisService.getSessionAnalysis(currencyCode);
 
     expect(CurrencyRefreshService.refreshCurrencyData).toHaveBeenCalledWith(currencyCode);
     expect(validator.validateCode).toHaveBeenCalledWith(currencyCode);
-    expect(AnalysisModel.getAnalysisDesc).toHaveBeenCalledWith(currencyCode);
+    expect(SessionAnalysisModel.getSessionAnalysisDesc).toHaveBeenCalledWith(currencyCode);
 
     expect(result[0]).toEqual(expectedOutput[0]);
     expect(result[1]).toEqual(expectedOutput[1]);
@@ -102,15 +102,15 @@ describe('AnalysisService', () => {
     expect(result[5]).toEqual(expectedOutput[5]);
   });
 
-  it('should throw InvalidCurrencyError if currency code is invalid', async () => {
+  it('should throw InvalidCurrencyException if currency code is invalid', async () => {
     const currencyCode = 'XYZ';
     jest.spyOn(CurrencyRefreshService, 'refreshCurrencyData').mockResolvedValue();
 
     jest.spyOn(validator, "validateCode").mockReturnValue(false);
 
-    await expect(AnalysisService.getAnalysis(currencyCode)).rejects.toThrow(InvalidCurrencyError);
+    await expect(SessionAnalysisService.getSessionAnalysis(currencyCode)).rejects.toThrow(InvalidCurrencyException);
     expect(CurrencyRefreshService.refreshCurrencyData).toHaveBeenCalled();
     expect(validator.validateCode).toHaveBeenCalledWith(currencyCode);
-    expect(AnalysisModel.getAnalysisDesc).not.toHaveBeenCalled();
+    expect(SessionAnalysisModel.getSessionAnalysisDesc).not.toHaveBeenCalled();
   })
 })

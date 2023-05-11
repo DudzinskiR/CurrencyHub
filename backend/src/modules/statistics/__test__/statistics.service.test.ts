@@ -1,11 +1,9 @@
 import * as validator from "../../../common/currency-validator/currency-validator";
-import * as timeBreakpoints from "../../../common/const"
-import { CurrencyStatistic } from "../../../interfaces/currency-statistics";
-import { CurrencyStatisticsData } from "../../../interfaces/currency-statistics-data";
+import { Statistic } from "../statistics.interface";
 import CurrencyRefreshService from "../../currency-refresh/currency-refresh.service";
 import StatisticsModel from "../statistics.model";
 import StatisticsService from "../statistics.service";
-import InvalidCurrencyError from "../../../exceptions/invalid-currency.exception";
+import InvalidCurrencyException from "../../../exceptions/invalid-currency.exception";
 
 describe('StatisticsService', () => {
   beforeEach(() => {
@@ -21,7 +19,7 @@ describe('StatisticsService', () => {
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 2), value: 30},
     ];
 
-    const expectStatistics: CurrencyStatistic[] = [
+    const expectStatistics: Statistic[] = [
       {median: 0, dominant: [], deviation: 0, variation: 0},
       {median: 0, dominant: [], deviation: 0, variation: 0},
       {median: 0, dominant: [], deviation: 0, variation: 0},
@@ -51,7 +49,7 @@ describe('StatisticsService', () => {
     }
   });
 
-  it('should throw InvalidCurrencyError if currency code is invalid', async () => {
+  it('should throw InvalidCurrencyException if currency code is invalid', async () => {
     const currencyCode = 'XYZ';
     const today = new Date();
     const statisticsData = [
@@ -64,7 +62,7 @@ describe('StatisticsService', () => {
     jest.spyOn(StatisticsModel, 'getStatisticsDesc').mockResolvedValue(statisticsData);
     jest.spyOn(validator, "validateCode").mockReturnValue(false);
 
-    await expect(StatisticsService.getStatistics(currencyCode)).rejects.toThrow(InvalidCurrencyError);
+    await expect(StatisticsService.getStatistics(currencyCode)).rejects.toThrow(InvalidCurrencyException);
     expect(CurrencyRefreshService.refreshCurrencyData).not.toHaveBeenCalled();
     expect(StatisticsModel.getStatisticsDesc).not.toHaveBeenCalled();
   })

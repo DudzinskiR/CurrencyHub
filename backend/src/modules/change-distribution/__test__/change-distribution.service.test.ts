@@ -1,48 +1,47 @@
-import { pairTimeBreakpoints } from "../../../common/const";
 import * as validator from "../../../common/currency-validator/currency-validator";
-import InvalidCurrencyError from "../../../exceptions/invalid-currency.exception";
-import { CurrencyPair } from "../../../interfaces/currency-pair";
-import { CurrencyPairData } from "../../../interfaces/currency-pair-data";
+import InvalidCurrencyException from "../../../exceptions/invalid-currency.exception";
+import { ChangeDistribution } from "../change-distribution.interface";
 import CurrencyRefreshService from "../../currency-refresh/currency-refresh.service";
-import PairModel from "../pair.model";
-import PairService from "../pair.service";
+import ChangeDistributionModel from "../change-distribution.model";
+import ChangeDistributionService from "../change-distribution.service";
+import { CurrencyRate } from "../../../interfaces/currency-rate";
 
 jest.mock("../../../common/const", () => ({
   __esModule: true,
   pairTimeBreakpoints: [7, 9999]
 }))
 
-describe('Pair Service', () => {
+describe('Change Distribution Service', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  it('should throw InvalidCurrencyError if codeOne is invalid', async () => {
+  it('should throw InvalidCurrencyException if codeOne is invalid', async () => {
     const mockCodeOne = 'XYZ';
     const mockCodeTwo = 'USD';
     const mockNumBins = 5;
 
     jest.spyOn(validator, "validateCode").mockReturnValue(false);
     jest.spyOn(CurrencyRefreshService, 'refreshCurrencyData').mockResolvedValue();
-    jest.spyOn(PairModel, 'getCurrencyDataDesc').mockResolvedValue([]);
+    jest.spyOn(ChangeDistributionModel, 'getCurrencyDataDesc').mockResolvedValue([]);
 
-    await expect(PairService.getPairDate(mockCodeOne, mockCodeTwo, mockNumBins)).rejects.toThrow(InvalidCurrencyError);
+    await expect(ChangeDistributionService.getChangeDistribution(mockCodeOne, mockCodeTwo, mockNumBins)).rejects.toThrow(InvalidCurrencyException);
     expect(CurrencyRefreshService.refreshCurrencyData).not.toHaveBeenCalled();
-    expect(PairModel.getCurrencyDataDesc).not.toHaveBeenCalled();
+    expect(ChangeDistributionModel.getCurrencyDataDesc).not.toHaveBeenCalled();
   });
 
-  it('should throw InvalidCurrencyError if codeTwo is invalid', async () => {
+  it('should throw InvalidCurrencyException if codeTwo is invalid', async () => {
     const mockCodeOne = 'USD';
     const mockCodeTwo = 'XYZ';
     const mockNumBins = 5;
 
     jest.spyOn(validator, "validateCode").mockReturnValueOnce(true).mockReturnValueOnce(false);
     jest.spyOn(CurrencyRefreshService, 'refreshCurrencyData').mockResolvedValue();
-    jest.spyOn(PairModel, 'getCurrencyDataDesc').mockResolvedValue([]);
+    jest.spyOn(ChangeDistributionModel, 'getCurrencyDataDesc').mockResolvedValue([]);
 
-    await expect(PairService.getPairDate(mockCodeOne, mockCodeTwo, mockNumBins)).rejects.toThrow(InvalidCurrencyError);
+    await expect(ChangeDistributionService.getChangeDistribution(mockCodeOne, mockCodeTwo, mockNumBins)).rejects.toThrow(InvalidCurrencyException);
     expect(CurrencyRefreshService.refreshCurrencyData).not.toHaveBeenCalled();
-    expect(PairModel.getCurrencyDataDesc).not.toHaveBeenCalled();
+    expect(ChangeDistributionModel.getCurrencyDataDesc).not.toHaveBeenCalled();
   });
 
   it('should refresh currency data, validate code, and return pair statistics',async () => {
@@ -51,7 +50,7 @@ describe('Pair Service', () => {
     const mockNumBins = 2;
     const today = new Date();
 
-    const currencyDataOne: CurrencyPairData[] = [
+    const currencyDataOne: CurrencyRate[] = [
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 2), value: 10},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 3), value: 11},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 4), value: 12},
@@ -61,7 +60,7 @@ describe('Pair Service', () => {
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 19), value: 15},
     ]
 
-    const currencyDataTwo: CurrencyPairData[] = [
+    const currencyDataTwo: CurrencyRate[] = [
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 2), value: 20},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 3), value: 21},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 4), value: 22},
@@ -71,7 +70,7 @@ describe('Pair Service', () => {
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 19), value: 25},
     ]
 
-    const expectedResult: CurrencyPair[] = [
+    const expectedResult: ChangeDistribution[] = [
       {
         scopes: [{ start: -0.045455, end: -0.042569 }, { start: -0.042569, end: -0.039683 }],
         values: [1, 1]
@@ -84,10 +83,10 @@ describe('Pair Service', () => {
 
     jest.spyOn(validator, "validateCode").mockReturnValue(true);
     jest.spyOn(CurrencyRefreshService, 'refreshCurrencyData').mockResolvedValue();
-    jest.spyOn(PairModel, 'getCurrencyDataDesc').mockResolvedValueOnce(currencyDataOne).mockResolvedValueOnce(currencyDataTwo);
+    jest.spyOn(ChangeDistributionModel, 'getCurrencyDataDesc').mockResolvedValueOnce(currencyDataOne).mockResolvedValueOnce(currencyDataTwo);
 
 
-    const result = await PairService.getPairDate(mockCodeOne, mockCodeTwo, mockNumBins);
+    const result = await ChangeDistributionService.getChangeDistribution(mockCodeOne, mockCodeTwo, mockNumBins);
 
     expect(CurrencyRefreshService.refreshCurrencyData).toHaveBeenCalledWith(mockCodeOne);
     expect(CurrencyRefreshService.refreshCurrencyData).toHaveBeenCalledWith(mockCodeTwo);
@@ -101,7 +100,7 @@ describe('Pair Service', () => {
     const mockNumBins = -5;
     const today = new Date();
 
-    const currencyDataOne: CurrencyPairData[] = [
+    const currencyDataOne: CurrencyRate[] = [
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 2), value: 10},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 3), value: 11},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 4), value: 12},
@@ -111,7 +110,7 @@ describe('Pair Service', () => {
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 19), value: 15},
     ]
 
-    const currencyDataTwo: CurrencyPairData[] = [
+    const currencyDataTwo: CurrencyRate[] = [
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 2), value: 20},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 3), value: 21},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 4), value: 22},
@@ -121,7 +120,7 @@ describe('Pair Service', () => {
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 19), value: 25},
     ]
 
-    const expectedResult: CurrencyPair[] = [
+    const expectedResult: ChangeDistribution[] = [
       {
         scopes: [{ start: -0.045455, end: -0.039683 }],
         values: [2]
@@ -134,10 +133,10 @@ describe('Pair Service', () => {
 
     jest.spyOn(validator, "validateCode").mockReturnValue(true);
     jest.spyOn(CurrencyRefreshService, 'refreshCurrencyData').mockResolvedValue();
-    jest.spyOn(PairModel, 'getCurrencyDataDesc').mockResolvedValueOnce(currencyDataOne).mockResolvedValueOnce(currencyDataTwo);
+    jest.spyOn(ChangeDistributionModel, 'getCurrencyDataDesc').mockResolvedValueOnce(currencyDataOne).mockResolvedValueOnce(currencyDataTwo);
 
 
-    const result = await PairService.getPairDate(mockCodeOne, mockCodeTwo, mockNumBins);
+    const result = await ChangeDistributionService.getChangeDistribution(mockCodeOne, mockCodeTwo, mockNumBins);
 
     expect(CurrencyRefreshService.refreshCurrencyData).toHaveBeenCalledWith(mockCodeOne);
     expect(CurrencyRefreshService.refreshCurrencyData).toHaveBeenCalledWith(mockCodeTwo);
@@ -152,7 +151,7 @@ describe('Pair Service', () => {
     const mockNumBins = 3;
     const today = new Date();
 
-    const currencyDataOne: CurrencyPairData[] = [
+    const currencyDataOne: CurrencyRate[] = [
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1), value: 10},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 2), value: 11},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 3), value: 12},
@@ -162,7 +161,7 @@ describe('Pair Service', () => {
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 6), value: 15},
     ]
 
-    const currencyDataTwo: CurrencyPairData[] = [
+    const currencyDataTwo: CurrencyRate[] = [
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 11), value: 20},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 12), value: 21},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 13), value: 22},
@@ -172,7 +171,7 @@ describe('Pair Service', () => {
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 16), value: 25},
     ]
 
-    const expectedResult: CurrencyPair[] = [
+    const expectedResult: ChangeDistribution[] = [
       {
         scopes: [{start: 0, end: 0}, {start: 0, end: 0}, {start: 0, end: 0}],
         values: [0, 0, 0]
@@ -185,10 +184,10 @@ describe('Pair Service', () => {
 
     jest.spyOn(validator, "validateCode").mockReturnValue(true);
     jest.spyOn(CurrencyRefreshService, 'refreshCurrencyData').mockResolvedValue();
-    jest.spyOn(PairModel, 'getCurrencyDataDesc').mockResolvedValueOnce(currencyDataOne).mockResolvedValueOnce(currencyDataTwo);
+    jest.spyOn(ChangeDistributionModel, 'getCurrencyDataDesc').mockResolvedValueOnce(currencyDataOne).mockResolvedValueOnce(currencyDataTwo);
 
 
-    const result = await PairService.getPairDate(mockCodeOne, mockCodeTwo, mockNumBins);
+    const result = await ChangeDistributionService.getChangeDistribution(mockCodeOne, mockCodeTwo, mockNumBins);
 
     expect(CurrencyRefreshService.refreshCurrencyData).toHaveBeenCalledWith(mockCodeOne);
     expect(CurrencyRefreshService.refreshCurrencyData).toHaveBeenCalledWith(mockCodeTwo);

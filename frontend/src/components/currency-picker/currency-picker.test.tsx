@@ -6,7 +6,7 @@ describe("CurrencyPicker", () => {
 
   const onChange = jest.fn();
   const props = {
-    countryCode: 'CHF',
+    currencyCode: 'CHF',
     onChange,
   };
 

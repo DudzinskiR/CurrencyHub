@@ -68,9 +68,9 @@ const CurrencyPair = () => {
 
         <div className="currency-pair-picker-box">
           <div className="currency-pair-picker-title">Wybierz waluty</div>
-          <CurrencyPicker countryCode={currencyPair[0]} onChange={(c) => updateCurrencyPair(c, 0)} />
+          <CurrencyPicker currencyCode={currencyPair[0]} onChange={(c) => updateCurrencyPair(c, 0)} />
           <div className='currency-pair-picker-and'>-oraz-</div>
-          <CurrencyPicker countryCode={currencyPair[1]} onChange={(c) => updateCurrencyPair(c, 1)} />
+          <CurrencyPicker currencyCode={currencyPair[1]} onChange={(c) => updateCurrencyPair(c, 1)} />
           <Button text='Wybierz' onClick={() => setSelectedCurrencyPair(currencyPair)} />
         </div>
 

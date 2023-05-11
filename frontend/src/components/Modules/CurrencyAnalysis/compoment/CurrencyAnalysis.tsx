@@ -75,7 +75,7 @@ const CurrencyAnalysis = () => {
         <div className="currency-analysis-picker-box">
           <div className="currency-analysis-picker-title">Wybierz walute</div>
           <CurrencyPicker
-            countryCode={currencyCode}
+            currencyCode={currencyCode}
             onChange={(currency) => setCurrencyCode(currency)}
           />
           <Button text='Wybierz' onClick={() => setSelectedCurrencyCode(currencyCode)} />

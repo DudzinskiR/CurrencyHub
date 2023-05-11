@@ -5,11 +5,11 @@ import { Currency } from '../../util/CurrencyData'
 import { currencyData } from '../../util/CurrencyData'
 
 interface props {
-  countryCode?: string,
+  currencyCode?: string,
   onChange?: (currency: string) => void
 }
 
-const CurrencyPicker = (props: props) => {
+const CurrencyPicker = ({ currencyCode, onChange }: props) => {
 
   const [inputText, setInputText] = useState<string>("");
   const [selectedCurrency, setCurrency] = useState<Currency>();
@@ -36,8 +36,8 @@ const CurrencyPicker = (props: props) => {
     setCurrency(item);
     toggleList();
 
-    if (props.onChange)
-      props.onChange(item.CurrencyCode);
+    if (onChange)
+      onChange(item.CurrencyCode);
   }
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -72,10 +72,10 @@ const CurrencyPicker = (props: props) => {
 
   useEffect(() => {
     setFilteredCurrency(currencyData);
-    const newCurrency = findCurrencyDataByCode(props.countryCode);
+    const newCurrency = findCurrencyDataByCode(currencyCode);
 
     setCurrency(newCurrency || defaultCurrency)
-  }, [defaultCurrency, props.countryCode]);
+  }, [defaultCurrency, currencyCode]);
 
   useEffect(() => {
     const newCurrencyList = currencyData.filter(item => checkCurrency(inputText, item));

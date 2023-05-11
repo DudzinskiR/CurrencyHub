@@ -7,15 +7,15 @@ import CurrencyRefreshService from "../currency-refresh/currency-refresh.service
 import {calcStandardDeviation, calcDominant, calcMedian, calcCoefficientOfVariation} from './helper'
 import StatisticsModel from "./statistics.model";
 class StatisticsService {
-  static async getStatistics(currencyCode: string): Promise<Statistic[]>{
+  static async getStatistics(code: string): Promise<Statistic[]>{
     
-    if(!validateCode(currencyCode)){
-      throw new InvalidCurrencyException(currencyCode);
+    if(!validateCode(code)){
+      throw new InvalidCurrencyException(code);
     }
 
-    await CurrencyRefreshService.refreshCurrencyData(currencyCode);
+    await CurrencyRefreshService.refreshCurrencyData(code);
   
-    const data = await StatisticsModel.getStatisticsDesc(currencyCode);
+    const data = await StatisticsModel.getStatisticsDesc(code);
     
     const dates: DateInfo[] = [];
     data.forEach(item => {

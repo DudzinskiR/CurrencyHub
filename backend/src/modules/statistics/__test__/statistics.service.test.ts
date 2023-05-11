@@ -1,5 +1,4 @@
 import * as validator from "../../../common/currency-validator/currency-validator";
-import * as timeBreakpoints from "../../../common/const"
 import { Statistic } from "../statistics.interface";
 import CurrencyRefreshService from "../../currency-refresh/currency-refresh.service";
 import StatisticsModel from "../statistics.model";

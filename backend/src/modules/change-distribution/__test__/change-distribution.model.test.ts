@@ -1,10 +1,10 @@
 import db from "../../../db/db";
-import DatabaseError from "../../../exceptions/database-error.exception";
+import DatabaseException from "../../../exceptions/database-error.exception";
 import { CurrencyRate } from "../../../interfaces/currency-rate";
 import CurrencyRefreshModel from "../../currency-refresh/currency-refresh.model";
-import PairModel from "../change-distribution.model";
+import ChangeDistributionModel from "../change-distribution.model";
 
-describe("PairModel", () => {
+describe("Change Distribution Model", () => {
   beforeEach(async () => {
     await db.migrate.down();
     await db.migrate.latest();
@@ -22,7 +22,7 @@ describe("PairModel", () => {
 
     await CurrencyRefreshModel.createNewRates(mockData);
 
-    const response: CurrencyRate[] = await PairModel.getCurrencyDataDesc(mockCode);
+    const response: CurrencyRate[] = await ChangeDistributionModel.getCurrencyDataDesc(mockCode);
 
     for(const index in response){
       expect({time: response[index].time, value: response[index].value}).toEqual({time: mockData[index].time.getTime(), value: mockData[index].value});
@@ -42,6 +42,6 @@ describe("PairModel", () => {
 
     await db.migrate.down();
 
-    await expect(PairModel.getCurrencyDataDesc(currencyCode)).rejects.toThrow(DatabaseError);
+    await expect(ChangeDistributionModel.getCurrencyDataDesc(currencyCode)).rejects.toThrow(DatabaseException);
   });
 })

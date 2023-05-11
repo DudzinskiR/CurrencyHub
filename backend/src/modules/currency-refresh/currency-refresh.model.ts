@@ -1,12 +1,10 @@
-
-import knex from 'knex';
 import db from '../../db/db'
 import { CurrencyRefreshData } from '../../interfaces/currency-refresh';
 import { TABLE_NAME } from '../../common/table-name.enum';
 import { CurrencyRate } from '../../interfaces/currency-rate'
 import axios from 'axios';
-import ExternalError from '../../exceptions/external-error.exception';
-import DatabaseError from '../../exceptions/database-error.exception';
+import ExternalException from '../../exceptions/external-error.exception';
+import DatabaseException from '../../exceptions/database-error.exception';
 
 class CurrencyRefreshModel{
   static async getLastCurrencyRefresh(currencyCode: string): Promise<CurrencyRefreshData | undefined> {
@@ -14,7 +12,7 @@ class CurrencyRefreshModel{
       const res = await db(TABLE_NAME.CURRENCY_REFRESH).select('time').where('code', currencyCode);
       return res[0];
     } catch (e){
-      throw new DatabaseError();
+      throw new DatabaseException();
     }
   }
 
@@ -32,7 +30,7 @@ class CurrencyRefreshModel{
         })
       }
     } catch (err){
-      throw new ExternalError();
+      throw new ExternalException();
     }
     return rates;
   }
@@ -41,7 +39,7 @@ class CurrencyRefreshModel{
     try{
       await db(TABLE_NAME.CURRENCY_REFRESH).insert(data);
     } catch (e){
-      throw new DatabaseError();
+      throw new DatabaseException();
     }
   }
 
@@ -49,7 +47,7 @@ class CurrencyRefreshModel{
     try{
       await db(TABLE_NAME.CURRENCY_REFRESH).where({code: data.code}).update(data)
     } catch (e){
-      throw new DatabaseError();
+      throw new DatabaseException();
     }
   }
 
@@ -57,7 +55,7 @@ class CurrencyRefreshModel{
     try{
       await db(TABLE_NAME.CURRENCY_RATES).insert(rates);
     } catch (e){
-      throw new DatabaseError();
+      throw new DatabaseException();
     }
   }
 }

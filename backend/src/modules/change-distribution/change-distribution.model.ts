@@ -1,5 +1,5 @@
 import db from "../../db/db";
-import DatabaseError from "../../exceptions/database-error.exception";
+import DatabaseException from "../../exceptions/database-error.exception";
 import { TABLE_NAME } from "../../common/table-name.enum";
 import { CurrencyRate } from "../../interfaces/currency-rate";
 
@@ -13,7 +13,7 @@ class ChangeDistributionModel {
         .orderBy('time', 'desc');
       return res;
     } catch (e){
-      throw new DatabaseError();
+      throw new DatabaseException();
     }
   }
 }

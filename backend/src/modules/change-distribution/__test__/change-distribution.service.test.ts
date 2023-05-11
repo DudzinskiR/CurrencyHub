@@ -1,4 +1,3 @@
-import { pairTimeBreakpoints } from "../../../common/const";
 import * as validator from "../../../common/currency-validator/currency-validator";
 import InvalidCurrencyException from "../../../exceptions/invalid-currency.exception";
 import { ChangeDistribution } from "../change-distribution.interface";
@@ -12,7 +11,7 @@ jest.mock("../../../common/const", () => ({
   pairTimeBreakpoints: [7, 9999]
 }))
 
-describe('Pair Service', () => {
+describe('Change Distribution Service', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });

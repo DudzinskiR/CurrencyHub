@@ -4,9 +4,9 @@ import { DatePair } from "../../interfaces/currency-refresh";
 import CurrencyRefreshModel from "./currency-refresh.model";
 
 class CurrencyRefreshService {
-  static async refreshCurrencyData(currencyCode: string) {
-    const tableName = getTableByCode(currencyCode);
-    const res = await CurrencyRefreshModel.getLastCurrencyRefresh(currencyCode);
+  static async refreshCurrencyData(code: string) {
+    const tableName = getTableByCode(code);
+    const res = await CurrencyRefreshModel.getLastCurrencyRefresh(code);
 
     const startDate: Date = new Date();
     if(res) {
@@ -25,15 +25,15 @@ class CurrencyRefreshService {
 
     let rates: CurrencyRate[] = [];
     for(const item of dates){
-      const newRates = await CurrencyRefreshModel.fetchCurrencyRates(currencyCode, tableName, item.start, item.end);
+      const newRates = await CurrencyRefreshModel.fetchCurrencyRates(code, tableName, item.start, item.end);
       rates = [...rates, ...newRates];
     }
     await CurrencyRefreshModel.createNewRates(rates);
 
     if(!res) {
-      await CurrencyRefreshModel.createNewRefresh({code: currencyCode, time: new Date()});
+      await CurrencyRefreshModel.createNewRefresh({code: code, time: new Date()});
     } else {
-      await CurrencyRefreshModel.updateRefresh({code: currencyCode, time: new Date()});
+      await CurrencyRefreshModel.updateRefresh({code: code, time: new Date()});
     }
   }
 

@@ -1,4 +1,4 @@
-export interface CurrencyStatistic{
+export interface Statistic{
   median: number,
   dominant: number[],
   deviation: number,

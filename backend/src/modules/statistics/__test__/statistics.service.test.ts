@@ -1,6 +1,6 @@
 import * as validator from "../../../common/currency-validator/currency-validator";
 import * as timeBreakpoints from "../../../common/const"
-import { CurrencyStatistic } from "../../../interfaces/currency-statistics";
+import { Statistic } from "../statistics.interface";
 import { CurrencyStatisticsData } from "../../../interfaces/currency-statistics-data";
 import CurrencyRefreshService from "../../currency-refresh/currency-refresh.service";
 import StatisticsModel from "../statistics.model";
@@ -21,7 +21,7 @@ describe('StatisticsService', () => {
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 2), value: 30},
     ];
 
-    const expectStatistics: CurrencyStatistic[] = [
+    const expectStatistics: Statistic[] = [
       {median: 0, dominant: [], deviation: 0, variation: 0},
       {median: 0, dominant: [], deviation: 0, variation: 0},
       {median: 0, dominant: [], deviation: 0, variation: 0},

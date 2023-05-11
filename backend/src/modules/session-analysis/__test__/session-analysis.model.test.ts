@@ -1,6 +1,5 @@
 import db from "../../../db/db";
 import DatabaseError from "../../../exceptions/database-error.exception";
-import { CurrencyAnalysisData } from "../../../interfaces/currency-analysis-data";
 import { CurrencyRate } from "../../../interfaces/currency-rate";
 import CurrencyRefreshModel from "../../currency-refresh/currency-refresh.model";
 import SessionAnalysisModel from "../session-analysis.model";
@@ -22,7 +21,7 @@ describe('Session Analysis Model', () => {
 
     await CurrencyRefreshModel.createNewRates(rateData);
 
-    const response: CurrencyAnalysisData[] = await SessionAnalysisModel.getSessionAnalysisDesc(currencyCode);
+    const response: CurrencyRate[] = await SessionAnalysisModel.getSessionAnalysisDesc(currencyCode);
     for(const index in response){
       expect({time: response[index].time, value: response[index].value}).toEqual({time: rateData[index].time.getTime(), value: rateData[index].value});
     }

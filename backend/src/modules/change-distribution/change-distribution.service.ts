@@ -2,7 +2,7 @@ import { ChangeDistribution } from './change-distribution.interface';
 import { validateCode } from '../../common/currency-validator/currency-validator';
 import InvalidCurrencyException from '../../exceptions/invalid-currency.exception';
 import CurrencyRefreshService from '../currency-refresh/currency-refresh.service';
-import PairModel from './change-distribution.model';
+import ChangeDistributionModel from './change-distribution.model';
 import DateProcessor, { DateInfo } from '../../common/date-processor/date-processor';
 import { pairTimeBreakpoints } from '../../common/const';
 
@@ -22,8 +22,8 @@ class ChangeDistributionService {
     await CurrencyRefreshService.refreshCurrencyData(codeOne);
     await CurrencyRefreshService.refreshCurrencyData(codeTwo);
 
-    const currencyOne = await PairModel.getCurrencyDataDesc(codeOne);
-    const currencyTwo = await PairModel.getCurrencyDataDesc(codeTwo);
+    const currencyOne = await ChangeDistributionModel.getCurrencyDataDesc(codeOne);
+    const currencyTwo = await ChangeDistributionModel.getCurrencyDataDesc(codeTwo);
 
     const data: DateInfo[] = [];
     

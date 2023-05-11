@@ -2,10 +2,10 @@ import { pairTimeBreakpoints } from "../../../common/const";
 import * as validator from "../../../common/currency-validator/currency-validator";
 import InvalidCurrencyException from "../../../exceptions/invalid-currency.exception";
 import { ChangeDistribution } from "../change-distribution.interface";
-import { CurrencyPairData } from "../../../interfaces/currency-pair-data";
 import CurrencyRefreshService from "../../currency-refresh/currency-refresh.service";
 import ChangeDistributionModel from "../change-distribution.model";
 import ChangeDistributionService from "../change-distribution.service";
+import { CurrencyRate } from "../../../interfaces/currency-rate";
 
 jest.mock("../../../common/const", () => ({
   __esModule: true,
@@ -51,7 +51,7 @@ describe('Pair Service', () => {
     const mockNumBins = 2;
     const today = new Date();
 
-    const currencyDataOne: CurrencyPairData[] = [
+    const currencyDataOne: CurrencyRate[] = [
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 2), value: 10},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 3), value: 11},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 4), value: 12},
@@ -61,7 +61,7 @@ describe('Pair Service', () => {
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 19), value: 15},
     ]
 
-    const currencyDataTwo: CurrencyPairData[] = [
+    const currencyDataTwo: CurrencyRate[] = [
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 2), value: 20},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 3), value: 21},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 4), value: 22},
@@ -101,7 +101,7 @@ describe('Pair Service', () => {
     const mockNumBins = -5;
     const today = new Date();
 
-    const currencyDataOne: CurrencyPairData[] = [
+    const currencyDataOne: CurrencyRate[] = [
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 2), value: 10},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 3), value: 11},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 4), value: 12},
@@ -111,7 +111,7 @@ describe('Pair Service', () => {
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 19), value: 15},
     ]
 
-    const currencyDataTwo: CurrencyPairData[] = [
+    const currencyDataTwo: CurrencyRate[] = [
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 2), value: 20},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 3), value: 21},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 4), value: 22},
@@ -152,7 +152,7 @@ describe('Pair Service', () => {
     const mockNumBins = 3;
     const today = new Date();
 
-    const currencyDataOne: CurrencyPairData[] = [
+    const currencyDataOne: CurrencyRate[] = [
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1), value: 10},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 2), value: 11},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 3), value: 12},
@@ -162,7 +162,7 @@ describe('Pair Service', () => {
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 6), value: 15},
     ]
 
-    const currencyDataTwo: CurrencyPairData[] = [
+    const currencyDataTwo: CurrencyRate[] = [
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 11), value: 20},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 12), value: 21},
       {time: new Date(today.getFullYear(), today.getMonth(), today.getDate() - 13), value: 22},

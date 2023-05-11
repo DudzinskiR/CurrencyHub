@@ -1,7 +1,6 @@
 import db from "../../../db/db";
 import DatabaseError from "../../../exceptions/database-error.exception";
 import { CurrencyRate } from "../../../interfaces/currency-rate";
-import { CurrencyStatisticsData } from "../../../interfaces/currency-statistics-data";
 import CurrencyRefreshModel from "../../currency-refresh/currency-refresh.model";
 import StatisticsModel from "../statistics.model";
 
@@ -22,7 +21,7 @@ describe('StatisticsModel', () => {
 
     await CurrencyRefreshModel.createNewRates(rateData);
 
-    const response: CurrencyStatisticsData[] = await StatisticsModel.getStatisticsDesc(currencyCode);
+    const response: CurrencyRate[] = await StatisticsModel.getStatisticsDesc(currencyCode);
     for(const index in response){
       expect({time: response[index].time, value: response[index].value}).toEqual({time: rateData[index].time.getTime(), value: rateData[index].value});
     }

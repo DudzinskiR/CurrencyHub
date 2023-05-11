@@ -8,7 +8,7 @@ class ChangeDistributionModel {
     try {  
       const today = new Date();
       const res: CurrencyRate[] = await db(TABLE_NAME.CURRENCY_RATES)
-        .select("time").select("value")
+        .select("time").select("value").distinct()
         .where({code: code}).where("time", ">", new Date(today.getFullYear(), today.getMonth() - 3, today.getDate()))
         .orderBy('time', 'desc');
       return res;

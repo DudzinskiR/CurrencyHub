@@ -13,7 +13,7 @@ app.get('/', (req: Request, res: Response) => {
     res.send('API running 🥳')
 })
 
-const PORT: Number = Number(process.env.PORT) || 3000
+const PORT: Number = Number(process.env.PORT) || 8080
 const server: Server = app.listen(PORT, () => {
     console.log(`Express started on port ${PORT} :)`);
 });

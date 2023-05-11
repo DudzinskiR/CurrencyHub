@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import "./currency-picker.scss"
 import CountryFlag from '../country-flag/country-flag'
-import { Currency } from '../../util/CurrencyData'
-import { currencyData } from '../../util/CurrencyData'
+import { Currency } from '../../util/currency-data'
+import { currencyData } from '../../util/currency-data'
 
 interface props {
   currencyCode?: string,

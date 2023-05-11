@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import CountryFlag from './CountryFlag';
+import CountryFlag from './country-flag';
 
 describe('CountryFlag', () => {
   it('should renders with default props', () => {

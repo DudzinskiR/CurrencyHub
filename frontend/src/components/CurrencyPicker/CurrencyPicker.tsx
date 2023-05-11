@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./CurrencyPicker.scss"
-import CountryFlag from '../CountryFlag/CountryFlag'
+import CountryFlag from '../country-flag/country-flag'
 import { Currency } from '../../util/CurrencyData'
 import { currencyData } from '../../util/CurrencyData'
 

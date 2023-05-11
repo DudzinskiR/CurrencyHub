@@ -38,6 +38,10 @@ class CurrencyRefreshService {
   }
 
   static isOutdated(time: Date): boolean {
+    if(time.toDateString() === new Date().toDateString()){
+      return false;
+    }
+
     return time.getTime() - new Date().getTime() < 0;
   }
 

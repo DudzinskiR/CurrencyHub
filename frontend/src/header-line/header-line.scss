@@ -1,0 +1,37 @@
+.header-component{
+    display: flex;
+    align-items: center;
+
+    $gradient-from: rgba(0,0,0,0);
+    $gradient-to: rgb(200, 200, 200);
+    $line-height: 2px;
+
+    .left-line {
+        width: 100%;
+        height: $line-height;
+        background-image: linear-gradient(90deg, $gradient-from, $gradient-to);
+    }
+
+    .right-line {
+        width: 100%;
+        height: $line-height;
+        
+        background-image: linear-gradient(90deg, $gradient-to, $gradient-from);
+    }
+
+    .header-text{
+        margin-left: 15px;
+        margin-right: 15px;
+        font-size: 24px;
+        text-align: center;
+        color: rgb(50, 50, 50);
+        white-space: nowrap;
+
+    }
+
+    .single-line{
+        width: 100%;
+        height: $line-height;
+        background-image: linear-gradient(90deg, $gradient-from, $gradient-to, $gradient-from);
+    }
+}

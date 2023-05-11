@@ -1,0 +1,55 @@
+.time-picker-box{
+
+  $color: #3B82F6;
+
+  display: flex; 
+  width: 100%;
+  overflow: auto; 
+  overflow-y: hidden;
+
+  @media (min-width: 640px) { 
+    justify-content: center; 
+  }
+
+  .time-picker-button{
+    border: 2px solid $color;
+    border-left: 0px;
+    background-color: transparent;
+    cursor: pointer;
+    user-select: none;
+
+    &.selected{
+      background-color: $color;
+
+      .time-picker-button-name{
+        color: #fff;
+      }
+
+      &:hover{
+        background-color: $color;
+      }
+    }
+
+    &:hover{
+      background-color: #1a1d2910;
+    }
+
+    &:first-child{
+      border-left: 2px solid $color;
+      border-top-left-radius: 0.5rem;
+      border-bottom-left-radius: 0.5rem;
+    }
+
+    &:last-child{
+      border-right: 2px solid $color;
+      border-top-right-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
+    }
+
+    .time-picker-button-name{
+      padding: 5px;
+      font-weight: 600;
+      color: $color;
+    }
+  }
+}

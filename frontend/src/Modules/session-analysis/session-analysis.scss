@@ -1,0 +1,53 @@
+.currency-analysis-box{
+  
+  .currency-analysis-content{
+    display: grid; 
+    gap: 20px;
+    grid-template-columns: repeat(1, minmax(0, 1fr)); 
+    margin-top: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    @media (min-width: 1024px) { 
+      grid-template-columns: repeat(3, minmax(0, 1fr)); 
+    }
+
+    .currency-analysis-chart-box{
+      background-color: #ffffff; 
+      border-radius: 10px; 
+      grid-column: span 1 / span 1; 
+      box-shadow: -2px 2px 8px -4px rgba(66, 68, 90, 1);
+      padding: 20px;
+      padding-bottom: 50px;  
+      height: 350px;
+      @media (min-width: 1024px) { 
+        grid-column: span 2 / span 2; 
+        grid-row-start: 1; 
+      }
+    }
+
+    .currency-analysis-picker-box{
+      display: flex; 
+      flex-direction: column;
+      align-items: center;
+      grid-row-start: 1; 
+      background-color: #ffffff; 
+      box-shadow: -2px 2px 8px -4px rgba(66, 68, 90, 1);
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      padding-top: 20px;
+      border-radius: 10px;
+      height: 200px;
+      
+      .currency-analysis-picker-title{
+        font-size: 1.125rem;
+        line-height: 1.75rem; 
+        margin-bottom: 20px;
+      }
+      
+      
+      @media (min-width: 1024px) { 
+      }
+    }
+  }
+}

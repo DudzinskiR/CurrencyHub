@@ -6,11 +6,11 @@ interface props {
   onClick?: () => void
 }
 
-const Button = (props: props) => {
+const Button = ({ text, onClick }: props) => {
   return (
-    <button className='button-box' onClick={props.onClick}>
+    <button className='button-box' onClick={onClick}>
       <div className="button-text">
-        {props.text}
+        {text}
       </div>
     </button>
   )

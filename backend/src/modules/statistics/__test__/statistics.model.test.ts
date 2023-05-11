@@ -13,10 +13,11 @@ describe('StatisticsModel', () => {
 
   it('should create and retrieve currency rates for USD', async () => {
     const currencyCode = 'USD';
+    const today = new Date();
     const rateData: CurrencyRate[] = [
-      { code: currencyCode, time: new Date(), value: 5 },
-      { code: currencyCode, time: new Date(), value: 4 },
-      { code: currencyCode, time: new Date(), value: 6 },
+      { code: currencyCode, time: today, value: 5 },
+      { code: currencyCode, time: today, value: 4 },
+      { code: currencyCode, time: today, value: 6 },
     ]
 
     await CurrencyRefreshModel.createNewRates(rateData);
@@ -30,10 +31,11 @@ describe('StatisticsModel', () => {
   it('should throw an database error when database is off',async () => {
     
     const currencyCode = 'USD';
+    const today = new Date();
     const rateData: CurrencyRate[] = [
-      { code: currencyCode, time: new Date(), value: 5 },
-      { code: currencyCode, time: new Date(), value: 4 },
-      { code: currencyCode, time: new Date(), value: 6 },
+      { code: currencyCode, time: today, value: 5 },
+      { code: currencyCode, time: today, value: 4 },
+      { code: currencyCode, time: today, value: 6 },
     ]
 
     await CurrencyRefreshModel.createNewRates(rateData);

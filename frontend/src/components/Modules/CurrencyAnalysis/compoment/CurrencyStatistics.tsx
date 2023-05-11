@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./CurrencyStatistics.scss"
-import Loader from '../../../Loader/Loader'
+import Loader from '../../../loader/loader'
 import apiService from '../../../../services/ApiService'
 import { CurrencyStatisticData } from '../../../../models/CurrencyStatisticsData'
 interface props {

@@ -1,5 +1,5 @@
 import React from 'react'
-import "./HeaderBar.scss"
+import "./header-bar.scss"
 
 const HeaderBar = () => {
   return (

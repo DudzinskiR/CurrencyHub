@@ -3,8 +3,8 @@ import "./Home.scss"
 
 import CurrencyAnalysis from '../../components/Modules/CurrencyAnalysis/compoment/CurrencyAnalysis'
 import CurrencyPair from '../../components/Modules/CurrencyPair/CurrencyPair'
-import HeaderBar from '../../components/HeaderBar/HeaderBar'
-import Footer from '../../components/Footer/Footer'
+import HeaderBar from '../../components/header-bar/header-bar'
+import Footer from '../../components/footer/footer'
 
 const Home = () => {
   return (

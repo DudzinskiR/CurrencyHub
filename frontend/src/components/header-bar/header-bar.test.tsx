@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import HeaderBar from "./HeaderBar"
+import HeaderBar from "./header-bar"
 
 describe('HeaderBar', () => {
   it('should render header bar with text', () => {

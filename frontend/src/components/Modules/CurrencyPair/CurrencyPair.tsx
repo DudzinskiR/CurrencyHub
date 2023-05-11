@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import "./CurrencyPair.scss"
 import { Bar } from 'react-chartjs-2';
 import "chart.js/auto";
-import Header from '../../HeaderLine/HeaderLine'
+import Header from '../../header-line/header-line'
 import { getData, options, timePeriodName } from './ChartOptions';
-import Loader from '../../Loader/Loader';
+import Loader from '../../loader/loader';
 import CurrencyPicker from '../../currency-picker/currency-picker';
 import Button from '../../button/button';
 import TimePicker from '../../TimePicker/TimePicker';

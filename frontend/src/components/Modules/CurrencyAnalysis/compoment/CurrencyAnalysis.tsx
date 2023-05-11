@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./CurrencyAnalysis.scss"
-import Header from '../../../HeaderLine/HeaderLine'
+import Header from '../../../header-line/header-line'
 import CurrencyPicker from '../../../currency-picker/currency-picker'
 import Button from '../../../button/button'
 import { Bar } from 'react-chartjs-2';
@@ -8,7 +8,7 @@ import "chart.js/auto";
 import { getData, options, timePeriodName } from '../ChartOptions'
 import TimePicker from '../../../TimePicker/TimePicker'
 import apiService from '../../../../services/ApiService'
-import Loader from '../../../Loader/Loader'
+import Loader from '../../../loader/loader'
 import { CurrencyAnalysisData } from '../../../../models/CurrencyAnalysisData'
 import CurrencyStatistics from './CurrencyStatistics'
 

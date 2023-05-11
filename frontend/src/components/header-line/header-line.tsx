@@ -1,10 +1,10 @@
 import React from 'react'
-import "./HeaderLine.scss"
+import "./header-line.scss"
 
 interface props {
   text?: string
 }
-const Header = ({text}: props) => {
+const Header = ({ text }: props) => {
   return (
     <div className="header-component">
       {text && <>

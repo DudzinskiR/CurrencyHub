@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Footer.scss"
+import "./footer.scss"
 import gitHubLogo from './icon/github.png'
 import reactLogo from './icon/react.png'
 import typeScriptLogo from './icon/typescript.png'

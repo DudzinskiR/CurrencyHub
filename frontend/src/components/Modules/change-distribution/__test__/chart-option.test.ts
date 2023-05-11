@@ -1,4 +1,4 @@
-import { getData, options } from '../ChartOptions';
+import { getData, options } from '../chart-options';
 
 describe('getData', () => {
   it('should return correct data for given input', () => {

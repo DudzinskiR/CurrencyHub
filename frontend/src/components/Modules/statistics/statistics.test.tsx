@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import Statistics from './statistics';
 import apiService from '../../../services/ApiService';
+import { StatisticData } from '../../../models/statistics.interface';
 
 jest.mock('../../../services/ApiService', () => ({
   currencyStatistics: jest.fn(),
@@ -11,18 +12,18 @@ describe('Statistics', () => {
 
   const mockCurrencyCode = 'USD';
   const mockSelectedTime = 0;
-  const mockCurrencyStatistics = [
+  const mockCurrencyStatistics: StatisticData[] = [
     {
       median: 10.5,
       dominant: [10, 11, 12],
-      standardDeviation: 2.5,
-      coefficientOfVariantion: 0.24,
+      deviation: 2.5,
+      variation: 0.24,
     },
     {
       median: 9.8,
       dominant: [9, 10, 11],
-      standardDeviation: 1.2,
-      coefficientOfVariantion: 0.12,
+      deviation: 1.2,
+      variation: 0.12,
     },
   ];
 

@@ -9,13 +9,13 @@ import { getData, options, timePeriodName } from './chart-options'
 import TimePicker from '../../time-picker/time-picker'
 import apiService from '../../../services/ApiService'
 import Loader from '../../loader/loader'
-import { CurrencyAnalysisData } from '../../../models/CurrencyAnalysisData'
+import { SessionAnalysisData } from '../../../models/session-analysis.interface'
 import CurrencyStatistics from '../statistics/statistics'
 
 const SessionAnalysis = () => {
 
-  const [currencyAnalysisData, setCurrencyAnalysis] = useState<CurrencyAnalysisData[]>([]);
-  const [selectedCurrencyAnalysisData, setSelectedCurrencyAnalysisData] = useState<number[]>([])
+  const [SessionAnalysisData, setCurrencyAnalysis] = useState<SessionAnalysisData[]>([]);
+  const [selectedSessionAnalysisData, setSelectedSessionAnalysisData] = useState<number[]>([])
 
   const [currencyCode, setCurrencyCode] = useState<string>("USD");
   const [selectedCurrencyCode, setSelectedCurrencyCode] = useState<string>("USD");
@@ -25,17 +25,17 @@ const SessionAnalysis = () => {
   const [isError, setError] = useState<boolean>(false);
 
   useEffect(() => {
-    if (selectedTime <= currencyAnalysisData?.length - 1) {
+    if (selectedTime <= SessionAnalysisData?.length - 1) {
       const newData = [];
 
-      newData.push(currencyAnalysisData[selectedTime]?.countDown)
-      newData.push(currencyAnalysisData[selectedTime]?.countConst)
-      newData.push(currencyAnalysisData[selectedTime]?.countUp)
+      newData.push(SessionAnalysisData[selectedTime]?.down)
+      newData.push(SessionAnalysisData[selectedTime]?.const)
+      newData.push(SessionAnalysisData[selectedTime]?.up)
 
-      setSelectedCurrencyAnalysisData(newData)
+      setSelectedSessionAnalysisData(newData)
     }
 
-  }, [currencyAnalysisData, selectedTime]);
+  }, [SessionAnalysisData, selectedTime]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,7 +66,7 @@ const SessionAnalysis = () => {
               value={selectedTime}
               onChange={(value) => setSelectedTime(value)}
             />
-            <Bar options={options} data={getData(selectedCurrencyAnalysisData)} />
+            <Bar options={options} data={getData(selectedSessionAnalysisData)} />
 
           </Loader>
         </div>

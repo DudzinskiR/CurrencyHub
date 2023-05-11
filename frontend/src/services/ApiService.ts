@@ -1,10 +1,10 @@
-import { CurrencyAnalysisData } from '../models/CurrencyAnalysisData';
-import { CurrencyPairData } from '../models/CurrencyPairData';
-import { CurrencyStatisticData } from '../models/CurrencyStatisticsData';
+import { SessionAnalysisData } from '../models/session-analysis.interface';
+import { ChangeDistributionData } from '../models/change-distribution.interface';
+import { StatisticData } from '../models/statistics.interface';
 
 class ApiService {
 
-  async currencyPair(firstCurrencyCode: string, secondCurrencyCode: string): Promise<CurrencyPairData[]>{
+  async currencyPair(firstCurrencyCode: string, secondCurrencyCode: string): Promise<ChangeDistributionData[]>{
     await new Promise(r => setTimeout(r, 1000 + Math.random() * 2000));
 
     if(Math.random() * 10 > 8){
@@ -16,27 +16,26 @@ class ApiService {
 
     return [
       {
-        time: 30,
         scopes: [
           {
-            startScope: (temp * -1),
-            endScope: (temp * -1) + (temp * 0.4),
+            start: (temp * -1),
+            end: (temp * -1) + (temp * 0.4),
           },
           {
-            startScope: (temp * -1) + (temp * 0.4),
-            endScope: (temp * -1) + (temp * 0.8),
+            start: (temp * -1) + (temp * 0.4),
+            end: (temp * -1) + (temp * 0.8),
           },
           {
-            startScope: (temp * -1) + (temp * 0.8),
-            endScope: (temp * -1) + (temp * 1.2),
+            start: (temp * -1) + (temp * 0.8),
+            end: (temp * -1) + (temp * 1.2),
           },
           {
-            startScope: (temp * -1) + (temp * 1.2),
-            endScope: (temp * -1) + (temp * 1.6),
+            start: (temp * -1) + (temp * 1.2),
+            end: (temp * -1) + (temp * 1.6),
           },
           {
-            startScope: (temp * -1) + (temp * 1.6),
-            endScope: (temp * -1) + (temp * 2),
+            start: (temp * -1) + (temp * 1.6),
+            end: (temp * -1) + (temp * 2),
           },
         ],
         values: [
@@ -48,27 +47,26 @@ class ApiService {
         ]
       },
       {
-        time: 30,
         scopes: [
           {
-            startScope: (temp2 * -1),
-            endScope: (temp2 * -1) + (temp2 * 0.4),
+            start: (temp2 * -1),
+            end: (temp2 * -1) + (temp2 * 0.4),
           },
           {
-            startScope: (temp2 * -1) + (temp2 * 0.4),
-            endScope: (temp2 * -1) + (temp2 * 0.8),
+            start: (temp2 * -1) + (temp2 * 0.4),
+            end: (temp2 * -1) + (temp2 * 0.8),
           },
           {
-            startScope: (temp2 * -1) + (temp2 * 0.8),
-            endScope: (temp2 * -1) + (temp2 * 1.2),
+            start: (temp2 * -1) + (temp2 * 0.8),
+            end: (temp2 * -1) + (temp2 * 1.2),
           },
           {
-            startScope: (temp2 * -1) + (temp2 * 1.2),
-            endScope: (temp2 * -1) + (temp2 * 1.6),
+            start: (temp2 * -1) + (temp2 * 1.2),
+            end: (temp2 * -1) + (temp2 * 1.6),
           },
           {
-            startScope: (temp2 * -1) + (temp2 * 1.6),
-            endScope: (temp2 * -1) + (temp2 * 2),
+            start: (temp2 * -1) + (temp2 * 1.6),
+            end: (temp2 * -1) + (temp2 * 2),
           },
         ],
         values: [
@@ -82,7 +80,7 @@ class ApiService {
     ]
   }
 
-  async currencyAnalysis(currencyCode: string): Promise<CurrencyAnalysisData[]> {
+  async currencyAnalysis(currencyCode: string): Promise<SessionAnalysisData[]> {
     await new Promise(r => setTimeout(r, 1000 + Math.random() * 2000));
 
     if(Math.random() * 10 > 8){
@@ -90,45 +88,39 @@ class ApiService {
     }
     return [
       {
-        time: 7,
-        countUp: Math.random() * 50,
-        countDown: Math.random() * 50,
-        countConst: Math.random() * 50
+        up: Math.random() * 50,
+        down: Math.random() * 50,
+        const: Math.random() * 50
       },
       {
-        time: 14,
-        countUp: Math.random() * 50,
-        countDown: Math.random() * 50,
-        countConst: Math.random() * 50
+        up: Math.random() * 50,
+        down: Math.random() * 50,
+        const: Math.random() * 50
       },
       {
-        time: 30,
-        countUp: Math.random() * 50,
-        countDown: Math.random() * 50,
-        countConst: Math.random() * 50
+        up: Math.random() * 50,
+        down: Math.random() * 50,
+        const: Math.random() * 50
       },
       {
-        time: 90,
-        countUp: Math.random() * 50,
-        countDown: Math.random() * 50,
-        countConst: Math.random() * 50
+        up: Math.random() * 50,
+        down: Math.random() * 50,
+        const: Math.random() * 50
       },
       {
-        time: 180,
-        countUp: Math.random() * 50,
-        countDown: Math.random() * 50,
-        countConst: Math.random() * 50
+        up: Math.random() * 50,
+        down: Math.random() * 50,
+        const: Math.random() * 50
       },
       {
-        time: 360,
-        countUp: Math.random() * 50,
-        countDown: Math.random() * 50,
-        countConst: Math.random() * 50
+        up: Math.random() * 50,
+        down: Math.random() * 50,
+        const: Math.random() * 50
       },
     ]
   }
 
-  async currencyStatistics(currencyCode: string): Promise<CurrencyStatisticData[]>{
+  async currencyStatistics(currencyCode: string): Promise<StatisticData[]>{
     await new Promise(r => setTimeout(r, 1000 + Math.random() * 2000));
 
     if(Math.random() * 10 > 8){
@@ -139,38 +131,38 @@ class ApiService {
       {
         median: Math.random() * 50,
         dominant: [Math.random() * 50, Math.random() * 50],
-        standardDeviation: Math.random() * 50,
-        coefficientOfVariantion: Math.random() * 50
+        deviation: Math.random() * 50,
+        variation: Math.random() * 50
       },
       {
         median: Math.random() * 50,
         dominant: [Math.random() * 50, Math.random() * 50],
-        standardDeviation: Math.random() * 50,
-        coefficientOfVariantion: Math.random() * 50
+        deviation: Math.random() * 50,
+        variation: Math.random() * 50
       },
       {
         median: Math.random() * 50,
         dominant: [Math.random() * 50, Math.random() * 50],
-        standardDeviation: Math.random() * 50,
-        coefficientOfVariantion: Math.random() * 50
+        deviation: Math.random() * 50,
+        variation: Math.random() * 50
       },
       {
         median: Math.random() * 50,
         dominant: [Math.random() * 50, Math.random() * 50],
-        standardDeviation: Math.random() * 50,
-        coefficientOfVariantion: Math.random() * 50
+        deviation: Math.random() * 50,
+        variation: Math.random() * 50
       },
       {
         median: Math.random() * 50,
         dominant: [Math.random() * 50, Math.random() * 50],
-        standardDeviation: Math.random() * 50,
-        coefficientOfVariantion: Math.random() * 50
+        deviation: Math.random() * 50,
+        variation: Math.random() * 50
       },
       {
         median: Math.random() * 50,
         dominant: [Math.random() * 50, Math.random() * 50],
-        standardDeviation: Math.random() * 50,
-        coefficientOfVariantion: Math.random() * 50
+        deviation: Math.random() * 50,
+        variation: Math.random() * 50
       },
     ]
   }

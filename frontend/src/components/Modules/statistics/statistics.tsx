@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./statistics.scss"
 import Loader from '../../loader/loader'
 import apiService from '../../../services/ApiService'
-import { CurrencyStatisticData } from '../../../models/CurrencyStatisticsData'
+import { StatisticData } from '../../../models/statistics.interface'
 interface props {
   currencyCode: string,
   selectedTime: number
@@ -12,7 +12,7 @@ const Statistics = ({ currencyCode, selectedTime }: props) => {
   const [isLoading, setLoading] = useState<boolean>(false);
   const [isError, setError] = useState<boolean>(false);
 
-  const [currencyStatistics, setCurrencyStatistics] = useState<CurrencyStatisticData[]>([])
+  const [currencyStatistics, setCurrencyStatistics] = useState<StatisticData[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,12 +47,12 @@ const Statistics = ({ currencyCode, selectedTime }: props) => {
 
           <div className="currency-statistic">
             <div className="currency-statistic-name">Odchylenie standardowe</div>
-            <div className="currency-statistic-value">{currencyStatistics[selectedTime]?.standardDeviation.toFixed(2)}</div>
+            <div className="currency-statistic-value">{currencyStatistics[selectedTime]?.deviation.toFixed(2)}</div>
           </div>
 
           <div className="currency-statistic">
             <div className="currency-statistic-name">Współczynnik zmienności</div>
-            <div className="currency-statistic-value">{currencyStatistics[selectedTime]?.coefficientOfVariantion.toFixed(2)}</div>
+            <div className="currency-statistic-value">{currencyStatistics[selectedTime]?.variation.toFixed(2)}</div>
           </div>
         </div>
       </Loader>

@@ -32,10 +32,9 @@ describe('Session analysis - chart box', () => {
 
   it('should hide load information on successful API call', async () => {
     apiService.currencyAnalysis = jest.fn(() => Promise.resolve([{
-      time: 7,
-      countUp: 1,
-      countDown: 2,
-      countConst: 3
+      up: 1,
+      down: 2,
+      const: 3
     }]));
     render(<SessionAnalysis />);
     await waitFor(() => {

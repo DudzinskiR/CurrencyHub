@@ -3,13 +3,13 @@ import "./change-distribution.scss"
 import { Bar } from 'react-chartjs-2';
 import "chart.js/auto";
 import Header from '../../header-line/header-line'
-import { getData, options, timePeriodName } from './ChartOptions';
+import { getData, options, timePeriodName } from './chart-options';
 import Loader from '../../loader/loader';
 import CurrencyPicker from '../../currency-picker/currency-picker';
 import Button from '../../button/button';
 import TimePicker from '../../time-picker/time-picker';
 import apiService from '../../../services/ApiService';
-import { CurrencyPairData } from '../../../models/CurrencyPairData';
+import { ChangeDistributionData } from '../../../models/change-distribution.interface';
 
 const ChangeDistribution = () => {
   const [currencyPair, setCurrencyPair] = useState<string[]>(['USD', 'GBP']);
@@ -20,7 +20,7 @@ const ChangeDistribution = () => {
 
   const [selectedTime, setSelectedTime] = useState<number>(0);
 
-  const [currencyPairData, setCurrencyPairData] = useState<CurrencyPairData[]>([]);
+  const [currencyPairData, setCurrencyPairData] = useState<ChangeDistributionData[]>([]);
   const [labels, setLabels] = useState<string[]>([]);
   const [dataSet, setDataSet] = useState<number[]>([]);
 
@@ -50,7 +50,7 @@ const ChangeDistribution = () => {
 
   useEffect(() => {
     if (selectedTime <= currencyPairData?.length - 1) {
-      setLabels(currencyPairData[selectedTime]?.scopes.map(scope => `${scope.startScope.toFixed(4)}...${scope.endScope.toFixed(4)}`));
+      setLabels(currencyPairData[selectedTime]?.scopes.map(scope => `${scope.start.toFixed(4)}...${scope.end.toFixed(4)}`));
       setDataSet(currencyPairData[selectedTime]?.values);
     }
   }, [currencyPairData, selectedTime]);

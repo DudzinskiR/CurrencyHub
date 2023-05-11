@@ -1,30 +1,28 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import ChangeDistribution from "../change-distribution";
 import apiService from "../../../../services/ApiService";
-import { CurrencyPairData } from "../../../../models/CurrencyPairData";
-import { timePeriodName } from "../ChartOptions";
+import { ChangeDistributionData } from "../../../../models/change-distribution.interface";
+import { timePeriodName } from "../chart-options";
 
 jest.mock('react-chartjs-2', () => ({
   Bar: () => null
 }));
 
-const mockCurrencyPairData: CurrencyPairData[] = [
+const mockCurrencyPairData: ChangeDistributionData[] = [
   {
-    time: 30,
     scopes: [
       {
-        startScope: 1,
-        endScope: 2
+        start: 1,
+        end: 2
       },
     ],
     values: [100, 200]
   },
   {
-    time: 90,
     scopes: [
       {
-        startScope: 10,
-        endScope: 20
+        start: 10,
+        end: 20
       },
     ],
     values: [1000, 2000]

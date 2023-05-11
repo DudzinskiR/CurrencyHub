@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test:coverage": "jest --detectOpenHandles --coverage --forceExit",
+    "test": "jest --detectOpenHandles --forceExit",
     "dev": "nodemon ./src/index.ts",
     "start": "npm run build && node ./dist/index.js",
-    "build": "tsc"
+    "build": "tsc",
+    "migrate": "npx knex migrate:latest --knexfile src/db/knexfile.ts",
+    "down": "npx knex migrate:down --knexfile src/db/knexfile.ts"
   },
   "keywords": [],
   "author": "",
@@ -24,8 +27,13 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "axios": "^1.4.0",
+    "better-sqlite3": "^8.3.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "http-errors": "^2.0.0"
+    "http-errors": "^2.0.0",
+    "knex": "^2.4.2",
+    "pg": "^8.10.0",
+    "sqlite3": "^5.1.6"
   }
 }

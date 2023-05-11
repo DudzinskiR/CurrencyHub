@@ -23,7 +23,7 @@ export const options = {
   }
 }
 
-export const labels = ['Spadek', 'Bez zmian', 'Wzrost'];
+export const labels = ['Spadek', 'Bez zmian (<0.1%)', 'Wzrost'];
 
 export const timePeriodName = ['Tydzień', '2 Tygodnie', 'Miesiąc', 'Kwartał', '6 Miesięcy', 'Rok'];
 

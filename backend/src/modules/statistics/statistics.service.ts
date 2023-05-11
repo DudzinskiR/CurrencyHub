@@ -27,10 +27,10 @@ class StatisticsService {
       .setTimeBreakpoints(timeBreakpoints)
       .setCallback((tab: DateInfo[]): CurrencyStatistic => {
         const result: CurrencyStatistic = {
-          median: calcMedian(tab),
+          median: Number(calcMedian(tab).toFixed(6)),
           dominant: calcDominant(tab),
-          deviation: calcStandardDeviation(tab),
-          variation: calcCoefficientOfVariation(tab)
+          deviation: Number(calcStandardDeviation(tab).toFixed(6)),
+          variation: Number(calcCoefficientOfVariation(tab).toFixed(6))
         }
         return result;
       })

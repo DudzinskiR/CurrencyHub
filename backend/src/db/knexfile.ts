@@ -20,6 +20,7 @@ const knexfile: Record<DbEnvironments, any> = {
   development: {
     client: 'postgresql',
     connection: {
+      host:     `${process.env.DEV_DB_HOST}`,
       database: `${process.env.DEV_DB_DATABASE}`,
       user:     `${process.env.DEV_DB_USER}`,
       password: `${process.env.DEV_DB_PASSWORD}`
@@ -35,9 +36,10 @@ const knexfile: Record<DbEnvironments, any> = {
   production: {
     client: 'postgresql',
     connection: {
-      database: ``,
-      user:     ``,
-      password: ``
+      host:     `${process.env.DB_HOST}`,
+      database: `${process.env.DB_DATABASE}`,
+      user:     `${process.env.DB_USER}`,
+      password: `${process.env.DB_PASSWORD}`
     },
     pool: {
       min: 2,

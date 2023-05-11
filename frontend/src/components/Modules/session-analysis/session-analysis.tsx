@@ -7,14 +7,14 @@ import { Bar } from 'react-chartjs-2';
 import "chart.js/auto";
 import { getData, options, timePeriodName } from './chart-options'
 import TimePicker from '../../time-picker/time-picker'
-import apiService from '../../../services/ApiService'
+import BackendService from '../../../services/backend.service'
 import Loader from '../../loader/loader'
 import { SessionAnalysisData } from '../../../models/session-analysis.interface'
 import CurrencyStatistics from '../statistics/statistics'
 
 const SessionAnalysis = () => {
 
-  const [SessionAnalysisData, setCurrencyAnalysis] = useState<SessionAnalysisData[]>([]);
+  const [SessionAnalysisData, setSessionAnalysis] = useState<SessionAnalysisData[]>([]);
   const [selectedSessionAnalysisData, setSelectedSessionAnalysisData] = useState<number[]>([])
 
   const [currencyCode, setCurrencyCode] = useState<string>("USD");
@@ -42,8 +42,8 @@ const SessionAnalysis = () => {
       setLoading(true);
       setError(false);
       try {
-        const data = await apiService.currencyAnalysis(selectedCurrencyCode);
-        setCurrencyAnalysis(data);
+        const data = await BackendService.getSessionAnalysis(selectedCurrencyCode);
+        setSessionAnalysis(data);
       } catch (err) {
         setError(true);
       }

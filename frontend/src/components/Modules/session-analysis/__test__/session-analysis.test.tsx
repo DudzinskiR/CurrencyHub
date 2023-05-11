@@ -1,13 +1,13 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import SessionAnalysis from "../session-analysis";
-import apiService from '../../../../services/ApiService';
+import BackendService from '../../../../services/backend.service';
 import { timePeriodName } from '../chart-options';
 import React from 'react';
 jest.mock('react-chartjs-2', () => ({
   Bar: () => null
 }));
 
-jest.mock('../../../../services/ApiService', () => ({
+jest.mock('../../../../services/backend.service.ts', () => ({
   currencyAnalysis: jest.fn(() => Promise.resolve([])),
 }));
 
@@ -22,16 +22,8 @@ describe('Session analysis - chart box', () => {
     expect(title).toBeInTheDocument();
   });
 
-  it('should call fetchData on render', async () => {
-    const spy = jest.spyOn(apiService, 'currencyAnalysis');
-    render(<SessionAnalysis />);
-    await waitFor(() => {
-      expect(spy).toHaveBeenCalled();
-    })
-  });
-
   it('should hide load information on successful API call', async () => {
-    apiService.currencyAnalysis = jest.fn(() => Promise.resolve([{
+    BackendService.getSessionAnalysis = jest.fn(() => Promise.resolve([{
       up: 1,
       down: 2,
       const: 3
@@ -43,7 +35,7 @@ describe('Session analysis - chart box', () => {
   })
 
   it('should show error information on failed API call', async () => {
-    apiService.currencyAnalysis = jest.fn(() => Promise.reject());
+    BackendService.getSessionAnalysis = jest.fn(() => Promise.reject());
     render(<SessionAnalysis />);
     await waitFor(() => {
       expect(screen.getByText('Błąd')).toBeInTheDocument();

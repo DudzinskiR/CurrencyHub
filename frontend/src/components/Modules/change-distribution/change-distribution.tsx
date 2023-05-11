@@ -8,7 +8,7 @@ import Loader from '../../loader/loader';
 import CurrencyPicker from '../../currency-picker/currency-picker';
 import Button from '../../button/button';
 import TimePicker from '../../time-picker/time-picker';
-import apiService from '../../../services/ApiService';
+import BackendService from '../../../services/backend.service';
 import { ChangeDistributionData } from '../../../models/change-distribution.interface';
 
 const ChangeDistribution = () => {
@@ -36,7 +36,7 @@ const ChangeDistribution = () => {
       setError(false);
 
       try {
-        const data = await apiService.currencyPair(selectedCurrencyPair[0], selectedCurrencyPair[1]);
+        const data = await BackendService.getChangeDistribution(selectedCurrencyPair[0], selectedCurrencyPair[1]);
         setCurrencyPairData(data)
       } catch (e) {
         setError(true);

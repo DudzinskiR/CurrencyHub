@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./statistics.scss"
 import Loader from '../../loader/loader'
-import apiService from '../../../services/ApiService'
+import BackendService from '../../../services/backend.service'
 import { StatisticData } from '../../../models/statistics.interface'
 interface props {
   currencyCode: string,
@@ -19,7 +19,7 @@ const Statistics = ({ currencyCode, selectedTime }: props) => {
       setLoading(true);
       setError(false);
       try {
-        const data = await apiService.currencyStatistics(currencyCode);
+        const data = await BackendService.getStatistics(currencyCode);
         setCurrencyStatistics(data);
       } catch (err) {
         setError(true);

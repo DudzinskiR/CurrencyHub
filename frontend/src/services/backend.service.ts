@@ -2,9 +2,8 @@ import { SessionAnalysisData } from '../models/session-analysis.interface';
 import { ChangeDistributionData } from '../models/change-distribution.interface';
 import { StatisticData } from '../models/statistics.interface';
 
-class ApiService {
-
-  async currencyPair(firstCurrencyCode: string, secondCurrencyCode: string): Promise<ChangeDistributionData[]>{
+class BackendService {
+  static async getChangeDistribution(firstCurrencyCode: string, secondCurrencyCode: string): Promise<ChangeDistributionData[]>{
     await new Promise(r => setTimeout(r, 1000 + Math.random() * 2000));
 
     if(Math.random() * 10 > 8){
@@ -80,7 +79,7 @@ class ApiService {
     ]
   }
 
-  async currencyAnalysis(currencyCode: string): Promise<SessionAnalysisData[]> {
+  static async getSessionAnalysis(currencyCode: string): Promise<SessionAnalysisData[]> {
     await new Promise(r => setTimeout(r, 1000 + Math.random() * 2000));
 
     if(Math.random() * 10 > 8){
@@ -120,7 +119,7 @@ class ApiService {
     ]
   }
 
-  async currencyStatistics(currencyCode: string): Promise<StatisticData[]>{
+  static async getStatistics(currencyCode: string): Promise<StatisticData[]>{
     await new Promise(r => setTimeout(r, 1000 + Math.random() * 2000));
 
     if(Math.random() * 10 > 8){
@@ -168,5 +167,4 @@ class ApiService {
   }
 }
 
-const apiService = new ApiService();
-export default apiService
+export default BackendService

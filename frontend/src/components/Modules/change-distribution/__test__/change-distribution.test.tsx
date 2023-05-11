@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import ChangeDistribution from "../change-distribution";
-import apiService from "../../../../services/ApiService";
+import BackendService from "../../../../services/backend.service";
 import { ChangeDistributionData } from "../../../../models/change-distribution.interface";
 import { timePeriodName } from "../chart-options";
 
@@ -8,7 +8,7 @@ jest.mock('react-chartjs-2', () => ({
   Bar: () => null
 }));
 
-const mockCurrencyPairData: ChangeDistributionData[] = [
+const mockChangeDistribution: ChangeDistributionData[] = [
   {
     scopes: [
       {
@@ -29,7 +29,7 @@ const mockCurrencyPairData: ChangeDistributionData[] = [
   },
 ]
 
-jest.mock('../../../../services/ApiService', () => ({
+jest.mock('../../../../services/backend.service.ts', () => ({
   CurrencyPair: jest.fn(() => Promise.resolve([])),
 }));
 
@@ -41,7 +41,7 @@ describe('Currency Pair', () => {
   });
 
   it('should show load information during API call', async () => {
-    apiService.currencyPair = jest.fn(() => Promise.resolve(mockCurrencyPairData));
+    BackendService.getChangeDistribution = jest.fn(() => Promise.resolve(mockChangeDistribution));
     render(<ChangeDistribution />);
     await waitFor(() => {
       expect(screen.getByText('Ładowanie')).toBeInTheDocument();
@@ -49,7 +49,7 @@ describe('Currency Pair', () => {
   });
 
   it('should hide load information on successful API call', async () => {
-    apiService.currencyPair = jest.fn(() => Promise.resolve(mockCurrencyPairData));
+    BackendService.getChangeDistribution = jest.fn(() => Promise.resolve(mockChangeDistribution));
     render(<ChangeDistribution />);
     await waitFor(() => {
       expect(screen.queryByText('Ładowanie')).toBeNull();
@@ -57,7 +57,7 @@ describe('Currency Pair', () => {
   });
 
   it('should show error information on failed API call', async () => {
-    apiService.currencyPair = jest.fn(() => Promise.reject());
+    BackendService.getChangeDistribution = jest.fn(() => Promise.reject());
     render(<ChangeDistribution />);
     await waitFor(() => {
       expect(screen.getByText('Błąd')).toBeInTheDocument();

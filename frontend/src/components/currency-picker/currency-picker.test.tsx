@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import CurrencyPicker from './CurrencyPicker';
+import CurrencyPicker from './currency-picker';
 
 describe("CurrencyPicker", () => {
 

@@ -2,7 +2,7 @@
 import knex from 'knex';
 import db from '../../db/db'
 import { CurrencyRefreshData } from '../../interfaces/currency-refresh';
-import { TABLE_NAME } from '../common/common.enum';
+import { TABLE_NAME } from '../../common/table-name.enum';
 import { CurrencyRate } from '../../interfaces/currency-rate'
 import axios from 'axios';
 import ExternalError from '../../exceptions/external-error.exception';

@@ -1,7 +1,7 @@
 import db from '../../db/db'
 import DatabaseError from '../../exceptions/database-error.exception';
 import { CurrencyAnalysisData } from '../../interfaces/currency-analysis-data';
-import { TABLE_NAME } from '../common/common.enum';
+import { TABLE_NAME } from '../../common/table-name.enum';
 
 class SessionAnalysisModel{
   static async getSessionAnalysisDesc(currencyCode: string): Promise<CurrencyAnalysisData[]> {

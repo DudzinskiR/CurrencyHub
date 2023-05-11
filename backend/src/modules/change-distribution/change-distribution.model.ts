@@ -2,7 +2,7 @@ import db from "../../db/db";
 import DatabaseError from "../../exceptions/database-error.exception";
 import { CurrencyAnalysisData } from "../../interfaces/currency-analysis-data";
 import { CurrencyPairData } from "../../interfaces/currency-pair-data";
-import { TABLE_NAME } from "../common/common.enum";
+import { TABLE_NAME } from "../../common/table-name.enum";
 
 class ChangeDistributionModel {
   static async getCurrencyDataDesc(code: string): Promise<CurrencyPairData[]>{

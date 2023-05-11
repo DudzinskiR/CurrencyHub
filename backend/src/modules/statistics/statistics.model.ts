@@ -1,7 +1,7 @@
 import db from "../../db/db";
 import DatabaseError from "../../exceptions/database-error.exception";
 import { CurrencyStatisticsData } from "../../interfaces/currency-statistics-data";
-import { TABLE_NAME } from "../common/common.enum";
+import { TABLE_NAME } from "../../common/table-name.enum";
 
 class StatisticsModel {
   static async getStatisticsDesc(currencyCode: string){

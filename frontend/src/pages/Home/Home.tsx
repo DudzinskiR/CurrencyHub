@@ -1,10 +1,9 @@
 import React from 'react'
 import "./Home.scss"
-
-import CurrencyAnalysis from '../../components/Modules/CurrencyAnalysis/compoment/CurrencyAnalysis'
-import CurrencyPair from '../../components/Modules/CurrencyPair/CurrencyPair'
-import HeaderBar from '../../components/HeaderBar/HeaderBar'
-import Footer from '../../components/Footer/Footer'
+import SessionAnalysis from '../../components/modules/session-analysis/session-analysis'
+import HeaderBar from '../../components/header-bar/header-bar'
+import Footer from '../../components/footer/footer'
+import ChangeDistribution from '../../components/modules/change-distribution/change-distribution'
 
 const Home = () => {
   return (
@@ -12,8 +11,8 @@ const Home = () => {
       <div className="home-page-content">
         <HeaderBar />
         <div className="home-page-container">
-          <CurrencyPair />
-          <CurrencyAnalysis />
+          <ChangeDistribution />
+          <SessionAnalysis />
         </div>
       </div>
 

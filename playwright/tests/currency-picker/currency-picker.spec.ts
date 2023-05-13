@@ -22,7 +22,7 @@ test.describe('Currency Picker', () => {
 
     await expect(list).toBeVisible();
 
-    sleep(4000);
+    await sleep(200);
 
     await expect(page.locator('.list-box')).toHaveScreenshot('currency-picker-list.png');
 

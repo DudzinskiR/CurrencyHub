@@ -21,11 +21,19 @@ test.describe('Currency Picker', () => {
     const list = await page.locator('.list-box');
 
     await expect(list).toBeVisible();
-    await expect(currencyPicker).toHaveScreenshot('currency-picker-list.png');
-    await testInfo.attach('screenshot', { body: await list.screenshot(), contentType: 'image/png' });
+
+    sleep(4000);
+
+    await expect(page.locator('.list-box')).toHaveScreenshot('currency-picker-list.png');
+
+    await testInfo.attach('Currency picker list', { body: await list.screenshot(), contentType: 'image/png' });
 
     await page.getByText('Analiza waluty').click();
 
     await expect(list).not.toBeVisible();
   });
 })
+
+const sleep = (time: number):Promise<void> => {
+  return new Promise(r => setTimeout(r, time));
+}

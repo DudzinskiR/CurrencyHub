@@ -13,7 +13,12 @@ test.describe('Footer', () => {
     await expect(page).toHaveURL('https://github.com/DudzinskiR/finance');
   });
 
-  test('should render footer correctly', async ({page}) => {
-    await expect(page.locator(".footer-box")).toHaveScreenshot('footer.png')
+  test('should render footer correctly', async ({page}, testInfo) => {
+    await expect(page.locator(".footer-box")).toHaveScreenshot('footer.png');
+
+    await testInfo.attach('footer', { 
+      body: await page.locator(".footer-box").screenshot(), 
+      contentType: 'image/png' 
+    });
   })
 });

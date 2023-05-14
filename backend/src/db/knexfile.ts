@@ -8,7 +8,9 @@ type DbEnvironments = 'development' | 'production' | 'test';
 const knexfile: Record<DbEnvironments, any> = {
   test: {
     client: "better-sqlite3",
-    connection: ":memory:",
+    connection: {
+      filename: path.join(__dirname, "../../test_db.sqlite")
+    },
     useNullAsDefault: true,
     migrations: {
       directory: path.join(__dirname, "migrations")

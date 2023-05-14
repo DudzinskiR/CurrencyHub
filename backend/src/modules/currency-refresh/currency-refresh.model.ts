@@ -10,7 +10,16 @@ class CurrencyRefreshModel{
   static async getLastCurrencyRefresh(currencyCode: string): Promise<CurrencyRefreshData | undefined> {
     try{
       const res = await db(TABLE_NAME.CURRENCY_REFRESH).select('time').where('code', currencyCode);
-      return res[0];
+      
+      if(res.length === 0)
+        return undefined;
+
+      const output: CurrencyRefreshData = {
+        code: currencyCode,
+        time: new Date(res[0].time)
+      } 
+
+      return output;
     } catch (e){
       throw new DatabaseException();
     }

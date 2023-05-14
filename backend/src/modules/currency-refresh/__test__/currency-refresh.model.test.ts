@@ -12,6 +12,12 @@ describe('CurrencyRefresh', () => {
     await db.migrate.latest();
   });
 
+  it('should return undefined if currency refresh does not exist', async () => {
+    const data = await CurrencyRefreshModel.getLastCurrencyRefresh('USD');
+
+    expect(data).toEqual(undefined);
+  })
+
   it('should create and retrieve last currency refresh for USD', async () => {
     const refreshData: CurrencyRefreshData = {
       code: "USD", 
@@ -21,7 +27,7 @@ describe('CurrencyRefresh', () => {
     await CurrencyRefreshModel.createNewRefresh(refreshData);
     const data = await CurrencyRefreshModel.getLastCurrencyRefresh('USD');
 
-    expect(data).toEqual({time: refreshData.time.getTime()});
+    expect(data).toEqual({time: refreshData.time, code: "USD"});
   });
 
   it('should create, update and retrieve last currency refresh for USD', async () => {
@@ -40,7 +46,7 @@ describe('CurrencyRefresh', () => {
     await CurrencyRefreshModel.updateRefresh(updateData);
     const data = await CurrencyRefreshModel.getLastCurrencyRefresh('USD');
 
-    expect(data).toEqual({time: updateData.time.getTime()});
+    expect(data).toEqual({time: updateData.time, code: "USD"});
   });
 
   test('should create currency rates for USD', async () => {

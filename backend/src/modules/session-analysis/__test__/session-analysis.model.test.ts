@@ -23,7 +23,7 @@ describe('Session Analysis Model', () => {
 
     const response: CurrencyRate[] = await SessionAnalysisModel.getSessionAnalysisDesc(currencyCode);
     for(const index in response){
-      expect({time: response[index].time, value: response[index].value}).toEqual({time: rateData[index].time.getTime(), value: rateData[index].value});
+      expect({time: response[index].time, value: response[index].value}).toEqual({time: rateData[index].time, value: rateData[index].value});
     }
   });
 

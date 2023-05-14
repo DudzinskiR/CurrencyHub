@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { getComparator } from 'playwright-core/lib/utils';
 
 test.beforeEach(async ({page}) => {
-  await page.goto(`${process.env.ROOT}`);
+  await page.goto(`/`);
   await page.waitForLoadState('domcontentloaded');
 })
 

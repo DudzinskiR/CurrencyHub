@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({page}) => {
-  await page.goto(`${process.env.ROOT}`);
+  await page.goto(`/`);
   await page.waitForLoadState('domcontentloaded');
 })
 
@@ -54,7 +54,7 @@ test.describe('Statistics', () => {
     await page.waitForResponse(res => res.url().includes('session/?code=RON') && res.status() === 200),
 
     await sleep(200);
-    
+
     await testInfo.attach('Statistics box after change', { 
       body: await statisticsBox.screenshot(), 
       contentType: 'image/png' 

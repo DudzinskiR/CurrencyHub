@@ -14,9 +14,9 @@ describe('Session Analysis Model', () => {
   it('should create and retrieve currency rates for USD', async () => {
     const currencyCode = 'USD';
     const rateData: CurrencyRate[] = [
+      { code: currencyCode, time: new Date(), value: 6 },
       { code: currencyCode, time: new Date(), value: 5 },
       { code: currencyCode, time: new Date(), value: 4 },
-      { code: currencyCode, time: new Date(), value: 6 },
     ]
 
     await CurrencyRefreshModel.createNewRates(rateData);

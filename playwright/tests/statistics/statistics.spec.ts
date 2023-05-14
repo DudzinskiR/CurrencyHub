@@ -49,11 +49,12 @@ test.describe('Statistics', () => {
     await currencyButton.click();
     
     const button = page.getByRole('button', { name: 'Wybierz' });
-    await Promise.all([
-      page.waitForResponse(res => res.url().includes('session/?code=RON') && res.status() === 200),
-      button.nth(1).click()
-    ]);
 
+    button.nth(1).click()
+    await page.waitForResponse(res => res.url().includes('session/?code=RON') && res.status() === 200),
+
+    await sleep(200);
+    
     await testInfo.attach('Statistics box after change', { 
       body: await statisticsBox.screenshot(), 
       contentType: 'image/png' 
@@ -62,3 +63,7 @@ test.describe('Statistics', () => {
     expect(statisticsTextBefore).not.toContain(await statisticsBox.textContent());
   });
 });
+
+const sleep = (time: number):Promise<void> => {
+  return new Promise(r => setTimeout(r, time));
+}

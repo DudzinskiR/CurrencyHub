@@ -71,11 +71,9 @@ test.describe('Session Analysis', () => {
     await currencyButton.click();
     
     const button = page.getByRole('button', { name: 'Wybierz' });
-    await Promise.all([
-      page.waitForResponse(res => res.url().includes('session/?code=LRD') && res.status() === 200),
-      button.nth(1).click()
-    ]);
-    
+    button.nth(1).click()
+    await page.waitForResponse(res => res.url().includes('session/?code=LRD') && res.status() === 200);
+
     await sleep(500);
     const chartAfter: Buffer = await chart.screenshot();
 

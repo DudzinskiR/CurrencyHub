@@ -23,9 +23,9 @@ export const options = {
   }
 }
 
-export const labels = ['Spadek', 'Bez zmian (<0.1%)', 'Wzrost'];
+export const labels = ['Decrease', 'No change (<0.1%)', 'Increase'];
 
-export const timePeriodName = ['Tydzień', '2 Tygodnie', 'Miesiąc', 'Kwartał', '6 Miesięcy', 'Rok'];
+export const timePeriodName = ['Week', '2 Weeks', 'Month', 'Quarter', '6 Months', 'Year'];
 
 export const getData = (data: Number[]) => {
   return {

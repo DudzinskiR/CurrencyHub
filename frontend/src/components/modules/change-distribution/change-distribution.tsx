@@ -57,7 +57,7 @@ const ChangeDistribution = () => {
 
   return (
     <div className='currency-pair-box'>
-      <Header text='Analiza par walut' />
+      <Header text='Change distribution' />
       <div className="currency-pair-content">
         <div className="currency-pair-chart-box">
           <Loader isLoading={isLoading} isError={isError}>
@@ -67,11 +67,11 @@ const ChangeDistribution = () => {
         </div>
 
         <div className="currency-pair-picker-box">
-          <div className="currency-pair-picker-title">Wybierz waluty</div>
+          <div className="currency-pair-picker-title">Select currencies</div>
           <CurrencyPicker currencyCode={currencyPair[0]} onChange={(c) => updateCurrencyPair(c, 0)} />
-          <div className='currency-pair-picker-and'>-oraz-</div>
+          <div className='currency-pair-picker-and'>-and-</div>
           <CurrencyPicker currencyCode={currencyPair[1]} onChange={(c) => updateCurrencyPair(c, 1)} />
-          <Button text='Wybierz' onClick={() => setSelectedCurrencyPair(currencyPair)} />
+          <Button text='Select' onClick={() => setSelectedCurrencyPair(currencyPair)} />
         </div>
 
       </div>

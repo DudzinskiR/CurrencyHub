@@ -18,7 +18,7 @@ describe('Session analysis - chart box', () => {
 
   it('renders header with correct text', async () => {
     render(<SessionAnalysis />);
-    const title = await screen.findByText('Analiza waluty')
+    const title = await screen.findByText('Session analysis')
     expect(title).toBeInTheDocument();
   });
 
@@ -30,7 +30,7 @@ describe('Session analysis - chart box', () => {
     }]));
     render(<SessionAnalysis />);
     await waitFor(() => {
-      expect(screen.queryByText('Ładowanie')).toBeNull();
+      expect(screen.queryByText('Loading')).toBeNull();
     })
   })
 
@@ -38,7 +38,7 @@ describe('Session analysis - chart box', () => {
     BackendService.getSessionAnalysis = jest.fn(() => Promise.reject());
     render(<SessionAnalysis />);
     await waitFor(() => {
-      expect(screen.getByText('Błąd')).toBeInTheDocument();
+      expect(screen.getByText('Error')).toBeInTheDocument();
     })
   })
 
@@ -64,11 +64,11 @@ describe('Session analysis - picker box', () => {
     fireEvent(selectedCurrency, new MouseEvent('click', { bubbles: true }));
 
 
-    const button = await screen.findByText('Wybierz');
+    const button = await screen.findByText('Select');
     fireEvent.click(button);
 
     await waitFor(() => {
-      expect(screen.getByText('Ładowanie')).toBeInTheDocument();
+      expect(screen.getByText('Loading')).toBeInTheDocument();
     })
   })
 })

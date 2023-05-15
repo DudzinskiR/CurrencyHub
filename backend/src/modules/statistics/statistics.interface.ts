@@ -1,6 +1,6 @@
 export interface Statistic{
   median: number,
-  dominant: number[],
+  mode: number[],
   deviation: number,
   variation: number
 }

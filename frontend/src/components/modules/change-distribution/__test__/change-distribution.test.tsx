@@ -36,7 +36,7 @@ jest.mock('../../../../services/backend.service.ts', () => ({
 describe('Currency Pair', () => {
   it('renders header with correct text', async () => {
     render(<ChangeDistribution />);
-    const title = await screen.findByText('Analiza par walut')
+    const title = await screen.findByText('Change distribution')
     expect(title).toBeInTheDocument();
   });
 
@@ -44,7 +44,7 @@ describe('Currency Pair', () => {
     BackendService.getChangeDistribution = jest.fn(() => Promise.resolve(mockChangeDistribution));
     render(<ChangeDistribution />);
     await waitFor(() => {
-      expect(screen.getByText('Ładowanie')).toBeInTheDocument();
+      expect(screen.getByText('Loading')).toBeInTheDocument();
     })
   });
 
@@ -52,7 +52,7 @@ describe('Currency Pair', () => {
     BackendService.getChangeDistribution = jest.fn(() => Promise.resolve(mockChangeDistribution));
     render(<ChangeDistribution />);
     await waitFor(() => {
-      expect(screen.queryByText('Ładowanie')).toBeNull();
+      expect(screen.queryByText('Loading')).toBeNull();
     })
   });
 
@@ -60,7 +60,7 @@ describe('Currency Pair', () => {
     BackendService.getChangeDistribution = jest.fn(() => Promise.reject());
     render(<ChangeDistribution />);
     await waitFor(() => {
-      expect(screen.getByText('Błąd')).toBeInTheDocument();
+      expect(screen.getByText('Error')).toBeInTheDocument();
     })
   });
 
@@ -92,12 +92,12 @@ describe('Currency Pair', () => {
     fireEvent(selectedCurrency2, new MouseEvent('click', { bubbles: true }));
 
 
-    const button = await screen.findByText('Wybierz');
+    const button = await screen.findByText('Select');
 
     fireEvent.click(button);
 
     await waitFor(() => {
-      expect(screen.getByText('Ładowanie')).toBeInTheDocument();
+      expect(screen.getByText('Loading')).toBeInTheDocument();
     })
   })
 })

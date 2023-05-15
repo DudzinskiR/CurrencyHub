@@ -134,7 +134,7 @@ Example response
 [
     {
         "median": 4.5444,
-        "dominant": [4.4, 4.5],
+        "mode": [4.4, 4.5],
         "deviation": 0.020094,
         "variation": 0.442659
     },

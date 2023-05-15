@@ -36,22 +36,22 @@ const Statistics = ({ currencyCode, selectedTime }: props) => {
       <Loader isLoading={isLoading} isError={isError}>
         <div className="currency-statistics-content">
           <div className="currency-statistic">
-            <div className="currency-statistic-name">Mediana</div>
+            <div className="currency-statistic-name">Median</div>
             <div className="currency-statistic-value">{currencyStatistics[selectedTime]?.median.toFixed(2)}</div>
           </div>
 
           <div className="currency-statistic">
-            <div className="currency-statistic-name">Dominanta</div>
-            <div className="currency-statistic-value">{currencyStatistics[selectedTime]?.dominant.map(item => item.toFixed(2)).join(' ')}</div>
+            <div className="currency-statistic-name">Mode</div>
+            <div className="currency-statistic-value">{currencyStatistics[selectedTime]?.mode.map(item => item.toFixed(2)).join(' ')}</div>
           </div>
 
           <div className="currency-statistic">
-            <div className="currency-statistic-name">Odchylenie standardowe</div>
+            <div className="currency-statistic-name">Standard deviation</div>
             <div className="currency-statistic-value">{currencyStatistics[selectedTime]?.deviation.toFixed(2)}</div>
           </div>
 
           <div className="currency-statistic">
-            <div className="currency-statistic-name">Współczynnik zmienności</div>
+            <div className="currency-statistic-name">Coefficient of variation</div>
             <div className="currency-statistic-value">{currencyStatistics[selectedTime]?.variation.toFixed(2)}</div>
           </div>
         </div>

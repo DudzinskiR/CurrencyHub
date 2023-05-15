@@ -28,7 +28,7 @@ class StatisticsService {
       .setCallback((tab: DateInfo[]): Statistic => {
         const result: Statistic = {
           median: Number(calcMedian(tab).toFixed(6)),
-          dominant: calcDominant(tab),
+          mode: calcDominant(tab),
           deviation: Number(calcStandardDeviation(tab).toFixed(6)),
           variation: Number(calcCoefficientOfVariation(tab).toFixed(6))
         }

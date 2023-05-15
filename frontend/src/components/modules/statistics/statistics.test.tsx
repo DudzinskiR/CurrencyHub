@@ -20,13 +20,13 @@ describe('Statistics', () => {
   const mockStatistics: StatisticData[] = [
     {
       median: 10.5,
-      dominant: [10, 11, 12],
+      mode: [10, 11, 12],
       deviation: 2.5,
       variation: 0.24,
     },
     {
       median: 9.8,
-      dominant: [9, 10, 11],
+      mode: [9, 10, 11],
       deviation: 1.2,
       variation: 0.12,
     },
@@ -36,7 +36,7 @@ describe('Statistics', () => {
     BackendService.getStatistics = jest.fn(() => Promise.resolve(mockStatistics));
     render(<Statistics currencyCode={mockCurrencyCode} selectedTime={mockSelectedTime} />);
     await waitFor(() => {
-      expect(screen.getByText('Ładowanie')).toBeInTheDocument();
+      expect(screen.getByText('Loading')).toBeInTheDocument();
     })
   });
 
@@ -44,7 +44,7 @@ describe('Statistics', () => {
     BackendService.getStatistics = jest.fn(() => Promise.reject());
     render(<Statistics currencyCode={mockCurrencyCode} selectedTime={mockSelectedTime} />);
     await waitFor(() => {
-      expect(screen.getByText('Błąd')).toBeInTheDocument();
+      expect(screen.getByText('Error')).toBeInTheDocument();
     });
   });
 
@@ -53,28 +53,28 @@ describe('Statistics', () => {
     render(<Statistics currencyCode={mockCurrencyCode} selectedTime={mockSelectedTime} />);
 
     await waitFor(() => {
-      expect(screen.getByText('Mediana')).toBeInTheDocument();
+      expect(screen.getByText('Median')).toBeInTheDocument();
     })
     await waitFor(() => {
       expect(screen.getByText('10.50')).toBeInTheDocument();
     })
 
     await waitFor(() => {
-      expect(screen.getByText('Dominanta')).toBeInTheDocument();
+      expect(screen.getByText('Mode')).toBeInTheDocument();
     })
     await waitFor(() => {
       expect(screen.getByText('10.00 11.00 12.00')).toBeInTheDocument();
     })
 
     await waitFor(() => {
-      expect(screen.getByText('Odchylenie standardowe')).toBeInTheDocument();
+      expect(screen.getByText('Standard deviation')).toBeInTheDocument();
     })
     await waitFor(() => {
       expect(screen.getByText('2.50')).toBeInTheDocument();
     })
 
     await waitFor(() => {
-      expect(screen.getByText('Współczynnik zmienności')).toBeInTheDocument();
+      expect(screen.getByText('Coefficient of variation')).toBeInTheDocument();
     })
     await waitFor(() => {
       expect(screen.getByText('0.24')).toBeInTheDocument();

@@ -14,7 +14,7 @@ describe("CurrencyPicker", () => {
   test("Should render currency picker with default value", () => {
     render(<CurrencyPicker />);
     expect(screen.getByText('USD')).toBeInTheDocument();
-    expect(screen.getByText('dolar amerykański')).toBeInTheDocument();
+    expect(screen.getByText('United States Dollar')).toBeInTheDocument();
   });
 
   test('opens and closes currency list when the button is clicked', () => {
@@ -22,10 +22,10 @@ describe("CurrencyPicker", () => {
     const button = screen.getByRole('button');
 
     fireEvent.click(button);
-    expect(screen.getByPlaceholderText('Wpisz walute...')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Enter a currency...')).toBeInTheDocument();
 
     fireEvent.click(button);
-    expect(screen.queryByPlaceholderText('Wpisz walute...')).not.toBeInTheDocument();
+    expect(screen.queryByPlaceholderText('Enter a currency...')).not.toBeInTheDocument();
   });
 
   test('opens and closes currency list when clicked outsite', () => {
@@ -33,16 +33,16 @@ describe("CurrencyPicker", () => {
     const button = screen.getByRole('button');
 
     fireEvent.click(button);
-    expect(screen.getByPlaceholderText('Wpisz walute...')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Enter a currency...')).toBeInTheDocument();
 
-    fireEvent.blur(screen.getByPlaceholderText('Wpisz walute...'));
-    expect(screen.queryByPlaceholderText('Wpisz walute...')).not.toBeInTheDocument();
+    fireEvent.blur(screen.getByPlaceholderText('Enter a currency...'));
+    expect(screen.queryByPlaceholderText('Enter a currency...')).not.toBeInTheDocument();
   });
 
   test('displays the correct currency when a country code is passed as a prop', () => {
     render(<CurrencyPicker {...props} />);
     expect(screen.getByText('CHF')).toBeInTheDocument();
-    expect(screen.getByText('frank szwajcarski')).toBeInTheDocument();
+    expect(screen.getByText('Swiss Franc')).toBeInTheDocument();
   });
 
   test('filters currencies when text is entered in the search input', () => {
@@ -51,12 +51,12 @@ describe("CurrencyPicker", () => {
     const button = screen.getByRole('button');
     fireEvent.click(button);
 
-    const input = screen.getByPlaceholderText('Wpisz walute...');
+    const input = screen.getByPlaceholderText('Enter a currency...');
 
-    fireEvent.change(input, { target: { value: 'jen' } });
+    fireEvent.change(input, { target: { value: 'Japa' } });
     expect(screen.queryByText('USD')).not.toBeInTheDocument();
     expect(screen.getByText('JPY')).toBeInTheDocument();
-    expect(screen.getByText('jen (Japonia)')).toBeInTheDocument();
+    expect(screen.getByText('Japanese Yen')).toBeInTheDocument();
 
     fireEvent.change(input, { target: { value: 'dol' } });
     expect(screen.getByText('USD')).toBeInTheDocument();
@@ -83,9 +83,9 @@ describe("CurrencyPicker", () => {
     const button = screen.getByRole('button');
     fireEvent.click(button);
 
-    const input = screen.getByPlaceholderText('Wpisz walute...');
+    const input = screen.getByPlaceholderText('Enter a currency...');
 
-    fireEvent.change(input, { target: { value: 'frank' } });
+    fireEvent.change(input, { target: { value: 'Swiss' } });
     fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
 
     expect(screen.getByText('CHF')).toBeInTheDocument();
@@ -97,12 +97,12 @@ describe("CurrencyPicker", () => {
     const button = screen.getByRole('button');
     fireEvent.click(button);
 
-    const input = screen.getByPlaceholderText('Wpisz walute...');
+    const input = screen.getByPlaceholderText('Enter a currency...');
 
     fireEvent.change(input, { target: { value: 'Lorem Ipsum' } });
     fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
 
-    const checkInput = screen.getByPlaceholderText('Wpisz walute...');
+    const checkInput = screen.getByPlaceholderText('Enter a currency...');
     expect(checkInput).toBeInTheDocument();
   });
 
@@ -112,10 +112,10 @@ describe("CurrencyPicker", () => {
     const button = screen.getByRole('button');
     fireEvent.click(button);
 
-    const input = screen.getByPlaceholderText('Wpisz walute...');
+    const input = screen.getByPlaceholderText('Enter a currency...');
     fireEvent.keyDown(input, { key: 'Alt', code: 'Alt' });
 
-    const checkInput = screen.getByPlaceholderText('Wpisz walute...');
+    const checkInput = screen.getByPlaceholderText('Enter a currency...');
     expect(checkInput).toBeInTheDocument();
   })
 

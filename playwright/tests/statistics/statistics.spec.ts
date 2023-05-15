@@ -53,7 +53,7 @@ test.describe('Statistics', () => {
     button.nth(1).click()
     await page.waitForResponse(res => res.url().includes('session/?code=RON') && res.status() === 200),
 
-    await sleep(200);
+    await sleep(1000);
 
     await testInfo.attach('Statistics box after change', { 
       body: await statisticsBox.screenshot(), 

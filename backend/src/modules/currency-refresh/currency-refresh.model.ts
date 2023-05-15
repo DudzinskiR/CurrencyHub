@@ -30,7 +30,7 @@ class CurrencyRefreshModel{
 
     try {
       const url = `http://api.nbp.pl/api/exchangerates/rates/${table}/${currencyCode}/${startDate.toISOString().split('T')[0]}/${endDate.toISOString().split('T')[0]}?format=json`;
-      const response = await axios.get(url);
+      const response = await axios.get(url, {timeout: 30000});
       for(const item of response.data.rates){
         rates.push({
           code: currencyCode,

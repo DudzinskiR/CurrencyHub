@@ -56,7 +56,7 @@ const SessionAnalysis = () => {
   return (
     <div className="currency-analysis-box">
 
-      <Header text='Analiza waluty' />
+      <Header text='Session analysis' />
       <div className="currency-analysis-content">
 
         <div className="currency-analysis-chart-box">
@@ -73,12 +73,12 @@ const SessionAnalysis = () => {
 
 
         <div className="currency-analysis-picker-box">
-          <div className="currency-analysis-picker-title">Wybierz walute</div>
+          <div className="currency-analysis-picker-title">Select currency</div>
           <CurrencyPicker
             currencyCode={currencyCode}
             onChange={(currency) => setCurrencyCode(currency)}
           />
-          <Button text='Wybierz' onClick={() => setSelectedCurrencyCode(currencyCode)} />
+          <Button text='Select' onClick={() => setSelectedCurrencyCode(currencyCode)} />
         </div>
       </div>
 

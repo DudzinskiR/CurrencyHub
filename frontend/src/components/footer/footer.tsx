@@ -11,18 +11,18 @@ const Footer = () => {
     <div className='footer-box'>
       <div className="footer-content">
         <div className="footer-github">
-          <a href="https://github.com/DudzinskiR/finance" ><img className='footer-github-icon' src={gitHubLogo} alt="github icon" /></a>
+          <a href="https://github.com/DudzinskiR/CurrencyHub" ><img className='footer-github-icon' src={gitHubLogo} alt="github icon" /></a>
           <div className="footer-github-text">GitHub.com</div>
         </div>
 
         <div className='footer-contact'>
-          <div className="footer-contact-title">Dane kontaktowe</div>
+          <div className="footer-contact-title">Contact information</div>
           <div className="footer-contact-name">Robert Dudziński</div>
           <div className="footer-contact-mail">dudzinski.robert97@gmail.com</div>
         </div>
 
         <div className='footer-stack'>
-          <div className="footer-stack-title">Stack technologiczny</div>
+          <div className="footer-stack-title">Tech stack</div>
           <div className="footer-stack-img-box">
             <div className="footer-stack-technology">
               <img className='footer-stack-logo' src={typeScriptLogo} alt="typescript icon" />

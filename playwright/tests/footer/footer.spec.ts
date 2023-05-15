@@ -10,7 +10,7 @@ test.describe('Footer', () => {
     const link = await page.getByRole('link');
     await expect(link).toBeVisible();
     await link.click();
-    await expect(page).toHaveURL('https://github.com/DudzinskiR/finance');
+    await expect(page).toHaveURL('https://github.com/DudzinskiR/CurrencyHub');
   });
 
   test('should render footer correctly', async ({page}, testInfo) => {

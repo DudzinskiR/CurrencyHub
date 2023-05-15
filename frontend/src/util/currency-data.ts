@@ -6,738 +6,728 @@ export interface Currency {
 
 export const currencyData: Currency[] = [
   {
-      "Country": "US",
-      "CurrencyName": "dolar amerykański",
-      "CurrencyCode": "USD"
+    "Country": "US",
+    "CurrencyName": "United States Dollar",
+    "CurrencyCode": "USD"
   },
   {
-      "Country": "DE",
-      "CurrencyName": "euro",
-      "CurrencyCode": "EUR"
+    "Country": "DE",
+    "CurrencyName": "Euro",
+    "CurrencyCode": "EUR"
   },
   {
-      "Country": "CH",
-      "CurrencyName": "frank szwajcarski",
-      "CurrencyCode": "CHF"
+    "Country": "CH",
+    "CurrencyName": "Swiss Franc",
+    "CurrencyCode": "CHF"
   },
   {
-      "Country": "JP",
-      "CurrencyName": "jen (Japonia)",
-      "CurrencyCode": "JPY"
+    "Country": "JP",
+    "CurrencyName": "Japanese Yen",
+    "CurrencyCode": "JPY"
   },
   {
-      "Country": "CN",
-      "CurrencyName": "yuan renminbi (Chiny)",
-      "CurrencyCode": "CNY"
+    "Country": "CN",
+    "CurrencyName": "Chinese Renminbi",
+    "CurrencyCode": "CNY"
   },
   {
     "Country": "TH",
-    "CurrencyName": "bat (Tajlandia)",
+    "CurrencyName": "Thai Baht",
     "CurrencyCode": "THB"
   },
   {
     "Country": "AU",
-    "CurrencyName": "dolar australijski",
+    "CurrencyName": "Australian Dollar",
     "CurrencyCode": "AUD"
   },
   {
     "Country": "HK",
-    "CurrencyName": "dolar Hongkongu",
+    "CurrencyName": "Hong Kong Dollar",
     "CurrencyCode": "HKD"
   },
   {
     "Country": "CA",
-    "CurrencyName": "dolar kanadyjski",
+    "CurrencyName": "Canadian Dollar",
     "CurrencyCode": "CAD"
   },
   {
     "Country": "CK",
-    "CurrencyName": "dolar nowozelandzki",
+    "CurrencyName": "New Zealand Dollar",
     "CurrencyCode": "NZD"
   },
   {
     "Country": "SG",
-    "CurrencyName": "dolar singapurski",
+    "CurrencyName": "Singapore Dollar",
     "CurrencyCode": "SGD"
   },
   {
     "Country": "HU",
-    "CurrencyName": "forint (Węgry)",
+    "CurrencyName": "Hungarian Forint",
     "CurrencyCode": "HUF"
   },
   {
     "Country": "GB",
-    "CurrencyName": "funt szterling",
+    "CurrencyName": "Pound Sterling",
     "CurrencyCode": "GBP"
   },
   {
     "Country": "UA",
-    "CurrencyName": "hrywna (Ukraina)",
+    "CurrencyName": "Ukrainian Hryvnia",
     "CurrencyCode": "UAH"
   },
   {
     "Country": "CZ",
-    "CurrencyName": "korona czeska",
+    "CurrencyName": "Czech Koruna",
     "CurrencyCode": "CZK"
   },
   {
     "Country": "DK",
-    "CurrencyName": "korona duńska",
+    "CurrencyName": "Danish Krone",
     "CurrencyCode": "DKK"
   },
   {
     "Country": "IS",
-    "CurrencyName": "korona islandzka",
+    "CurrencyName": "Icelandic Króna",
     "CurrencyCode": "ISK"
   },
   {
     "Country": "BV",
-    "CurrencyName": "korona norweska",
+    "CurrencyName": "Norwegian Krone",
     "CurrencyCode": "NOK"
   },
   {
     "Country": "SE",
-    "CurrencyName": "korona szwedzka",
+    "CurrencyName": "Swedish Krona",
     "CurrencyCode": "SEK"
   },
   {
     "Country": "RO",
-    "CurrencyName": "lej rumuński",
+    "CurrencyName": "Romanian Leu",
     "CurrencyCode": "RON"
   },
   {
     "Country": "BG",
-    "CurrencyName": "lew (Bułgaria)",
+    "CurrencyName": "Bulgarian Lev",
     "CurrencyCode": "BGN"
   },
   {
     "Country": "TR",
-    "CurrencyName": "lira turecka",
+    "CurrencyName": "Turkish Lira",
     "CurrencyCode": "TRY"
   },
   {
     "Country": "IL",
-    "CurrencyName": "nowy izraelski szekel",
+    "CurrencyName": "Israeli New Shekel",
     "CurrencyCode": "ILS"
   },
   {
     "Country": "CL",
-    "CurrencyName": "peso chilijskie",
+    "CurrencyName": "Chilean Peso",
     "CurrencyCode": "CLP"
   },
   {
     "Country": "PH",
-    "CurrencyName": "peso filipińskie",
+    "CurrencyName": "Philippine Peso",
     "CurrencyCode": "PHP"
   },
   {
     "Country": "MX",
-    "CurrencyName": "peso meksykańskie",
+    "CurrencyName": "Mexican Peso",
     "CurrencyCode": "MXN"
   },
   {
     "Country": "ZA",
-    "CurrencyName": "rand (Republika Południowej Afryki)",
+    "CurrencyName": "South African Rand",
     "CurrencyCode": "ZAR"
   },
   {
     "Country": "BR",
-    "CurrencyName": "real (Brazylia)",
+    "CurrencyName": "Brazilian Real",
     "CurrencyCode": "BRL"
   },
   {
     "Country": "MY",
-    "CurrencyName": "ringgit (Malezja)",
+    "CurrencyName": "Malaysian Ringgit",
     "CurrencyCode": "MYR"
   },
   {
     "Country": "TL",
-    "CurrencyName": "rupia indonezyjska",
+    "CurrencyName": "Indonesian Rupiah",
     "CurrencyCode": "IDR"
   },
   {
     "Country": "BT",
-    "CurrencyName": "rupia indyjska",
+    "CurrencyName": "Indian Rupee",
     "CurrencyCode": "INR"
   },
   {
     "Country": "KR",
-    "CurrencyName": "won południowokoreański",
+    "CurrencyName": "South Korean Won",
     "CurrencyCode": "KRW"
   },
   {
     "Country": "AF",
-    "CurrencyName": "afgani (Afganistan)",
+    "CurrencyName": "Afghan Afghani",
     "CurrencyCode": "AFN"
   },
   {
     "Country": "MG",
-    "CurrencyName": "ariary (Madagaskar)",
+    "CurrencyName": "Malagasy Ariary",
     "CurrencyCode": "MGA"
   },
   {
     "Country": "PA",
-    "CurrencyName": "balboa (Panama)",
+    "CurrencyName": "Panamanian Balboa",
     "CurrencyCode": "PAB"
   },
   {
     "Country": "ET",
-    "CurrencyName": "birr etiopski",
+    "CurrencyName": "Ethiopian Birr",
     "CurrencyCode": "ETB"
   },
   {
     "Country": "VE",
-    "CurrencyName": "boliwar soberano (Wenezuela)",
+    "CurrencyName": "Venezuelan Bolívar Soberano",
     "CurrencyCode": "VES"
   },
   {
     "Country": "BO",
-    "CurrencyName": "boliwiano (Boliwia)",
+    "CurrencyName": "Bolivian Boliviano",
     "CurrencyCode": "BOB"
   },
   {
     "Country": "CR",
-    "CurrencyName": "colon kostarykański",
+    "CurrencyName": "Costa Rican Colon",
     "CurrencyCode": "CRC"
   },
   {
-    "Country": "SV",
-    "CurrencyName": "colon salwadorski",
-    "CurrencyCode": "SVC"
-  },
-  {
     "Country": "NI",
-    "CurrencyName": "cordoba oro (Nikaragua)",
+    "CurrencyName": "Nicaraguan Córdoba",
     "CurrencyCode": "NIO"
   },
   {
     "Country": "GM",
-    "CurrencyName": "dalasi (Gambia)",
+    "CurrencyName": "Gambian Dalasi",
     "CurrencyCode": "GMD"
   },
   {
     "Country": "MK",
-    "CurrencyName": "denar (Macedonia Północna)",
+    "CurrencyName": "Macedonian Denar",
     "CurrencyCode": "MKD"
   },
   {
     "Country": "DZ",
-    "CurrencyName": "dinar algierski",
+    "CurrencyName": "Algerian Dinar",
     "CurrencyCode": "DZD"
   },
   {
     "Country": "BH",
-    "CurrencyName": "dinar bahrajski",
+    "CurrencyName": "Bahraini Dinar",
     "CurrencyCode": "BHD"
   },
   {
     "Country": "IQ",
-    "CurrencyName": "dinar iracki",
+    "CurrencyName": "Iraqi Dinar",
     "CurrencyCode": "IQD"
   },
   {
     "Country": "JO",
-    "CurrencyName": "dinar jordański",
+    "CurrencyName": "Jordanian Dinar",
     "CurrencyCode": "JOD"
   },
   {
     "Country": "KW",
-    "CurrencyName": "dinar kuwejcki",
+    "CurrencyName": "Kuwaiti Dinar",
     "CurrencyCode": "KWD"
   },
   {
     "Country": "LY",
-    "CurrencyName": "dinar libijski",
+    "CurrencyName": "Libyan Dinar",
     "CurrencyCode": "LYD"
   },
   {
     "Country": "RS",
-    "CurrencyName": "dinar serbski",
+    "CurrencyName": "Serbian Dinar",
     "CurrencyCode": "RSD"
   },
   {
     "Country": "TN",
-    "CurrencyName": "dinar tunezyjski",
+    "CurrencyName": "Tunisian Dinar",
     "CurrencyCode": "TND"
   },
   {
     "Country": "MA",
-    "CurrencyName": "dirham marokański",
+    "CurrencyName": "Moroccan Dirham",
     "CurrencyCode": "MAD"
   },
   {
-    "Country": "AE",
-    "CurrencyName": "dirham ZEA (Zjednoczone Emiraty Arabskie)",
-    "CurrencyCode": "AED"
-  },
-  {
     "Country": "ST",
-    "CurrencyName": "dobra (Wyspy Świętego Tomasza i Książęca)",
+    "CurrencyName": "São Tomé and Príncipe Dobra",
     "CurrencyCode": "STN"
   },
   {
     "Country": "BS",
-    "CurrencyName": "dolar bahamski",
+    "CurrencyName": "Bahamian Dollar",
     "CurrencyCode": "BSD"
   },
   {
     "Country": "BB",
-    "CurrencyName": "dolar barbadoski",
+    "CurrencyName": "Barbados Dollar",
     "CurrencyCode": "BBD"
   },
   {
     "Country": "BZ",
-    "CurrencyName": "dolar belizeński",
+    "CurrencyName": "Belize Dollar",
     "CurrencyCode": "BZD"
   },
   {
     "Country": "BN",
-    "CurrencyName": "dolar brunejski",
+    "CurrencyName": "Brunei Dollar",
     "CurrencyCode": "BND"
   },
   {
     "Country": "FJ",
-    "CurrencyName": "dolar Fidżi",
+    "CurrencyName": "Fiji Dollar",
     "CurrencyCode": "FJD"
   },
   {
     "Country": "GY",
-    "CurrencyName": "dolar gujański",
+    "CurrencyName": "Guyanese Dollar",
     "CurrencyCode": "GYD"
   },
   {
     "Country": "JM",
-    "CurrencyName": "dolar jamajski",
+    "CurrencyName": "Jamaican Dollar",
     "CurrencyCode": "JMD"
   },
   {
     "Country": "LR",
-    "CurrencyName": "dolar liberyjski",
+    "CurrencyName": "Liberian Dollar",
     "CurrencyCode": "LRD"
   },
   {
     "Country": "NA",
-    "CurrencyName": "dolar namibijski",
+    "CurrencyName": "Namibian Dollar",
     "CurrencyCode": "NAD"
   },
   {
     "Country": "SR",
-    "CurrencyName": "dolar surinamski",
+    "CurrencyName": "Surinamese Dollar",
     "CurrencyCode": "SRD"
   },
   {
     "Country": "TT",
-    "CurrencyName": "dolar Trynidadu i Tobago",
+    "CurrencyName": "Trinidad and Tobago Dollar",
     "CurrencyCode": "TTD"
   },
   {
     "Country": "AI",
-    "CurrencyName": "dolar wschodniokaraibski",
+    "CurrencyName": "East Caribbean Dollar",
     "CurrencyCode": "XCD"
   },
   {
     "Country": "SB",
-    "CurrencyName": "dolar Wysp Salomona",
+    "CurrencyName": "Solomon Islands Dollar",
     "CurrencyCode": "SBD"
   },
   {
     "Country": "ZW",
-    "CurrencyName": "dolar Zimbabwe",
+    "CurrencyName": "Zimbabwean Dollar",
     "CurrencyCode": "ZWL"
   },
   {
     "Country": "VN",
-    "CurrencyName": "dong (Wietnam)",
+    "CurrencyName": "Vietnamese Đồng",
     "CurrencyCode": "VND"
   },
   {
     "Country": "AM",
-    "CurrencyName": "dram (Armenia)",
+    "CurrencyName": "Armenian Dram",
     "CurrencyCode": "AMD"
   },
   {
     "Country": "CV",
-    "CurrencyName": "escudo Zielonego Przylądka",
+    "CurrencyName": "Cape Verdean Escudo",
     "CurrencyCode": "CVE"
   },
   {
     "Country": "AW",
-    "CurrencyName": "florin arubański",
+    "CurrencyName": "Aruban Florin",
     "CurrencyCode": "AWG"
   },
   {
     "Country": "BI",
-    "CurrencyName": "frank burundyjski",
+    "CurrencyName": "Burundian Franc",
     "CurrencyCode": "BIF"
   },
   {
     "Country": "BJ",
-    "CurrencyName": "frank CFA BCEAO ",
+    "CurrencyName": "West African CFA franc",
     "CurrencyCode": "XOF"
   },
   {
     "Country": "CM",
-    "CurrencyName": "frank CFA BEAC",
+    "CurrencyName": "Central African CFA Franc",
     "CurrencyCode": "XAF"
   },
   {
     "Country": "PF",
-    "CurrencyName": "frank CFP  ",
+    "CurrencyName": "CFP Franc",
     "CurrencyCode": "XPF"
   },
   {
     "Country": "DJ",
-    "CurrencyName": "frank Dżibuti",
+    "CurrencyName": "Djiboutian Franc",
     "CurrencyCode": "DJF"
   },
   {
     "Country": "GN",
-    "CurrencyName": "frank gwinejski",
+    "CurrencyName": "Guinean Franc",
     "CurrencyCode": "GNF"
   },
   {
     "Country": "KM",
-    "CurrencyName": "frank Komorów",
+    "CurrencyName": "Comorian Franc",
     "CurrencyCode": "KMF"
   },
   {
     "Country": "CD",
-    "CurrencyName": "frank kongijski (Dem. Republika Konga)",
+    "CurrencyName": "Congolese Franc",
     "CurrencyCode": "CDF"
   },
   {
     "Country": "RW",
-    "CurrencyName": "frank rwandyjski",
+    "CurrencyName": "Rwandan Franc",
     "CurrencyCode": "RWF"
   },
   {
     "Country": "EG",
-    "CurrencyName": "funt egipski",
+    "CurrencyName": "Egyptian Pound",
     "CurrencyCode": "EGP"
   },
   {
     "Country": "GI",
-    "CurrencyName": "funt gibraltarski",
+    "CurrencyName": "Gibraltar Pound",
     "CurrencyCode": "GIP"
   },
   {
     "Country": "LB",
-    "CurrencyName": "funt libański",
+    "CurrencyName": "Lebanese Pound",
     "CurrencyCode": "LBP"
   },
   {
     "Country": "SS",
-    "CurrencyName": "funt południowosudański",
+    "CurrencyName": "South Sudanese Pound",
     "CurrencyCode": "SSP"
   },
   {
     "Country": "SD",
-    "CurrencyName": "funt sudański",
+    "CurrencyName": "Sudanese Pound",
     "CurrencyCode": "SDG"
   },
   {
     "Country": "SY",
-    "CurrencyName": "funt syryjski",
+    "CurrencyName": "Syrian Pound",
     "CurrencyCode": "SYP"
   },
   {
     "Country": "GH",
-    "CurrencyName": "Ghana cedi ",
+    "CurrencyName": "Ghanaian Cedi",
     "CurrencyCode": "GHS"
   },
   {
     "Country": "HT",
-    "CurrencyName": "gourde (Haiti)",
+    "CurrencyName": "Haitian Gourde",
     "CurrencyCode": "HTG"
   },
   {
     "Country": "PY",
-    "CurrencyName": "guarani (Paragwaj)",
+    "CurrencyName": "Paraguayan Guaraní",
     "CurrencyCode": "PYG"
   },
   {
     "Country": "CW",
-    "CurrencyName": "gulden Antyli Holenderskich",
+    "CurrencyName": "Netherlands Antillian Guilder",
     "CurrencyCode": "ANG"
   },
   {
     "Country": "PG",
-    "CurrencyName": "kina (Papua-Nowa Gwinea)",
+    "CurrencyName": "Papua New Guinean Kina",
     "CurrencyCode": "PGK"
   },
   {
     "Country": "LA",
-    "CurrencyName": "kip (Laos)",
+    "CurrencyName": "Lao Kip",
     "CurrencyCode": "LAK"
   },
   {
     "Country": "MW",
-    "CurrencyName": "kwacha malawijska",
+    "CurrencyName": "Malawian Kwacha",
     "CurrencyCode": "MWK"
   },
   {
     "Country": "ZM",
-    "CurrencyName": "kwacha zambijska",
+    "CurrencyName": "Zambian Kwacha",
     "CurrencyCode": "ZMW"
   },
   {
     "Country": "AO",
-    "CurrencyName": "kwanza (Angola)",
+    "CurrencyName": "Angolan Kwanza",
     "CurrencyCode": "AOA"
   },
   {
     "Country": "MM",
-    "CurrencyName": "kyat (Myanmar, Birma)",
+    "CurrencyName": "Burmese Kyat",
     "CurrencyCode": "MMK"
   },
   {
     "Country": "GE",
-    "CurrencyName": "lari (Gruzja)",
+    "CurrencyName": "Georgian Lari",
     "CurrencyCode": "GEL"
   },
   {
     "Country": "MD",
-    "CurrencyName": "lej Mołdawii",
+    "CurrencyName": "Moldovan Leu",
     "CurrencyCode": "MDL"
   },
   {
     "Country": "AL",
-    "CurrencyName": "lek (Albania)",
+    "CurrencyName": "Albanian Lek",
     "CurrencyCode": "ALL"
   },
   {
     "Country": "HN",
-    "CurrencyName": "lempira (Honduras)",
+    "CurrencyName": "Honduran Lempira",
     "CurrencyCode": "HNL"
   },
   {
     "Country": "SZ",
-    "CurrencyName": "lilangeni (Eswatini)",
+    "CurrencyName": "Eswatini Lilangeni",
     "CurrencyCode": "SZL"
   },
   {
     "Country": "LS",
-    "CurrencyName": "loti (Lesotho)",
+    "CurrencyName": "Lesotho Loti",
     "CurrencyCode": "LSL"
   },
   {
     "Country": "AZ",
-    "CurrencyName": "manat azerbejdżański",
+    "CurrencyName": "Azerbaijani Manat",
     "CurrencyCode": "AZN"
   },
   {
     "Country": "MZ",
-    "CurrencyName": "metical (Mozambik)",
+    "CurrencyName": "Mozambican Metical",
     "CurrencyCode": "MZN"
   },
   {
     "Country": "NG",
-    "CurrencyName": "naira (Nigeria)",
+    "CurrencyName": "Nigerian Naira",
     "CurrencyCode": "NGN"
   },
   {
     "Country": "ER",
-    "CurrencyName": "nakfa (Erytrea)",
+    "CurrencyName": "Eritrean Nakfa",
     "CurrencyCode": "ERN"
   },
   {
     "Country": "TW",
-    "CurrencyName": "nowy dolar tajwański",
+    "CurrencyName": "New Taiwan Dollar",
     "CurrencyCode": "TWD"
   },
   {
     "Country": "TM",
-    "CurrencyName": "nowy manat (Turkmenistan)",
+    "CurrencyName": "Turkmenistan Manat",
     "CurrencyCode": "TMT"
   },
   {
     "Country": "MR",
-    "CurrencyName": "ouguiya (Mauretania)",
+    "CurrencyName": "Mauritanian Ouguiya",
     "CurrencyCode": "MRU"
   },
   {
     "Country": "TO",
-    "CurrencyName": "pa'anga (Tonga)",
+    "CurrencyName": "Tongan Paʻanga",
     "CurrencyCode": "TOP"
   },
   {
     "Country": "MO",
-    "CurrencyName": "pataca (Makau)",
+    "CurrencyName": "Macanese Pataca",
     "CurrencyCode": "MOP"
   },
   {
     "Country": "AR",
-    "CurrencyName": "peso argentyńskie",
+    "CurrencyName": "Argentine Peso",
     "CurrencyCode": "ARS"
   },
   {
     "Country": "DO",
-    "CurrencyName": "peso dominikańskie",
+    "CurrencyName": "Dominican Peso",
     "CurrencyCode": "DOP"
   },
   {
     "Country": "CO",
-    "CurrencyName": "peso kolumbijskie",
+    "CurrencyName": "Colombian Peso",
     "CurrencyCode": "COP"
   },
   {
     "Country": "CU",
-    "CurrencyName": "peso kubańskie",
+    "CurrencyName": "Cuban Peso",
     "CurrencyCode": "CUP"
   },
   {
     "Country": "UY",
-    "CurrencyName": "peso urugwajskie",
+    "CurrencyName": "Uruguayan Peso",
     "CurrencyCode": "UYU"
   },
   {
     "Country": "BW",
-    "CurrencyName": "pula (Botswana)",
+    "CurrencyName": "Botswana Pula",
     "CurrencyCode": "BWP"
   },
   {
     "Country": "GT",
-    "CurrencyName": "quetzal (Gwatemala)",
+    "CurrencyName": "Guatemalan Quetzal",
     "CurrencyCode": "GTQ"
   },
   {
     "Country": "IR",
-    "CurrencyName": "rial irański",
+    "CurrencyName": "Iranian Rial",
     "CurrencyCode": "IRR"
   },
   {
     "Country": "YE",
-    "CurrencyName": "rial jemeński",
+    "CurrencyName": "Yemeni Rial",
     "CurrencyCode": "YER"
   },
   {
     "Country": "QA",
-    "CurrencyName": "rial katarski",
+    "CurrencyName": "Qatari Riyal",
     "CurrencyCode": "QAR"
   },
   {
     "Country": "OM",
-    "CurrencyName": "rial omański",
+    "CurrencyName": "Omani Rial",
     "CurrencyCode": "OMR"
   },
   {
     "Country": "SA",
-    "CurrencyName": "rial saudyjski",
+    "CurrencyName": "Saudi Riyal",
     "CurrencyCode": "SAR"
   },
   {
     "Country": "KH",
-    "CurrencyName": "riel (Kambodża)",
+    "CurrencyName": "Cambodian Riel",
     "CurrencyCode": "KHR"
   },
   {
     "Country": "BY",
-    "CurrencyName": "rubel białoruski",
+    "CurrencyName": "Belarusian Ruble",
     "CurrencyCode": "BYN"
   },
   {
     "Country": "RU",
-    "CurrencyName": "rubel rosyjski",
+    "CurrencyName": "Russian Ruble",
     "CurrencyCode": "RUB"
   },
   {
     "Country": "LK",
-    "CurrencyName": "rupia lankijska",
+    "CurrencyName": "Sri Lanka Rupee",
     "CurrencyCode": "LKR"
   },
   {
     "Country": "MV",
-    "CurrencyName": "rupia (Malediwy)",
+    "CurrencyName": "Maldivian Rufiyaa",
     "CurrencyCode": "MVR"
   },
   {
     "Country": "MU",
-    "CurrencyName": "rupia Mauritiusu",
+    "CurrencyName": "Mauritian Rupee",
     "CurrencyCode": "MUR"
   },
   {
     "Country": "NP",
-    "CurrencyName": "rupia nepalska",
+    "CurrencyName": "Nepalese Rupee",
     "CurrencyCode": "NPR"
   },
   {
     "Country": "PK",
-    "CurrencyName": "rupia pakistańska",
+    "CurrencyName": "Pakistani Rupee",
     "CurrencyCode": "PKR"
   },
   {
     "Country": "SC",
-    "CurrencyName": "rupia seszelska",
+    "CurrencyName": "Seychellois Rupee",
     "CurrencyCode": "SCR"
   },
   {
     "Country": "PE",
-    "CurrencyName": "sol (Peru)",
+    "CurrencyName": "Peruvian Sol",
     "CurrencyCode": "PEN"
   },
   {
     "Country": "KG",
-    "CurrencyName": "som (Kirgistan)",
+    "CurrencyName": "Kyrgyzstani Som",
     "CurrencyCode": "KGS"
   },
   {
     "Country": "TJ",
-    "CurrencyName": "somoni (Tadżykistan)",
+    "CurrencyName": "Tajikistani Somoni",
     "CurrencyCode": "TJS"
   },
   {
     "Country": "UZ",
-    "CurrencyName": "sum (Uzbekistan)",
+    "CurrencyName": "Uzbekistani So'm",
     "CurrencyCode": "UZS"
   },
   {
     "Country": "KE",
-    "CurrencyName": "szyling kenijski",
+    "CurrencyName": "Kenyan Shilling",
     "CurrencyCode": "KES"
   },
   {
     "Country": "SO",
-    "CurrencyName": "szyling somalijski",
+    "CurrencyName": "Somali Shilling",
     "CurrencyCode": "SOS"
   },
   {
     "Country": "TZ",
-    "CurrencyName": "szyling tanzański",
+    "CurrencyName": "Tanzanian Shilling",
     "CurrencyCode": "TZS"
   },
   {
     "Country": "UG",
-    "CurrencyName": "szyling ugandyjski",
+    "CurrencyName": "Ugandan Shilling",
     "CurrencyCode": "UGX"
   },
   {
     "Country": "BD",
-    "CurrencyName": "taka (Bangladesz)",
+    "CurrencyName": "Bangladeshi Taka",
     "CurrencyCode": "BDT"
   },
   {
     "Country": "WS",
-    "CurrencyName": "tala (Samoa)",
+    "CurrencyName": "Samoan Tālā",
     "CurrencyCode": "WST"
   },
   {
     "Country": "KZ",
-    "CurrencyName": "tenge (Kazachstan)",
+    "CurrencyName": "Kazakhstani Tenge",
     "CurrencyCode": "KZT"
   },
   {
     "Country": "MN",
-    "CurrencyName": "tugrik (Mongolia)",
+    "CurrencyName": "Mongolian Tögrög",
     "CurrencyCode": "MNT"
   },
   {
     "Country": "VU",
-    "CurrencyName": "vatu (Vanuatu)",
+    "CurrencyName": "Vanuatu Vatu",
     "CurrencyCode": "VUV"
   },
   {
     "Country": "BA",
-    "CurrencyName": "wymienialna marka (Bośnia i Hercegowina)",
+    "CurrencyName": "Bosnia and Herzegovina Mark",
     "CurrencyCode": "BAM"
   }
 ]

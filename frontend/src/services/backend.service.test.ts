@@ -23,7 +23,6 @@ describe('BackendService', () => {
   it('should fetch session data', async () => {
     const mockCode = 'USD';
 
-    const expectedUrl =`${process.env.REACT_APP_API_ROOT}/api/session/?code=${mockCode}`;
     jest.spyOn(axios, 'get').mockResolvedValue([]);
 
     await BackendService.getSessionAnalysis(mockCode);

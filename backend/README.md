@@ -1,15 +1,5 @@
-![baner](https://github.com/DudzinskiR/CurrencyHub/assets/130515506/1cbac3a4-9da1-4fc5-af6a-33552bff5961)
+![baner_backend](https://github.com/DudzinskiR/CurrencyHub/assets/130515506/a6a87bc6-4819-4c15-93b1-d253f292dfdd)
 
-
-## Introduction
-CurrencyHub is a comprehensive currency information tool that provides data on currency sessions, currency analysis, and currency pairs for informed decision-making.
-## Tech Stack
-Area | Tech
--- | --
-Frontend | TypeScript + React.JS + Vercel.com
-Backend | TypeScript + NodeJS + Render.com
-Database | PostreSQL + Render.com
-CI + CD | GitHub
 
 ## Deployment
 
@@ -45,28 +35,7 @@ Install the required dependencies:
 ```
 Start the backend server in development mode:
 ```bash
-    npm start
-```
-### Frontend
-
-Open your terminal and navigate to the frontend directory
-
-```bash
-    cd frontend
-```
-
-(Optional) Copy the example environment file to create your own:
-
-```bash
-    cp .env.example .env
-```
-Install the required dependencies:
-```bash
-    npm install
-```
-Start the frontend server:
-```bash
-    npm start
+    npm run dev
 ```
 ## API Reference
 
@@ -150,24 +119,7 @@ Example response
 ]
 ```
 
-
 ## Tests
-
-### Frontend
-Open your terminal and navigate to the frontend directory
-
-```bash
-    cd frontend
-```
-
-Install the required dependencies:
-```bash
-    npm install
-```
-Run tests:
-```bash
-    npm test
-```
 ### Backend
 
 **Note**: Backend testing is performed on a dedicated database created and used only for testing purposes.
@@ -186,27 +138,3 @@ Run tests:
 ```bash
     npm run test
 ```
-
-### E2E - Playwright
-
-Open your terminal and navigate to the playwright directory
-```bash
-    cd playwright
-```
-**(Optional)** Copy the example environment file to create your own:
-
-```bash
-    cp .env.example .env
-```
-**Note**: Default values are already set in code
-
-
-Show the Playwright test report:
-```bash
-    npx playwright show-report
-```
-To update snapshots for the tests:
-```bash
-    npx playwright test --update-snapshots
-```
-This command will update the snapshots used in the tests. It is useful when the application's UI or behavior has changed, and the tests need to be aligned accordingly.

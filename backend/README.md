@@ -39,7 +39,7 @@ Install the required dependencies:
     npm install
 ```
 
-Run database migrations::
+Run database migrations:
 
 ```bash
     npm run migrate

@@ -2,7 +2,7 @@ import db from '../../db/db'
 import { CurrencyRefreshData } from '../../interfaces/currency-refresh';
 import { TABLE_NAME } from '../../common/table-name.enum';
 import { CurrencyRate } from '../../interfaces/currency-rate'
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import ExternalException from '../../exceptions/external-error.exception';
 import DatabaseException from '../../exceptions/database-error.exception';
 
@@ -10,7 +10,16 @@ class CurrencyRefreshModel{
   static async getLastCurrencyRefresh(currencyCode: string): Promise<CurrencyRefreshData | undefined> {
     try{
       const res = await db(TABLE_NAME.CURRENCY_REFRESH).select('time').where('code', currencyCode);
-      return res[0];
+      
+      if(res.length === 0)
+        return undefined;
+
+      const output: CurrencyRefreshData = {
+        code: currencyCode,
+        time: new Date(res[0].time)
+      } 
+
+      return output;
     } catch (e){
       throw new DatabaseException();
     }
@@ -21,7 +30,7 @@ class CurrencyRefreshModel{
 
     try {
       const url = `http://api.nbp.pl/api/exchangerates/rates/${table}/${currencyCode}/${startDate.toISOString().split('T')[0]}/${endDate.toISOString().split('T')[0]}?format=json`;
-      const response = await axios.get(url);
+      const response = await axios.get(url, {timeout: 30000});
       for(const item of response.data.rates){
         rates.push({
           code: currencyCode,
@@ -30,7 +39,11 @@ class CurrencyRefreshModel{
         })
       }
     } catch (err){
-      throw new ExternalException();
+      if(err instanceof AxiosError) {
+        return [];
+      } else if(err instanceof Error){
+        throw new ExternalException();
+      }
     }
     return rates;
   }

@@ -8,7 +8,9 @@ type DbEnvironments = 'development' | 'production' | 'test';
 const knexfile: Record<DbEnvironments, any> = {
   test: {
     client: "better-sqlite3",
-    connection: ":memory:",
+    connection: {
+      filename: path.join(__dirname, "../../test_db.sqlite")
+    },
     useNullAsDefault: true,
     migrations: {
       directory: path.join(__dirname, "migrations")
@@ -20,10 +22,10 @@ const knexfile: Record<DbEnvironments, any> = {
   development: {
     client: 'postgresql',
     connection: {
-      host:     `${process.env.DEV_DB_HOST}`,
-      database: `${process.env.DEV_DB_DATABASE}`,
-      user:     `${process.env.DEV_DB_USER}`,
-      password: `${process.env.DEV_DB_PASSWORD}`
+      host:     `${process.env.DB_HOST}`,
+      database: `${process.env.DB_DATABASE}`,
+      user:     `${process.env.DB_USER}`,
+      password: `${process.env.DB_PASSWORD}`
     },
     pool: {
       min: 2,

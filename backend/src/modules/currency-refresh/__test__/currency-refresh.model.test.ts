@@ -2,7 +2,7 @@ import CurrencyRefreshModel from '../currency-refresh.model';
 import db from "../../../db/db"
 import { CurrencyRefreshData } from '../../../interfaces/currency-refresh';
 import { CurrencyRate } from '../../../interfaces/currency-rate';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import ExternalError from '../../../exceptions/external-error.exception';
 import DatabaseError from '../../../exceptions/database-error.exception';
 
@@ -11,6 +11,12 @@ describe('CurrencyRefresh', () => {
     await db.migrate.down();
     await db.migrate.latest();
   });
+
+  it('should return undefined if currency refresh does not exist', async () => {
+    const data = await CurrencyRefreshModel.getLastCurrencyRefresh('USD');
+
+    expect(data).toEqual(undefined);
+  })
 
   it('should create and retrieve last currency refresh for USD', async () => {
     const refreshData: CurrencyRefreshData = {
@@ -21,7 +27,7 @@ describe('CurrencyRefresh', () => {
     await CurrencyRefreshModel.createNewRefresh(refreshData);
     const data = await CurrencyRefreshModel.getLastCurrencyRefresh('USD');
 
-    expect(data).toEqual({time: refreshData.time.getTime()});
+    expect(data).toEqual({time: refreshData.time, code: "USD"});
   });
 
   it('should create, update and retrieve last currency refresh for USD', async () => {
@@ -40,7 +46,7 @@ describe('CurrencyRefresh', () => {
     await CurrencyRefreshModel.updateRefresh(updateData);
     const data = await CurrencyRefreshModel.getLastCurrencyRefresh('USD');
 
-    expect(data).toEqual({time: updateData.time.getTime()});
+    expect(data).toEqual({time: updateData.time, code: "USD"});
   });
 
   test('should create currency rates for USD', async () => {
@@ -79,6 +85,19 @@ describe('CurrencyRefresh', () => {
       { code: 'USD',time: new Date('2023-05-09'),value: 1.4567 },
     ])
   });
+
+  it('should return empty array when api returns 404 error', async () => {
+    const currencyCode = 'USD';
+    const table = 'A';
+    const startDate = new Date('2023-05-07');
+    const endDate = new Date('2023-05-09');
+
+    jest.spyOn(axios, 'get').mockRejectedValue(new AxiosError());
+
+    const result = await CurrencyRefreshModel.fetchCurrencyRates(currencyCode, table, startDate, endDate);
+
+    expect(result).toEqual([]);
+  })
 });
 
 describe('CurrencyRefresh - throw exception', () => {

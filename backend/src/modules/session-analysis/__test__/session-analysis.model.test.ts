@@ -14,16 +14,16 @@ describe('Session Analysis Model', () => {
   it('should create and retrieve currency rates for USD', async () => {
     const currencyCode = 'USD';
     const rateData: CurrencyRate[] = [
+      { code: currencyCode, time: new Date(), value: 6 },
       { code: currencyCode, time: new Date(), value: 5 },
       { code: currencyCode, time: new Date(), value: 4 },
-      { code: currencyCode, time: new Date(), value: 6 },
     ]
 
     await CurrencyRefreshModel.createNewRates(rateData);
 
     const response: CurrencyRate[] = await SessionAnalysisModel.getSessionAnalysisDesc(currencyCode);
     for(const index in response){
-      expect({time: response[index].time, value: response[index].value}).toEqual({time: rateData[index].time.getTime(), value: rateData[index].value});
+      expect({time: response[index].time, value: response[index].value}).toEqual({time: rateData[index].time, value: rateData[index].value});
     }
   });
 

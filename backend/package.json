@@ -10,12 +10,14 @@
     "start": "npm run build && node ./dist/index.js",
     "build": "tsc",
     "migrate": "npx knex migrate:latest --knexfile src/db/knexfile.ts",
-    "down": "npx knex migrate:down --knexfile src/db/knexfile.ts"
+    "migrate:down": "npx knex migrate:down --knexfile src/db/knexfile.ts",
+    "migrate:reset": "npm run migrate:down && npm run migrate"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
     "@types/http-errors": "^2.0.1",
     "@types/jest": "^29.5.0",
@@ -29,6 +31,7 @@
   "dependencies": {
     "axios": "^1.4.0",
     "better-sqlite3": "^8.3.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "http-errors": "^2.0.0",

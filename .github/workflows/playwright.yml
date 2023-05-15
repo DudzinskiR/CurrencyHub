@@ -1,0 +1,35 @@
+name: PlayWright
+
+on:
+  push:
+    branches: ["main", "release"]
+  pull_request:
+    branches: ["main", "release"]
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: |
+          cd playwright
+          npm ci
+      - name: Install Playwright Browsers
+        run: |
+          cd playwright
+          npx playwright install --with-deps
+      - name: Run Playwright tests
+        run: |
+          cd playwright
+          npx playwright test
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright/playwright-report/
+          retention-days: 30

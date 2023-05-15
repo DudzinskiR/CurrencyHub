@@ -73,11 +73,11 @@ describe('Change Distribution Service', () => {
     const expectedResult: ChangeDistribution[] = [
       {
         scopes: [{ start: -0.045455, end: -0.042569 }, { start: -0.042569, end: -0.039683 }],
-        values: [1, 1]
+        values: [50, 50]
       },
       {
         scopes: [{ start: -0.045455, end: -0.036616 }, { start: -0.036616, end: -0.027778 }],
-        values: [2, 3]
+        values: [40, 60]
       }
     ]
 
@@ -123,11 +123,11 @@ describe('Change Distribution Service', () => {
     const expectedResult: ChangeDistribution[] = [
       {
         scopes: [{ start: -0.045455, end: -0.039683 }],
-        values: [2]
+        values: [100]
       },
       {
         scopes: [{ start: -0.045455, end: -0.027778 }],
-        values: [5]
+        values: [100]
       }
     ]
 

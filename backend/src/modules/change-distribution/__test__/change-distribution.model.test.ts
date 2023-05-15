@@ -25,7 +25,7 @@ describe("Change Distribution Model", () => {
     const response: CurrencyRate[] = await ChangeDistributionModel.getCurrencyDataDesc(mockCode);
 
     for(const index in response){
-      expect({time: response[index].time, value: response[index].value}).toEqual({time: mockData[index].time.getTime(), value: mockData[index].value});
+      expect({time: response[index].time, value: response[index].value}).toEqual({time: mockData[index].time, value: mockData[index].value});
     }
   });
 

@@ -24,7 +24,7 @@ describe('StatisticsModel', () => {
 
     const response: CurrencyRate[] = await StatisticsModel.getStatisticsDesc(currencyCode);
     for(const index in response){
-      expect({time: response[index].time, value: response[index].value}).toEqual({time: rateData[index].time.getTime(), value: rateData[index].value});
+      expect({time: response[index].time, value: response[index].value}).toEqual({time: rateData[index].time, value: rateData[index].value});
     }
   });
 

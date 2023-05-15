@@ -10,6 +10,8 @@ class StatisticsController {
     } catch (e) {
       if(e instanceof Exception){
         res.status(e.code).json({status: "error", message: e.message});
+      } else {
+        res.status(500).json({status: "error", message: "Unknown error"})
       }
     }
   }

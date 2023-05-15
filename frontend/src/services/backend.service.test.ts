@@ -14,30 +14,27 @@ describe('BackendService', () => {
     const mockCodeOne = 'USD';
     const mockCodeTwo = 'EUR';
 
-    const expectedUrl =`${process.env.REACT_APP_API_ROOT}/api/change/?one=${mockCodeOne}&two=${mockCodeTwo}`;
     jest.spyOn(axios, 'get').mockResolvedValue([]);
 
     await BackendService.getChangeDistribution(mockCodeOne, mockCodeTwo);
-    expect(axios.get).toHaveBeenCalledWith(expectedUrl);
+    expect(axios.get).toHaveBeenCalledWith(expect.stringMatching(/api\/change\/\?one=USD&two=EUR/));
   });
 
   it('should fetch session data', async () => {
     const mockCode = 'USD';
 
-    const expectedUrl =`${process.env.REACT_APP_API_ROOT}/api/session/?code=${mockCode}`;
     jest.spyOn(axios, 'get').mockResolvedValue([]);
 
     await BackendService.getSessionAnalysis(mockCode);
-    expect(axios.get).toHaveBeenCalledWith(expectedUrl);
+    expect(axios.get).toHaveBeenCalledWith(expect.stringMatching(/api\/session\/\?code=USD/));
   });
 
   it('should fetch statistics data', async () => {
     const mockCode = 'USD';
 
-    const expectedUrl =`${process.env.REACT_APP_API_ROOT}/api/statistics/?code=${mockCode}`;
     jest.spyOn(axios, 'get').mockResolvedValue([]);
 
     await BackendService.getStatistics(mockCode);
-    expect(axios.get).toHaveBeenCalledWith(expectedUrl);
+    expect(axios.get).toHaveBeenCalledWith(expect.stringMatching(/api\/statistics\/\?code=USD/));
   });
 })

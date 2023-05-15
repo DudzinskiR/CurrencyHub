@@ -21,12 +21,6 @@ class CurrencyRefreshService {
       return;
     }
 
-    if(!res) {
-      await CurrencyRefreshModel.createNewRefresh({code: code, time: new Date()});
-    } else {
-      await CurrencyRefreshModel.updateRefresh({code: code, time: new Date()});
-    }
-
     const dates = this.divideTime(startDate, new Date());
 
     let rates: CurrencyRate[] = [];
@@ -34,7 +28,16 @@ class CurrencyRefreshService {
       const newRates = await CurrencyRefreshModel.fetchCurrencyRates(code, tableName, item.start, item.end);
       rates = [...rates, ...newRates];
     }
-    await CurrencyRefreshModel.createNewRates(rates);
+    
+    if(rates.length != 0)
+      await CurrencyRefreshModel.createNewRates(rates);
+
+    if(!res) {
+      await CurrencyRefreshModel.createNewRefresh({code: code, time: new Date()});
+    } else {
+      await CurrencyRefreshModel.updateRefresh({code: code, time: new Date()});
+    }
+
   }
 
   static isOutdated(time: Date): boolean {

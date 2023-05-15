@@ -11,7 +11,14 @@ class StatisticsModel {
         .select("time").select("value").distinct()
         .where({code: code}).where("time", ">", new Date(today.getFullYear() - 1, today.getMonth(), today.getDate()))
         .orderBy('time', 'desc');
-      return res;
+        
+        const output: CurrencyRate[] = [];
+        res.map(item => output.push({
+          time: new Date(item.time), 
+          value: item.value}
+        ));
+  
+        return output;
     } catch(e) {
       throw new DatabaseException();
     }

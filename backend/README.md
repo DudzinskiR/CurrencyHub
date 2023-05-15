@@ -39,6 +39,12 @@ Install the required dependencies:
     npm install
 ```
 
+Run database migrations::
+
+```bash
+    npm run migrate
+```
+
 Start the backend server in development mode:
 
 ```bash

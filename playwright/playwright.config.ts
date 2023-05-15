@@ -68,19 +68,19 @@ export default defineConfig({
   webServer: [
     {
       command: 'cd ../frontend && npm install && npm run start',
-      url: 'http://localhost:3000',
+      url: process.env.FRONTEND_ROOT || 'http://localhost:3000',
       timeout: 120 * 1000,
       env: {
-        "REACT_APP_API_ROOT": "http://localhost:8080"
+        "REACT_APP_API_ROOT": `${process.env.BACKEND_ROOT || 'http://localhost'}:${process.env.BACKEND_PORT || "8080"}`
       }
     },
     {
       command: 'cd ../backend && npm install && npm run migrate:reset && npm run start',
-      url: 'http://localhost:8080',
+      url: `${process.env.BACKEND_ROOT || 'http://localhost'}:${process.env.BACKEND_PORT || "8080"}`,
       timeout: 120 * 1000,
       env: {
         "NODE_ENV": 'test',
-        "PORT": "8080"
+        "PORT": process.env.BACKEND_PORT || "8080"
       }
     }
   ]

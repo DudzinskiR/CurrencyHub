@@ -20,13 +20,13 @@ describe('Statistics', () => {
   const mockStatistics: StatisticData[] = [
     {
       median: 10.5,
-      dominant: [10, 11, 12],
+      mode: [10, 11, 12],
       deviation: 2.5,
       variation: 0.24,
     },
     {
       median: 9.8,
-      dominant: [9, 10, 11],
+      mode: [9, 10, 11],
       deviation: 1.2,
       variation: 0.12,
     },

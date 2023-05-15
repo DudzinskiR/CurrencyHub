@@ -42,7 +42,7 @@ const Statistics = ({ currencyCode, selectedTime }: props) => {
 
           <div className="currency-statistic">
             <div className="currency-statistic-name">Dominanta</div>
-            <div className="currency-statistic-value">{currencyStatistics[selectedTime]?.dominant.map(item => item.toFixed(2)).join(' ')}</div>
+            <div className="currency-statistic-value">{currencyStatistics[selectedTime]?.mode.map(item => item.toFixed(2)).join(' ')}</div>
           </div>
 
           <div className="currency-statistic">

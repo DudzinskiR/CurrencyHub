@@ -1,5 +1,5 @@
 ![baner_E2E](https://github.com/DudzinskiR/CurrencyHub/assets/130515506/00cbff64-3f5a-480b-b7ff-519e45adb282)
-
+[Live demo](https://currencyhub.vercel.app)
 
 
 ### E2E - Playwright

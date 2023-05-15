@@ -1,5 +1,5 @@
 ![baner](https://github.com/DudzinskiR/CurrencyHub/assets/130515506/1cbac3a4-9da1-4fc5-af6a-33552bff5961)
-
+[Live demo](https://currencyhub.vercel.app)
 
 ## Introduction
 CurrencyHub is a comprehensive currency information tool that provides data on currency sessions, currency analysis, and currency pairs for informed decision-making.

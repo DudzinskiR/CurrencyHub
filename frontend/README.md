@@ -1,7 +1,8 @@
 ![baner_front](https://github.com/DudzinskiR/CurrencyHub/assets/130515506/2c0e4e4f-7a72-4895-8cb6-4989657f5d00)
-
+[Live demo](https://currencyhub.vercel.app)
 
 ## Deployment
+
 ### Frontend
 
 Open your terminal and navigate to the frontend directory
@@ -15,11 +16,15 @@ Open your terminal and navigate to the frontend directory
 ```bash
     cp .env.example .env
 ```
+
 Install the required dependencies:
+
 ```bash
     npm install
 ```
+
 Start the frontend server:
+
 ```bash
     npm start
 ```
@@ -27,6 +32,7 @@ Start the frontend server:
 ## Tests
 
 ### Frontend
+
 Open your terminal and navigate to the frontend directory
 
 ```bash
@@ -34,10 +40,13 @@ Open your terminal and navigate to the frontend directory
 ```
 
 Install the required dependencies:
+
 ```bash
     npm install
 ```
+
 Run tests:
+
 ```bash
     npm test
 ```

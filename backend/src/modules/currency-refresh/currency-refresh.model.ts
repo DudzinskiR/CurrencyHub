@@ -2,7 +2,7 @@ import db from '../../db/db'
 import { CurrencyRefreshData } from '../../interfaces/currency-refresh';
 import { TABLE_NAME } from '../../common/table-name.enum';
 import { CurrencyRate } from '../../interfaces/currency-rate'
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import ExternalException from '../../exceptions/external-error.exception';
 import DatabaseException from '../../exceptions/database-error.exception';
 
@@ -39,7 +39,11 @@ class CurrencyRefreshModel{
         })
       }
     } catch (err){
-      throw new ExternalException();
+      if(err instanceof AxiosError) {
+        return [];
+      } else if(err instanceof Error){
+        throw new ExternalException();
+      }
     }
     return rates;
   }

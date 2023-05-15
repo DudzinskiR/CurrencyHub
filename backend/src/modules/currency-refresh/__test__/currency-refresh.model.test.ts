@@ -2,7 +2,7 @@ import CurrencyRefreshModel from '../currency-refresh.model';
 import db from "../../../db/db"
 import { CurrencyRefreshData } from '../../../interfaces/currency-refresh';
 import { CurrencyRate } from '../../../interfaces/currency-rate';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import ExternalError from '../../../exceptions/external-error.exception';
 import DatabaseError from '../../../exceptions/database-error.exception';
 
@@ -85,6 +85,19 @@ describe('CurrencyRefresh', () => {
       { code: 'USD',time: new Date('2023-05-09'),value: 1.4567 },
     ])
   });
+
+  it('should return empty array when api returns 404 error', async () => {
+    const currencyCode = 'USD';
+    const table = 'A';
+    const startDate = new Date('2023-05-07');
+    const endDate = new Date('2023-05-09');
+
+    jest.spyOn(axios, 'get').mockRejectedValue(new AxiosError());
+
+    const result = await CurrencyRefreshModel.fetchCurrencyRates(currencyCode, table, startDate, endDate);
+
+    expect(result).toEqual([]);
+  })
 });
 
 describe('CurrencyRefresh - throw exception', () => {

@@ -23,7 +23,7 @@ export const options = {
   }
 }
 
-export const labels = ['Decrease', 'No change (<0.1%)', 'Increase'];
+export const labels = ['Decrease', 'No change (Δ<0.05%)', 'Increase'];
 
 export const timePeriodName = ['Week', '2 Weeks', 'Month', 'Quarter', '6 Months', 'Year'];
 

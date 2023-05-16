@@ -70,11 +70,14 @@ test.describe('Session Analysis', () => {
     const currencyButton = sessionAnalysis.getByRole('button', { name: 'LRD Liberian Dollar' });
     await currencyButton.click();
     
-    const button = page.getByRole('button', { name: 'Select' });
-    button.nth(1).click()
-    await page.waitForResponse(res => res.url().includes('session/?code=LRD') && res.status() === 200);
+
+    const responsePromise = page.waitForResponse(res => res.url().includes('session/?code=LRD'));
+    await page.getByRole('button', { name: 'Select' }).nth(1).click();
+    
+    expect((await responsePromise).status()).toBe(200);
 
     await sleep(500);
+
     const chartAfter: Buffer = await chart.screenshot();
 
     await testInfo.attach('Session Analysis after change', { 

@@ -12,13 +12,13 @@ const Loader = ({ isLoading, isError, children }: props) => {
     <div className='loader-box'>
       {isLoading && !isError && <div className="loader-content">
         <div className="loader-text-background">
-          <div className="loader-text">Ładowanie</div>
+          <div className="loader-text">Loading</div>
         </div>
       </div>}
 
       {isError && <div className="loader-content">
         <div className="loader-text-background">
-          <div className="loader-error-text">Błąd</div>
+          <div className="loader-error-text">Error</div>
         </div>
       </div>}
 

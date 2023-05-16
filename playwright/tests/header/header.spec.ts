@@ -6,8 +6,8 @@ test.beforeEach(async ({page}) => {
 })
 
 test.describe('Header', () => {
-  test('should contain "Walutownik" text', async ({ page }, testInfo) => {
-    const text = await page.getByText('Walutownik');
+  test('should contain "CurrencyHub" text', async ({ page }, testInfo) => {
+    const text = await page.getByText('CurrencyHub');
 
     await expect(page.locator('.header-bar-2')).toHaveScreenshot('header-bar.png')
     await expect(text).toBeVisible();

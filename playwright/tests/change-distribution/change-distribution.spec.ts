@@ -9,7 +9,7 @@ test.beforeEach(async ({page}) => {
 test.describe('Change distribution', () => {
 
   test("should change chart on period change", async ({page}, testInfo) => {
-    let timePicker = page.getByText('MiesiącKwartał', { exact: true });
+    let timePicker = page.getByText('MonthQuarter', { exact: true });
     await testInfo.attach('time picker', { 
       body: await timePicker.screenshot(), 
       contentType: 'image/png' 
@@ -17,12 +17,12 @@ test.describe('Change distribution', () => {
 
 
     await testInfo.attach('Change distribution before change', { 
-      body: await page.getByText('Analiza par walutMiesiącKwartałWybierz waluty').screenshot(), 
+      body: await page.getByText('Change distributionMonthQuarterSelect currenciesAnalysis of the volatility of a ').screenshot(), 
       contentType: 'image/png' 
     });
 
-    const month = timePicker.getByRole('button', { name: 'Miesiąc' });
-    const quarter = timePicker.getByRole('button', { name: 'Kwartał' });
+    const month = timePicker.getByRole('button', { name: 'Month' });
+    const quarter = timePicker.getByRole('button', { name: 'Quarter' });
 
     const chart = await page.locator('canvas').nth(0);
 
@@ -36,7 +36,7 @@ test.describe('Change distribution', () => {
 
     await quarter.click();
 
-    timePicker = page.getByText('MiesiącKwartał', { exact: true });
+    timePicker = page.getByText('MonthQuarter', { exact: true });
     await expect(month).not.toHaveClass(selectedClass);
     await expect(quarter).toHaveClass(selectedClass);
     await expect(timePicker).toHaveScreenshot('time-picker-after.png');
@@ -48,13 +48,13 @@ test.describe('Change distribution', () => {
     await expect(comparator(chartBefore, chartAfter)).not.toBeNull();
 
     await testInfo.attach('Change distribution after change', { 
-      body: await page.getByText('Analiza par walutMiesiącKwartałWybierz waluty').screenshot(), 
+      body: await page.getByText('Change distributionMonthQuarterSelect currenciesAnalysis of the volatility of a ').screenshot(), 
       contentType: 'image/png' 
     });
   })
 
   test("should change chart on currency change", async ({page}, testInfo) => {    
-    const sessionAnalysis = await page.getByText("Analiza par walutMiesiącKwartałWybierz waluty");
+    const sessionAnalysis = await page.getByText("Change distributionMonthQuarterSelect currenciesAnalysis of the volatility of a ");
     const chart = await page.locator('canvas').nth(0);
 
     const chartBefore : Buffer = await chart.screenshot();
@@ -65,28 +65,28 @@ test.describe('Change distribution', () => {
       contentType: 'image/png' 
     });
 
-    const currencyPickerOne = sessionAnalysis.getByText('USDdolar amerykański');
+    const currencyPickerOne = sessionAnalysis.getByText('USDUnited States Dollar');
     await currencyPickerOne.click();
     
     const currencyButtonOne = sessionAnalysis.getByRole('button', { name: 'EUR euro' });
     await currencyButtonOne.click();
 
-    const currencyPickerTwo = sessionAnalysis.getByText('GBPfunt szterling');
+    const currencyPickerTwo = sessionAnalysis.getByText('GBPPound Sterling');
     await currencyPickerTwo.click();
     
-    const currencyButtonTwo = sessionAnalysis.getByRole('button', { name: 'JPY jen (Japonia)' });
+    const currencyButtonTwo = sessionAnalysis.getByRole('button', { name: 'JPY Japanese Yen' });
     await currencyButtonTwo.click();
     
     await Promise.all([
       page.waitForResponse(res => res.url().includes('change/?one=EUR&two=JPY') && res.status() === 200),
-      await page.locator('div').filter({ hasText: /^Wybierz walutyEUReuro-oraz-JPYjen \(Japonia\)Wybierz$/ }).getByRole('button', { name: 'Wybierz' }).click()
+      await page.getByRole('button', { name: 'Select' }).first().click()
     ]);
     
     await sleep(500);
     const chartAfter: Buffer = await chart.screenshot();
 
     await testInfo.attach('Change distribution after change', { 
-      body: await page.getByText("Analiza par walutMiesiącKwartałWybierz waluty").screenshot(), 
+      body: await page.getByText("Change distributionMonthQuarterSelect currenciesAnalysis of the volatility of a ").screenshot(), 
       contentType: 'image/png' 
     });
 

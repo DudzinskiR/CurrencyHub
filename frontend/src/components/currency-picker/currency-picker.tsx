@@ -106,7 +106,7 @@ const CurrencyPicker = ({ currencyCode, onChange }: props) => {
             </div>
 
             <input
-              placeholder="Wpisz walute..."
+              placeholder="Enter a currency..."
               className='currency-input'
               type="text"
               name="search"

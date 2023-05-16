@@ -10,6 +10,7 @@ import Button from '../../button/button';
 import TimePicker from '../../time-picker/time-picker';
 import BackendService from '../../../services/backend.service';
 import { ChangeDistributionData } from '../../../models/change-distribution.interface';
+import Hint from '../../hint/hint';
 
 const ChangeDistribution = () => {
   const [currencyPair, setCurrencyPair] = useState<string[]>(['USD', 'GBP']);
@@ -57,7 +58,7 @@ const ChangeDistribution = () => {
 
   return (
     <div className='currency-pair-box'>
-      <Header text='Analiza par walut' />
+      <Header text='Change distribution' />
       <div className="currency-pair-content">
         <div className="currency-pair-chart-box">
           <Loader isLoading={isLoading} isError={isError}>
@@ -67,11 +68,17 @@ const ChangeDistribution = () => {
         </div>
 
         <div className="currency-pair-picker-box">
-          <div className="currency-pair-picker-title">Wybierz waluty</div>
+          <div className="currency-pair-picker-title">Select currencies</div>
+          <div className="hint-box">
+            <Hint>
+              Analysis of the volatility of a currency pair's value over a specified period of time
+            </Hint>
+          </div>
+
           <CurrencyPicker currencyCode={currencyPair[0]} onChange={(c) => updateCurrencyPair(c, 0)} />
-          <div className='currency-pair-picker-and'>-oraz-</div>
+          <div className='currency-pair-picker-and'>-and-</div>
           <CurrencyPicker currencyCode={currencyPair[1]} onChange={(c) => updateCurrencyPair(c, 1)} />
-          <Button text='Wybierz' onClick={() => setSelectedCurrencyPair(currencyPair)} />
+          <Button text='Select' onClick={() => setSelectedCurrencyPair(currencyPair)} />
         </div>
 
       </div>

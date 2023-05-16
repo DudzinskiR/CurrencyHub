@@ -28,9 +28,9 @@ class SessionAnalysisService {
       for(let i = 1; i < tab.length; i++){
         const valueDiff = data[i].value - data[i - 1].value;
 
-        if(valueDiff > data[i - 1].value / 10000) {
+        if(valueDiff > data[i - 1].value * 0.05 / 100) {
           result.up++;
-        } else if(valueDiff < -data[i - 1].value / 10000) {
+        } else if(valueDiff < -data[i - 1].value * 0.05 / 100) {
           result.down++;
         } else {
           result.const++;

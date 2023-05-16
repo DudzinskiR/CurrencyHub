@@ -1,4 +1,4 @@
-![baner_backend](https://github.com/DudzinskiR/CurrencyHub/assets/130515506/a6a87bc6-4819-4c15-93b1-d253f292dfdd)
+![baner_backend](https://github.com/DudzinskiR/CurrencyHub/assets/130515506/83a130b0-efc0-42b0-9217-6b5c58ca40b9)
 [Live demo](https://currencyhub.vercel.app)
 
 ## Deployment
@@ -37,6 +37,12 @@ Install the required dependencies:
 
 ```bash
     npm install
+```
+
+Run database migrations:
+
+```bash
+    npm run migrate
 ```
 
 Start the backend server in development mode:
@@ -89,7 +95,7 @@ Example response
 [
     {
         "median": 4.5444,
-        "dominant": [4.4, 4.5],
+        "mode": [4.4, 4.5],
         "deviation": 0.020094,
         "variation": 0.442659
     },

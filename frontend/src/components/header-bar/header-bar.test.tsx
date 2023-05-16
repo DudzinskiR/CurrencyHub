@@ -5,6 +5,6 @@ describe('HeaderBar', () => {
   it('should render header bar with text', () => {
     render(<HeaderBar />);
 
-    expect(screen.getByText('Walutownik')).toBeInTheDocument();
+    expect(screen.getByText('CurrencyHub')).toBeInTheDocument();
   })
 })

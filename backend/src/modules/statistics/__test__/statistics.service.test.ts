@@ -20,12 +20,12 @@ describe('StatisticsService', () => {
     ];
 
     const expectStatistics: Statistic[] = [
-      {median: 0, dominant: [], deviation: 0, variation: 0},
-      {median: 0, dominant: [], deviation: 0, variation: 0},
-      {median: 0, dominant: [], deviation: 0, variation: 0},
-      {median: 0, dominant: [], deviation: 0, variation: 0},
-      {median: 0, dominant: [], deviation: 0, variation: 0},
-      {median: 0, dominant: [], deviation: 0, variation: 0},
+      {median: 0, mode: [], deviation: 0, variation: 0},
+      {median: 0, mode: [], deviation: 0, variation: 0},
+      {median: 0, mode: [], deviation: 0, variation: 0},
+      {median: 0, mode: [], deviation: 0, variation: 0},
+      {median: 0, mode: [], deviation: 0, variation: 0},
+      {median: 0, mode: [], deviation: 0, variation: 0},
     ]
 
     jest.spyOn(CurrencyRefreshService, 'refreshCurrencyData').mockResolvedValue();
@@ -45,7 +45,7 @@ describe('StatisticsService', () => {
       expect(item.deviation).toBeCloseTo(8.164965, 5);
       expect(item.median).toEqual(20)
       expect(item.variation).toBeCloseTo(40.824829, 5);
-      expect(item.dominant).toEqual([]);
+      expect(item.mode).toEqual([]);
     }
   });
 

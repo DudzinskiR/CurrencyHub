@@ -22,7 +22,7 @@ describe('Home', () => {
 
   it('should renders HeaderBar with correct text', () => {
     render(<Home />)
-    expect(screen.getByText('Walutownik')).toBeInTheDocument();
+    expect(screen.getByText('CurrencyHub')).toBeInTheDocument();
   });
 
   it('should renders Footer with correct text', () => {

@@ -31,7 +31,7 @@ export const options = {
   },
 }
 
-export const timePeriodName = ['Miesiąc', 'Kwartał']
+export const timePeriodName = ['Month', 'Quarter']
 
 export const getData = (data: Number[], labels: String[]) => {
   return {

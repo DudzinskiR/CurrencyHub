@@ -1,4 +1,4 @@
-![baner_E2E](https://github.com/DudzinskiR/CurrencyHub/assets/130515506/00cbff64-3f5a-480b-b7ff-519e45adb282)
+![baner_E2E](https://github.com/DudzinskiR/CurrencyHub/assets/130515506/d620244e-97c6-4029-b1b6-383c7c43594f)
 [Live demo](https://currencyhub.vercel.app)
 
 

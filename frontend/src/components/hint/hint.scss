@@ -1,0 +1,72 @@
+.hint{
+  position: relative;
+
+  .hint-icon{
+    width: 35px;
+    fill: #bebebe;
+    cursor: pointer;
+    &:hover{
+      fill: #8d8d8d;
+    }
+  }
+
+  .hint-content{
+    display: none;
+    position: absolute;
+    background-color: rgb(61, 61, 61);
+    color: #fff;
+    padding: 10px;
+    min-width: 250px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 2;
+
+    left: 50%;
+    transform: translate(-50%, 10px);
+
+    .arrow{
+      position: absolute;
+      width: 25px;
+      height: 15px;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      background-color: rgb(61, 61, 61);
+
+      top: -12px;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 1024px) { 
+      left: 50px;
+      top: 50%;
+      transform: translate(0%, -50%);
+
+      .arrow {
+        top: 15%;
+        left: -13px;
+
+        width: 13px;
+        height: 25px;
+        transform: translate(0, 50%);
+        clip-path: polygon(0 50%, 100% 100%, 100% 0);
+      }
+    }
+
+    @media (max-width: 425px) { 
+      position: relative;
+      left: 0px;
+
+      left: 0;
+      top: 0;
+      transform: translate(0, 0);
+
+      .arrow {
+        display: none;
+      }
+    }
+  }
+
+  .hint-icon:hover ~ .hint-content{
+    display: block;
+  }
+}

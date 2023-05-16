@@ -28,6 +28,7 @@
     }
 
     .currency-pair-picker-box{
+      position: relative;
       display: flex; 
       flex-direction: column;
       align-items: center;
@@ -52,6 +53,12 @@
         font-size: 1.125rem;
         line-height: 1.75rem; 
         margin-bottom: 20px;
+      }
+
+      .hint-box{
+        position: absolute;
+        left: 20px;
+        top: 15px;
       }
     }
   }

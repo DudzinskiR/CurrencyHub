@@ -11,6 +11,7 @@ import BackendService from '../../../services/backend.service'
 import Loader from '../../loader/loader'
 import { SessionAnalysisData } from '../../../models/session-analysis.interface'
 import CurrencyStatistics from '../statistics/statistics'
+import Hint from '../../hint/hint'
 
 const SessionAnalysis = () => {
 
@@ -74,6 +75,11 @@ const SessionAnalysis = () => {
 
         <div className="currency-analysis-picker-box">
           <div className="currency-analysis-picker-title">Select currency</div>
+          <div className="hint-box">
+            <Hint>
+              Dynamic sessions of value increases and currency statistics over a specified period of time.
+            </Hint>
+          </div>
           <CurrencyPicker
             currencyCode={currencyCode}
             onChange={(currency) => setCurrencyCode(currency)}

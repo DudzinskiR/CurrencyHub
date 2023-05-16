@@ -15,7 +15,7 @@ test.describe('Currency Picker', () => {
   });
 
   test('should show list after click and hide after click on other object', async ({ page }, testInfo) => {
-    const currencyPicker = await page.getByText('Select currenciesAnalysis of the volatility of a currency pair\'s value over a sp');
+    const currencyPicker = await page.getByRole('button', { name: 'USD United States Dollar' }).first()
     await currencyPicker.click();
 
     const list = await page.locator('.list-box');

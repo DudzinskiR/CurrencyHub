@@ -60,14 +60,14 @@ test.describe('Session Analysis', () => {
     await sleep(500);
 
     await testInfo.attach('Session Analysis before change', { 
-      body: await page.getByText('ASession analysisWeek2 WeeksMonthQuarter6 MonthsYearSelect currencyDynamic sessio').screenshot(), 
+      body: await page.getByText('Session analysisWeek2 WeeksMonthQuarter6 MonthsYearSelect currencyDynamic sessio').screenshot(), 
       contentType: 'image/png' 
     });
 
     const currencyPickerUSD = sessionAnalysis.getByText('USDUnited States Dollar');
     await currencyPickerUSD.click();
     
-    const currencyButton = sessionAnalysis.getByRole('button', { name: 'LRDLiberian Dollar' });
+    const currencyButton = sessionAnalysis.getByRole('button', { name: 'LRD Liberian Dollar' });
     await currencyButton.click();
     
     const button = page.getByRole('button', { name: 'Select' });

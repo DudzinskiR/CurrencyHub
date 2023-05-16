@@ -41,20 +41,15 @@ test.describe('Statistics', () => {
     });
 
     const statisticsTextBefore = await statisticsBox.textContent();
+    await page.getByRole('button', { name: 'USD United States Dollar' }).nth(1).click();
+    await page.getByPlaceholder('Enter a currency...').fill('ron');
+    await page.getByRole('button', { name: 'RON Romanian Leu' }).click();
 
-    const currencyPickerUSD = statisticsModule.getByText('USDUnited States Dollar');
-    await currencyPickerUSD.click();
+    const responsePromise = page.waitForResponse(res => res.url().includes('statistics/?code=RON'));
+    await page.getByRole('button', { name: 'Select' }).nth(1).click();
     
-    const currencyButton = statisticsModule.getByRole('button', { name: 'RON Romanian Leu' });
-    await currencyButton.click();
+    expect((await responsePromise).status()).toBe(200);
     
-    const button = page.getByRole('button', { name: 'Select' });
-
-    button.nth(1).click()
-    await page.waitForResponse(res => res.url().includes('session/?code=RON') && res.status() === 200),
-
-    await sleep(1000);
-
     await testInfo.attach('Statistics box after change', { 
       body: await statisticsBox.screenshot(), 
       contentType: 'image/png' 

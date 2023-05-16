@@ -9,8 +9,8 @@ test.describe('Statistics', () => {
   test("should change statistics on change period time", async ({page}, testInfo) => {
     const statisticsBox = page.locator('.currency-statistics-content');
 
-    const oneWeek = page.getByRole('button', { name: 'Tydzień' });
-    const twoWeeks = page.getByRole('button', { name: '2 Tygodnie' });
+    const oneWeek = page.getByRole('button', { name: 'Week', exact: true });
+    const twoWeeks = page.getByRole('button', { name: '2 Weeks' });
 
     await testInfo.attach('Statistics box', { 
       body: await statisticsBox.screenshot(), 
@@ -33,7 +33,7 @@ test.describe('Statistics', () => {
 
   test("should change statistics on change currency", async ({page}, testInfo) => {
     const statisticsBox = page.locator('.currency-statistics-content');
-    const statisticsModule = page.getByText("Analiza walutyTydzień2 TygodnieMiesiącKwartał6 MiesięcyRokWybierz waluteUSDdolar");
+    const statisticsModule = page.getByText("Change distributionMonthQuarterSelect currenciesAnalysis");
 
     await testInfo.attach('Statistics box before change', { 
       body: await statisticsBox.screenshot(), 
@@ -42,13 +42,13 @@ test.describe('Statistics', () => {
 
     const statisticsTextBefore = await statisticsBox.textContent();
 
-    const currencyPickerUSD = statisticsModule.getByText('USDdolar amerykański');
+    const currencyPickerUSD = statisticsModule.getByText('USDUnited States Dollar');
     await currencyPickerUSD.click();
     
-    const currencyButton = statisticsModule.getByRole('button', { name: 'RON lej rumuński' });
+    const currencyButton = statisticsModule.getByRole('button', { name: 'RON Romanian Leu' });
     await currencyButton.click();
     
-    const button = page.getByRole('button', { name: 'Wybierz' });
+    const button = page.getByRole('button', { name: 'Select' });
 
     button.nth(1).click()
     await page.waitForResponse(res => res.url().includes('session/?code=RON') && res.status() === 200),
